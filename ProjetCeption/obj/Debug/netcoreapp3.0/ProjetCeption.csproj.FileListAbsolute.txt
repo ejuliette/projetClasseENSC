@@ -1,0 +1,11 @@
+/Users/julietteesquirol/Projects/ProjetCeption/ProjetCeption/bin/Debug/netcoreapp3.0/ProjetCeption
+/Users/julietteesquirol/Projects/ProjetCeption/ProjetCeption/bin/Debug/netcoreapp3.0/ProjetCeption.deps.json
+/Users/julietteesquirol/Projects/ProjetCeption/ProjetCeption/bin/Debug/netcoreapp3.0/ProjetCeption.runtimeconfig.json
+/Users/julietteesquirol/Projects/ProjetCeption/ProjetCeption/bin/Debug/netcoreapp3.0/ProjetCeption.runtimeconfig.dev.json
+/Users/julietteesquirol/Projects/ProjetCeption/ProjetCeption/bin/Debug/netcoreapp3.0/ProjetCeption.dll
+/Users/julietteesquirol/Projects/ProjetCeption/ProjetCeption/bin/Debug/netcoreapp3.0/ProjetCeption.pdb
+/Users/julietteesquirol/Projects/ProjetCeption/ProjetCeption/obj/Debug/netcoreapp3.0/ProjetCeption.csprojAssemblyReference.cache
+/Users/julietteesquirol/Projects/ProjetCeption/ProjetCeption/obj/Debug/netcoreapp3.0/ProjetCeption.AssemblyInfoInputs.cache
+/Users/julietteesquirol/Projects/ProjetCeption/ProjetCeption/obj/Debug/netcoreapp3.0/ProjetCeption.AssemblyInfo.cs
+/Users/julietteesquirol/Projects/ProjetCeption/ProjetCeption/obj/Debug/netcoreapp3.0/ProjetCeption.dll
+/Users/julietteesquirol/Projects/ProjetCeption/ProjetCeption/obj/Debug/netcoreapp3.0/ProjetCeption.pdb
