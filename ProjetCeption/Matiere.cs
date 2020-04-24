@@ -4,15 +4,15 @@ namespace ProjetCeption
     public class Matiere
     {
 
-        public string nomMatiere { get; set; }
-        public string codeSyllabus { get; set; }
+        public string NomMatiere { get; set; }
+        public string CodeSyllabus { get; set; }
 
         public Matiere(string matiere, string codeSyll)
         {
             if (VerifMatiere(matiere) == true)
             {
-                nomMatiere = matiere;
-                codeSyllabus = codeSyll;
+                NomMatiere = matiere;
+                CodeSyllabus = codeSyll;
             }
             else
             {
@@ -21,13 +21,13 @@ namespace ProjetCeption
             }
         }
 
-       
+
 
         public bool VerifMatiere(string matiere)
         {
             bool matiereExistente;
 
-            if (matiere == "programmation avancée" || matiere == "programmation web" || matiere == "GESP")
+            if (matiere == "Programmation avancée" || matiere == "Programmation web" || matiere == "GESP" || matiere == "Signal")
             {
                 matiereExistente = true;
             }
@@ -42,3 +42,6 @@ namespace ProjetCeption
 
     }
 }
+
+
+

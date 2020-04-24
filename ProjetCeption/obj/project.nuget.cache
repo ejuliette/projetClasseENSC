@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "yQEg8cFhk3Ol7jgZBZm5T2pJCCCdQJLhSfkToOBSWo51vTHLPcI90HxXCrPNX8k15XOTiLJRVUz8kxsBtc7psA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\leagr\\Source\\Repos\\projetClasseENSC\\ProjetCeption\\ProjetCeption.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\leagr\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.0.1\\microsoft.aspnetcore.app.ref.3.0.1.nupkg.sha512",
+    "C:\\Users\\leagr\\.nuget\\packages\\microsoft.netcore.app.ref\\3.0.0\\microsoft.netcore.app.ref.3.0.0.nupkg.sha512",
+    "C:\\Users\\leagr\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.0.3\\microsoft.netcore.app.host.win-x64.3.0.3.nupkg.sha512",
+    "C:\\Users\\leagr\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.0.0\\microsoft.windowsdesktop.app.ref.3.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

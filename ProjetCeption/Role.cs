@@ -3,16 +3,19 @@ namespace ProjetCeption
 {
     public class Role
     {
-        public string role { get; set; }
-      
-        public Role(string roleIntervenant)
+        public string NomRole { get; set; }
+
+        public Role(string nomRole)
         {
-            role = roleIntervenant;
+            NomRole = nomRole;
         }
 
         public override string ToString()
         {
-            return "\nLe rôle de cet intervenant est :" + this.role;
+            return "\nLe rôle cet intervenant est " + NomRole;
         }
     }
 }
+
+
+

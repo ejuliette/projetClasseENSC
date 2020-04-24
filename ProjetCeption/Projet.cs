@@ -5,49 +5,56 @@ namespace ProjetCeption
 {
     public class Projet
     {
-        public int nbIntervenants { get; set; }
-        public bool sujetLibre { get; set; }
-        public DateTime dateDebut { get; set; }
-        public DateTime dateFin { get; set; }
-        public string theme { get; set; }
-        public List<Livrable> livrablesAttendus { get; set; }
-        public List<Matiere> matieresConcernees { get; set; }
-        public List<Intervenant> intervenantsConcernes { get; set; }
+        public string TypeProjet { get; set; }
+        public string Theme { get; set; }
+        public bool SujetLibre { get; set; }
+        public DateTime DateDebut { get; set; }
+        public DateTime DateFin { get; set; }
+        private int NbIntervenants { get; set; }
+        public List<Intervenant> IntervenantsConcernes { get; set; }
+        public List<Matiere> MatieresConcernees { get; set; }
+        public List<Livrable> LivrablesAttendus { get; set; }
 
 
-        public Projet(int nbInt, bool sujetLib, string deb, string fin, string th, List<Livrable> livr, List<Matiere> mat, List<Intervenant> interv )
+        public Projet(string type, string theme, bool sujetLibre, string debut, string fin, int nbInterv, List<Intervenant> intervenants, List<Matiere> matieres, List<Livrable> livrables)
         {
-            nbIntervenants = nbInt;
-            sujetLibre = sujetLib;
-            dateDebut = DateTime.Parse(deb);
-            dateFin = DateTime.Parse(fin);
-            theme = th;
-            livrablesAttendus = livr;
-            matieresConcernees = mat;
-            intervenantsConcernes = interv;
+            TypeProjet = type;
+            Theme = theme;
+            SujetLibre = sujetLibre;
+            DateDebut = DateTime.Parse(debut);
+            DateFin = DateTime.Parse(fin);
+            NbIntervenants = nbInterv;
+            IntervenantsConcernes = intervenants;
+            MatieresConcernees = matieres;
+            LivrablesAttendus = livrables;
+        }
+
+        public void AssocierRoleIntervenant(Role role, Intervenant intervenant)
+        {
+            //On met quoi dedans ?
         }
 
         public override string ToString()
         {
-            string description = "\n Nombre d'intervenants : " + nbIntervenants +
-                "\n Le sujet est libre : " + sujetLibre + "\n Date de début : " + dateDebut +
-                "\n Date de fin : " + dateFin + "\n Thème : " + theme + "\n Livrables attendus : ";
+            string description = "\n Nombre d'intervenants : " + NbIntervenants +
+                "\n Le sujet est libre : " + SujetLibre + "\n Date de début : " + DateDebut +
+                "\n Date de fin : " + DateFin + "\n Thème : " + Theme + "\n Livrables attendus : ";
 
-            foreach (Livrable item in livrablesAttendus)
+            foreach (Livrable item in LivrablesAttendus)
             {
-                description = description + item.nomLivrable + " ";
+                description = description + item.NomLivrable + " ";
             }
 
             description = description + "\n Matières concernées : ";
 
-            foreach (Matiere item in matieresConcernees)
+            foreach (Matiere item in MatieresConcernees)
             {
-                description = description + item.nomMatiere + " ";
+                description = description + item.NomMatiere + " ";
             }
 
             description = description + "\n Intervenants concernés : ";
 
-            foreach (Intervenant item in intervenantsConcernes)
+            foreach (Intervenant item in IntervenantsConcernes)
             {
                 description = description + item.Prenom + " " + item.Nom + " ";
             }
@@ -57,3 +64,6 @@ namespace ProjetCeption
         }
     }
 }
+
+
+

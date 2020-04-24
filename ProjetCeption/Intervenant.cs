@@ -10,13 +10,15 @@ namespace ProjetCeption
         {
             Nom = nom;
             Prenom = prenom;
-           
         }
 
         public override string ToString()
         {
-            return "\nLe nom est : " + this.Nom + "\nLe prénom est : " + this.Prenom + "\n";  
+            return "\nLe nom est : " + Nom + "\nLe prénom est : " + Prenom + "\n";
         }
 
     }
 }
+
+
+

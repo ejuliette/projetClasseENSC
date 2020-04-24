@@ -3,13 +3,13 @@ namespace ProjetCeption
 {
     public class Livrable
     {
-        public string nomLivrable { get; set; }
+        public string NomLivrable { get; set; }
 
         public Livrable(string livrable)
         {
-            if(VerifLivrable(livrable) == true)
+            if (VerifLivrable(livrable) == true)
             {
-                nomLivrable = livrable;
+                NomLivrable = livrable;
             }
             else
             {
@@ -28,7 +28,7 @@ namespace ProjetCeption
         {
             bool livrableExistant;
 
-            if(livrable=="analyse de l'existant" || livrable=="site web")
+            if (livrable == "Analyse de l'existant" || livrable == "Site web" || livrable == "Rapport")
             {
                 livrableExistant = true;
             }
@@ -42,3 +42,5 @@ namespace ProjetCeption
         }
     }
 }
+
+
