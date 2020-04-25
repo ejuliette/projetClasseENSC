@@ -38,7 +38,12 @@ namespace ProjetCeption
             }
 
             return livrableExistant;
+        }
 
+        public override string ToString()
+        {
+            string description = NomLivrable ;
+            return description;
         }
     }
 }

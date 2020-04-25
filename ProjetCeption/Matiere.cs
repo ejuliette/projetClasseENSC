@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel;
+
 namespace ProjetCeption
 {
     public class Matiere
@@ -37,7 +39,12 @@ namespace ProjetCeption
             }
 
             return matiereExistente;
+        }
 
+        public override string ToString()
+        {
+            string description = NomMatiere + ", " + CodeSyllabus ;
+            return description ;
         }
 
     }

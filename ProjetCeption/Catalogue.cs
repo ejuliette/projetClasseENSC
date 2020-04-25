@@ -4,6 +4,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace ProjetCeption
 {
@@ -13,6 +14,9 @@ namespace ProjetCeption
         public List<Eleve> ListeEleves { get; set; }
         public List<Enseignant> ListeEnseignants { get; set; }
         public List<Externe> ListeExternes { get; set; }
+        public List<Intervenant> ListeIntervenants { get; set; }
+
+
         public List<Livrable> ListeLivrables { get; set; }
 
         public List<Projet> ListeProjets { get; set; }
@@ -37,6 +41,14 @@ namespace ProjetCeption
 
             Externe Milo = new Externe("Toumine", "Milo", "Cobaye BCI");
             ListeExternes = new List<Externe> { Milo };
+
+            ListeIntervenants = new List<Intervenant> { };
+            foreach (Intervenant i in ListeEleves)
+                ListeIntervenants.Add(i);
+            foreach (Intervenant i in ListeEnseignants)
+                ListeIntervenants.Add(i);
+            foreach (Intervenant i in ListeExternes)
+                ListeIntervenants.Add(i);
 
             Livrable siteWeb = new Livrable("Site web");
             Livrable analyseExistant = new Livrable("Analyse de l'existant");
@@ -68,28 +80,14 @@ namespace ProjetCeption
             ListeProjets = new List<Projet> { Projet1, Projet2 };
 
         }
-
-        public void RechercherParAnnee(int annee)
-        {
-            List<Projet> Resultat = new List<Projet>();
-            foreach (Projet projet in ListeProjets)
-            {
-                if (projet.DateDebut.Year == annee || projet.DateFin.Year == annee)
-                {
-                    Resultat.Add(projet);
-                    Console.WriteLine(projet.ToString());
-                }
-            }
-        }
-
-        public List<Projet> RechercherParIntervenant(string nom, string prenom)
+        public List<Projet> RechercherParIntervenant(string nomRecherche, string prenomRecherche)
         {
             List<Projet> Resultat = new List<Projet>();
             foreach (Projet projet in ListeProjets)
             {
                 foreach (Intervenant intervenant in projet.IntervenantsConcernes)
                 {
-                    if (intervenant.Nom == nom && intervenant.Prenom == prenom)
+                    if (intervenant.Nom == nomRecherche || intervenant.Prenom == prenomRecherche)
                     {
                         Resultat.Add(projet);
                     }
@@ -98,6 +96,160 @@ namespace ProjetCeption
             return Resultat;
         }
 
+        public List<Projet> RechercherParAnnee(int anneeRecherchee)
+        {
+            List<Projet> Resultat = new List<Projet>();
+            foreach (Projet projet in ListeProjets)
+            {
+                if (projet.DateDebut.Year == anneeRecherchee || projet.DateFin.Year == anneeRecherchee)
+                {
+                    Resultat.Add(projet);
+                }
+            }
+            return Resultat;
+        }
+
+        public List<Projet> RechercherParMatiere(string matiereRecherchee)
+        {
+            List<Projet> Resultat = new List<Projet>();
+            foreach (Projet projet in ListeProjets)
+            {
+                foreach (Matiere matiere in projet.MatieresConcernees)
+                {
+                    if (matiere.NomMatiere == matiereRecherchee )
+                    {
+                        Resultat.Add(projet);
+                    }
+                }
+            }
+            return Resultat;
+        }
+
+
+
+        public void AjouterProjet()
+        {
+            Console.WriteLine("\nVeuillez rentrer toutes les informations nécessaires :");
+            Console.Write("\nType de projet : ");
+            string nvType = Console.ReadLine();
+            Console.Write("Thème : ");
+            string nvTheme = Console.ReadLine();
+
+            bool nvSujetLibre = true;
+            Console.Write("Sujet libre (O/N) : ");
+            string rep = Console.ReadLine();
+
+            while (rep !="O" && rep != "N")
+            {
+                Console.WriteLine("Je n'ai pas compris votre réponse.");
+                Console.Write("Sujet libre (O/N) : ");
+                rep = Console.ReadLine();
+            }
+            if (rep == "O")
+                nvSujetLibre = true;
+            else 
+                nvSujetLibre = false;
+
+            //Pose prb à la création du projet si la date rentrée n'est pas valide
+            Console.Write("Date de début (jj/mm/aaaa) : ");
+            string nvDebut = Console.ReadLine();
+            Console.Write("Date de fin (jj/mm/aaaa) : ");
+            string nvFin = Console.ReadLine();
+
+            //Création de la liste d'intervenants associée au projet
+            //On affiche la liste des intervenants existants
+            //L'utilisateur slectione les intervenants qu'il souhaite, quand il a fini il tape 0 pour sortir de la boucle
+            Console.WriteLine("\n\n----- Intervenants-----");
+            List<Intervenant> nvListeIntervenant = new List<Intervenant> { };
+            Console.WriteLine("Voici la liste des intervenants possible : ");
+            int j = 1;
+            foreach (Intervenant i in ListeIntervenants)
+            {
+                Console.WriteLine("{0} - {1}", j, i.ToString());
+                j++;
+            }
+            int choixIntervenant = 1;
+            while (choixIntervenant != 0)
+            {
+                Console.Write("Ajouter un intervenant (entrez 0 pour finir) : ");
+                choixIntervenant = Convert.ToInt32(Console.ReadLine());
+                if(choixIntervenant !=0)
+                {
+                    nvListeIntervenant.Add(ListeIntervenants[choixIntervenant - 1]);
+                    Console.WriteLine("\tL'intervenant a bien été ajouté");
+                }
+            }
+
+            //Exactement la même chose pour les matières
+            Console.WriteLine("\n\n----- Matières concernées-----");
+            List<Matiere> nvListeMatieres = new List<Matiere> { };
+            Console.WriteLine("Voici la liste des matières possible : ");
+            j = 1;
+            foreach (Matiere m in ListeMatieres)
+            {
+                Console.WriteLine("{0} - {1}", j, m.ToString());
+                j++;
+            }
+            int choixMatiere = 1;
+            while (choixMatiere != 0)
+            {
+                Console.Write("Ajouter une matière (entrez 0 pour finir) : ");
+                choixMatiere = Convert.ToInt32(Console.ReadLine());
+                if (choixMatiere != 0)
+                {
+                    nvListeMatieres.Add(ListeMatieres[choixMatiere - 1]);
+                    Console.WriteLine("\tLa matière a bien été ajoutée");
+                }
+                    
+            }
+
+            //Exactement la même chose pour les livrables
+            Console.WriteLine("\n\n----- Livrables-----");
+            List<Livrable> nvListeLivrable = new List<Livrable> { };
+            Console.WriteLine("Voici la liste des livrables possible : ");
+            j = 1;
+            foreach (Livrable l in ListeLivrables)
+            {
+                Console.WriteLine("{0} - {1}", j, l.ToString());
+                j++;
+            }
+            int choixLivrable = 1;
+            while (choixLivrable != 0)
+            {
+                Console.Write("Ajouter un livrable (entrez 0 pour finir) : ");
+                choixLivrable = Convert.ToInt32(Console.ReadLine());
+                if (choixLivrable != 0)
+                {
+                    nvListeLivrable.Add(ListeLivrables[choixLivrable - 1]);
+                    Console.WriteLine("\tLe livrable a bien été ajouté");
+                }
+                    
+            }
+
+            Projet nouveauProjet = new Projet(nvType, nvTheme, nvSujetLibre, nvDebut, nvFin, nvListeIntervenant.Count, nvListeIntervenant, nvListeMatieres, nvListeLivrable);
+            ListeProjets.Add(nouveauProjet);
+            Console.WriteLine("\nLe projet a bien été ajouté !");
+        }
+
+
+
+        public void SupprimerProjet()
+        {
+            Console.WriteLine("Voici la liste des projets : ");
+            int j = 1;
+            foreach (Projet projet in ListeProjets)
+            {
+                Console.WriteLine("{0} - {1}\n", j, projet.ToString());
+                j++;
+            }
+
+            Console.Write("\nLequel voulez-vous supprimer ?  ");
+            int choixSupression = Convert.ToInt32(Console.ReadLine());
+            ListeProjets.RemoveAt(choixSupression - 1);
+
+            Console.WriteLine("Le projet a bien été supprimé !");
+
+        }
 
     }
 }

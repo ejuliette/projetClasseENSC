@@ -12,7 +12,8 @@ namespace ProjetCeption
 
         public override string ToString()
         {
-            return base.ToString() + "\nLa promo de l'élève est:" + Promo;
+            string description = base.ToString() + "\nPromo : " + Promo +"\n";
+            return description;
         }
     }
 }

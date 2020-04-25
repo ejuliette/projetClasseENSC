@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjetCeption
 {
@@ -8,54 +9,67 @@ namespace ProjetCeption
         static void Main(string[] args)
         {
             Catalogue catalogueENSC = new Catalogue();
-            Recherche recherche = new Recherche();
-            recherche.RechercherParAnnee(catalogueENSC, 2020);
-
-            //recherche.RechercherParAnnee(2020);
+            AfficherMenu(catalogueENSC);
 
 
-
-            /*
-            int choix;
-            Catalogue<Projet> ResultatsRechercheNom;
-            string nomEleve;
-
-            Console.Out.WriteLine("*******************************Menu*****************************");
-            Console.Out.WriteLine("1-Rechercher un projet par nom d'élève");
-            Console.Out.WriteLine("2-Ajouter un projet");
-            Console.Out.WriteLine("3-Modifier un projet");
-            Console.Out.WriteLine("4-Supprimer un projet");
-            Console.Out.WriteLine("5-Rechercher un projet par nom d'enseignant");
-            Console.Out.WriteLine("6-Rechercher un projet par mot clé");
-            Console.Out.WriteLine("7-Afficher tous les projets");
-            Console.Out.WriteLine("8-Quitter");
-            Console.Out.Write("Donner votre choix: ");
-            choix = int.Parse(Console.In.ReadLine());
-            switch (choix)
+            static void AfficherMenu(Catalogue catalogue)
             {
-                case 1:
-                    Console.Out.Write("Donner le nom de l'élève: ");
-                    nomEleve = Console.In.ReadLine();
-                    ResultatsRechercheNom = Rechercher(ListeProjets, nomEleve);
-                    if (ResultatsRechercheNom[0] == null)
-                    {
-                        Console.Out.WriteLine("Le projet est introuvable");
-                    }
-                    else
-                    {
-                        for (int i = 0; i < 10; i++) //10 pcq je sais pas cb il y a de résultats qui macthent
-                            Console.Out.WriteLine(ResultatsRechercheNom[i]);
-                    }
-                    break;
-            }
+                int choix;
 
+                Console.WriteLine("\n*******************************Menu*****************************");
+                Console.WriteLine("1-Rechercher un projet par intervenant");
+                Console.WriteLine("2-Rechercher un projet par année");
+                Console.WriteLine("3-Rechercher un projet par matière");
+                Console.WriteLine("4-Rechercher un projet par mot clé");
+                Console.WriteLine("5-Afficher tous les projets");
+                Console.WriteLine("6-Ajouter un projet");
+                Console.WriteLine("7-Supprimer un projet");
+                Console.WriteLine("8-Quitter");
+                Console.Write("Donner votre choix: ");
+                choix = int.Parse(Console.In.ReadLine());
+                switch (choix)
+                {
+                    case 1:
+                        Console.Write("\nNom : ");
+                        string nom = Console.ReadLine();
+                        Console.Write("Prénom : ");
+                        string prenom = Console.ReadLine();
+                        foreach (Projet projet in catalogue.RechercherParIntervenant(nom, prenom))
+                            Console.WriteLine(projet.ToString());
+                        break;
+                    case 2:
+                        Console.Write("\nAnnée : ");
+                        int annee = Convert.ToInt32(Console.ReadLine());
+                        foreach (Projet projet in catalogue.RechercherParAnnee(annee))
+                            Console.WriteLine(projet.ToString());
+                        break;
 
+                    case 3:
+                        Console.Write("\nMatière : ");
+                        string matiere = Console.ReadLine();
+                        foreach (Projet projet in catalogue.RechercherParMatiere(matiere))
+                            Console.WriteLine(projet.ToString());
+                        break;
 
+                    case 5:
+                        foreach (Projet projet in catalogue.ListeProjets)
+                            Console.WriteLine(projet.ToString());
+                        break;
 
+                    case 6:
+                        catalogue.AjouterProjet();
+                        break;
 
+                    case 7:
+                        catalogue.SupprimerProjet();
+                        break;
 
-            Console.ReadKey();
-            */
+                    case 8:
+                        Environment.Exit(0);
+                        break;
+                }
+                AfficherMenu(catalogue);
+            }            
 
 
         }

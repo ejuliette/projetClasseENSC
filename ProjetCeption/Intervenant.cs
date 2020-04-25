@@ -14,7 +14,7 @@ namespace ProjetCeption
 
         public override string ToString()
         {
-            return "\nLe nom est : " + Nom + "\nLe prénom est : " + Prenom + "\n";
+            return "Nom : " + Nom + "\nPrénom : " + Prenom ;
         }
 
     }

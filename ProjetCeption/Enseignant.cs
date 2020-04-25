@@ -15,13 +15,13 @@ namespace ProjetCeption
 
         public override string ToString()
         {
-            string description = base.ToString() + "\nLes matières de cet enseignant sont : ";
+            string description = base.ToString() + "\nMatières enseignées : ";
 
             foreach (Matiere item in Matieres)
             {
                 description = description + item.NomMatiere + " ";
             }
-
+            description += "\n";
 
             return description;
         }

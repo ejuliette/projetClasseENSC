@@ -12,10 +12,9 @@ namespace ProjetCeption
         }
 
 
-
         public override string ToString()
         {
-            return base.ToString() + "\nLe métier de cet intervenant extérieur est : " + Metier;
+            return base.ToString() + "\nMétier : " + Metier + "\n";
         }
     }
 }
