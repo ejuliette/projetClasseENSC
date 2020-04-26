@@ -5,8 +5,8 @@ namespace ProjetCeption
 {
     public class Projet
     {
-        public string TypeProjet { get; set; }
         public string Theme { get; set; }
+        public string TypeProjet { get; set; }
         public bool SujetLibre { get; set; }
         public DateTime DateDebut { get; set; }
         public DateTime DateFin { get; set; }
@@ -16,13 +16,13 @@ namespace ProjetCeption
         public List<Livrable> LivrablesAttendus { get; set; }
 
 
-        public Projet(string type, string theme, bool sujetLibre, string debut, string fin, int nbInterv, List<Intervenant> intervenants, List<Matiere> matieres, List<Livrable> livrables)
+        public Projet(string type, string theme, bool sujetLibre, DateTime debut, DateTime fin, int nbInterv, List<Intervenant> intervenants, List<Matiere> matieres, List<Livrable> livrables)
         {
             TypeProjet = type;
             Theme = theme;
             SujetLibre = sujetLibre;
-            DateDebut = DateTime.Parse(debut);
-            DateFin = DateTime.Parse(fin);
+            DateDebut = debut;
+            DateFin = fin;
             NbIntervenants = nbInterv;
             IntervenantsConcernes = intervenants;
             MatieresConcernees = matieres;
@@ -36,29 +36,27 @@ namespace ProjetCeption
 
         public override string ToString()
         {
-            string description = "\n Nombre d'intervenants : " + NbIntervenants +
+            string description = "\n Thème : " + Theme + "\n Type de projet : " + TypeProjet +
                 "\n Le sujet est libre : " + SujetLibre + "\n Date de début : " + DateDebut +
-                "\n Date de fin : " + DateFin + "\n Thème : " + Theme + "\n Livrables attendus : ";
+                "\n Date de fin : " + DateFin + "\n Nombre d'intervenants : " + NbIntervenants ;
 
-            foreach (Livrable item in LivrablesAttendus)
+            description = description + "\n Intervenants concernés : ";
+            foreach (Intervenant item in IntervenantsConcernes)
             {
-                description = description + item.NomLivrable + " ";
+                description = description + item.Prenom + " " + item.Nom + ", ";
             }
 
             description = description + "\n Matières concernées : ";
-
             foreach (Matiere item in MatieresConcernees)
             {
-                description = description + item.NomMatiere + " ";
+                description = description + item.NomMatiere + ", ";
             }
 
-            description = description + "\n Intervenants concernés : ";
-
-            foreach (Intervenant item in IntervenantsConcernes)
+            description = description + "\n Livrables attendus : ";
+            foreach (Livrable item in LivrablesAttendus)
             {
-                description = description + item.Prenom + " " + item.Nom + " ";
+                description = description + item.NomLivrable + ", ";
             }
-
 
             return description;
         }
