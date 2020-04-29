@@ -7,6 +7,8 @@ namespace ProjetCeption
     {
 
         private List<Matiere> Matieres { get; set; }
+        
+        public Enseignant() : base() { }
 
         public Enseignant(string n, string p, List<Matiere> matieres) : base(n, p)
         {

@@ -5,6 +5,7 @@ namespace ProjetCeption
     {
         public string NomLivrable { get; set; }
 
+        public Livrable() { }
         public Livrable(string livrable)
         {
             NomLivrable = livrable;

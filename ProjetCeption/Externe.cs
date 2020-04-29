@@ -5,6 +5,7 @@ namespace ProjetCeption
     {
         private string Metier { get; set; }
 
+        public Externe() : base() { }
 
         public Externe(string n, string p, string metier) : base(n, p)
         {

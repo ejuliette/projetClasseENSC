@@ -5,10 +5,13 @@ namespace ProjetCeption
     {
         public int Promo { get; set; }
 
+        public Eleve() : base() { }
+
         public Eleve(string n, string p, int promo) : base(n, p)
         {
             Promo = promo;
         }
+
 
         public override string ToString()
         {

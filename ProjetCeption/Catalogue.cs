@@ -1,10 +1,9 @@
-﻿
-
-
-
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
+using System.Xml;
+using System.Xml.Serialization;
+using System.IO;
+using System.Data;
 
 namespace ProjetCeption
 {
@@ -15,10 +14,7 @@ namespace ProjetCeption
         public List<Enseignant> ListeEnseignants { get; set; }
         public List<Externe> ListeExternes { get; set; }
         public List<Intervenant> ListeIntervenants { get; set; }
-
-
         public List<Livrable> ListeLivrables { get; set; }
-
         public List<Projet> ListeProjets { get; set; }
 
         public Catalogue()
@@ -328,8 +324,16 @@ namespace ProjetCeption
 
         }
 
+
+        public void Sauvegarder(string fichierXML)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(Catalogue));
+            TextWriter writer = new StreamWriter(fichierXML);
+            
+            serializer.Serialize(writer, this);
+            writer.Close();
+        }
+
+
     }
 }
-
-
-

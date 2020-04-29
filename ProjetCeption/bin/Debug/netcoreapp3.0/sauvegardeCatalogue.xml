@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalogue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ListeMatieres>
+    <Matiere>
+      <NomMatiere>Programmation avancée</NomMatiere>
+      <CodeSyllabus>42</CodeSyllabus>
+    </Matiere>
+    <Matiere>
+      <NomMatiere>GESP</NomMatiere>
+      <CodeSyllabus>666</CodeSyllabus>
+    </Matiere>
+    <Matiere>
+      <NomMatiere>Signal</NomMatiere>
+      <CodeSyllabus>465</CodeSyllabus>
+    </Matiere>
+  </ListeMatieres>
+  <ListeEleves>
+    <Eleve>
+      <Nom>Esquirol</Nom>
+      <Prenom>Juliette</Prenom>
+      <Promo>2022</Promo>
+    </Eleve>
+    <Eleve>
+      <Nom>Grondin</Nom>
+      <Prenom>Léa</Prenom>
+      <Promo>2022</Promo>
+    </Eleve>
+    <Eleve>
+      <Nom>Caubet</Nom>
+      <Prenom>Hyppolyte</Prenom>
+      <Promo>2021</Promo>
+    </Eleve>
+  </ListeEleves>
+  <ListeEnseignants>
+    <Enseignant>
+      <Nom>Pesquet</Nom>
+      <Prenom>Baptiste</Prenom>
+    </Enseignant>
+    <Enseignant>
+      <Nom>Lanusse</Nom>
+      <Prenom>Patrick</Prenom>
+    </Enseignant>
+  </ListeEnseignants>
+  <ListeExternes>
+    <Externe>
+      <Nom>Toumine</Nom>
+      <Prenom>Milo</Prenom>
+    </Externe>
+  </ListeExternes>
+  <ListeIntervenants>
+    <Intervenant xsi:type="Eleve">
+      <Nom>Esquirol</Nom>
+      <Prenom>Juliette</Prenom>
+      <Promo>2022</Promo>
+    </Intervenant>
+    <Intervenant xsi:type="Eleve">
+      <Nom>Grondin</Nom>
+      <Prenom>Léa</Prenom>
+      <Promo>2022</Promo>
+    </Intervenant>
+    <Intervenant xsi:type="Eleve">
+      <Nom>Caubet</Nom>
+      <Prenom>Hyppolyte</Prenom>
+      <Promo>2021</Promo>
+    </Intervenant>
+    <Intervenant xsi:type="Enseignant">
+      <Nom>Pesquet</Nom>
+      <Prenom>Baptiste</Prenom>
+    </Intervenant>
+    <Intervenant xsi:type="Enseignant">
+      <Nom>Lanusse</Nom>
+      <Prenom>Patrick</Prenom>
+    </Intervenant>
+    <Intervenant xsi:type="Externe">
+      <Nom>Toumine</Nom>
+      <Prenom>Milo</Prenom>
+    </Intervenant>
+  </ListeIntervenants>
+  <ListeLivrables>
+    <Livrable>
+      <NomLivrable>Site web</NomLivrable>
+    </Livrable>
+    <Livrable>
+      <NomLivrable>Analyse de l'existant</NomLivrable>
+    </Livrable>
+    <Livrable>
+      <NomLivrable>Rapport</NomLivrable>
+    </Livrable>
+  </ListeLivrables>
+  <ListeProjets>
+    <Projet>
+      <Theme>Projet 1</Theme>
+      <TypeProjet>Transdi</TypeProjet>
+      <SujetLibre>true</SujetLibre>
+      <DateDebut>2015-08-01T00:00:00</DateDebut>
+      <DateFin>2015-09-01T00:00:00</DateFin>
+      <IntervenantsConcernes>
+        <Intervenant xsi:type="Eleve">
+          <Nom>Esquirol</Nom>
+          <Prenom>Juliette</Prenom>
+          <Promo>2022</Promo>
+        </Intervenant>
+        <Intervenant xsi:type="Externe">
+          <Nom>Toumine</Nom>
+          <Prenom>Milo</Prenom>
+        </Intervenant>
+        <Intervenant xsi:type="Enseignant">
+          <Nom>Pesquet</Nom>
+          <Prenom>Baptiste</Prenom>
+        </Intervenant>
+      </IntervenantsConcernes>
+      <MatieresConcernees>
+        <Matiere>
+          <NomMatiere>Programmation avancée</NomMatiere>
+          <CodeSyllabus>42</CodeSyllabus>
+        </Matiere>
+        <Matiere>
+          <NomMatiere>GESP</NomMatiere>
+          <CodeSyllabus>666</CodeSyllabus>
+        </Matiere>
+      </MatieresConcernees>
+      <LivrablesAttendus>
+        <Livrable>
+          <NomLivrable>Site web</NomLivrable>
+        </Livrable>
+        <Livrable>
+          <NomLivrable>Rapport</NomLivrable>
+        </Livrable>
+      </LivrablesAttendus>
+    </Projet>
+    <Projet>
+      <Theme>Projet 2</Theme>
+      <TypeProjet>Transpromo</TypeProjet>
+      <SujetLibre>true</SujetLibre>
+      <DateDebut>2019-09-01T00:00:00</DateDebut>
+      <DateFin>2020-05-30T00:00:00</DateFin>
+      <IntervenantsConcernes>
+        <Intervenant xsi:type="Eleve">
+          <Nom>Grondin</Nom>
+          <Prenom>Léa</Prenom>
+          <Promo>2022</Promo>
+        </Intervenant>
+        <Intervenant xsi:type="Eleve">
+          <Nom>Caubet</Nom>
+          <Prenom>Hyppolyte</Prenom>
+          <Promo>2021</Promo>
+        </Intervenant>
+        <Intervenant xsi:type="Enseignant">
+          <Nom>Lanusse</Nom>
+          <Prenom>Patrick</Prenom>
+        </Intervenant>
+      </IntervenantsConcernes>
+      <MatieresConcernees>
+        <Matiere>
+          <NomMatiere>Signal</NomMatiere>
+          <CodeSyllabus>465</CodeSyllabus>
+        </Matiere>
+      </MatieresConcernees>
+      <LivrablesAttendus>
+        <Livrable>
+          <NomLivrable>Analyse de l'existant</NomLivrable>
+        </Livrable>
+        <Livrable>
+          <NomLivrable>Rapport</NomLivrable>
+        </Livrable>
+      </LivrablesAttendus>
+    </Projet>
+    <Projet>
+      <Theme>covid</Theme>
+      <TypeProjet>Transdi</TypeProjet>
+      <SujetLibre>true</SujetLibre>
+      <DateDebut>2020-03-01T00:00:00</DateDebut>
+      <DateFin>2020-05-11T00:00:00</DateFin>
+      <IntervenantsConcernes>
+        <Intervenant xsi:type="Eleve">
+          <Nom>Esquirol</Nom>
+          <Prenom>Juliette</Prenom>
+          <Promo>2022</Promo>
+        </Intervenant>
+        <Intervenant xsi:type="Eleve">
+          <Nom>Grondin</Nom>
+          <Prenom>Léa</Prenom>
+          <Promo>2022</Promo>
+        </Intervenant>
+        <Intervenant xsi:type="Eleve">
+          <Nom>Caubet</Nom>
+          <Prenom>Hyppolyte</Prenom>
+          <Promo>2021</Promo>
+        </Intervenant>
+      </IntervenantsConcernes>
+      <MatieresConcernees>
+        <Matiere>
+          <NomMatiere>Programmation avancée</NomMatiere>
+          <CodeSyllabus>42</CodeSyllabus>
+        </Matiere>
+      </MatieresConcernees>
+      <LivrablesAttendus>
+        <Livrable>
+          <NomLivrable>Rapport</NomLivrable>
+        </Livrable>
+      </LivrablesAttendus>
+    </Projet>
+  </ListeProjets>
+</Catalogue>

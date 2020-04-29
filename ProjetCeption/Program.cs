@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Xml;
+using System.Xml.Serialization;
+using System.IO;
+using System.Data;
 
 namespace ProjetCeption
 {
@@ -10,6 +13,7 @@ namespace ProjetCeption
         {
             Catalogue catalogueENSC = new Catalogue();
             AfficherMenu(catalogueENSC);
+
 
 
             static void AfficherMenu(Catalogue catalogue)
@@ -64,6 +68,7 @@ namespace ProjetCeption
                         }
                         else
                             Console.WriteLine("Aucun résultat ne correspond à votre recherche");
+
                         break;
 
 
@@ -132,6 +137,7 @@ namespace ProjetCeption
                         Environment.Exit(0);
                         break;
                 }
+                catalogue.Sauvegarder("sauvegardeCatalogue.xml");
                 AfficherMenu(catalogue);
             }            
 

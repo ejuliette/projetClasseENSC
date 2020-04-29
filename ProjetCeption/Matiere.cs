@@ -8,6 +8,7 @@ namespace ProjetCeption
 
         public string NomMatiere { get; set; }
         public string CodeSyllabus { get; set; }
+        public Matiere() { }
 
         public Matiere(string matiere, string codeSyll)
         {
@@ -22,6 +23,8 @@ namespace ProjetCeption
                 //Ce serait pas mal d'afficher toutes les matières acceptées
             }
         }
+
+        
 
 
 

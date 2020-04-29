@@ -6,6 +6,8 @@ namespace ProjetCeption
         public string Nom { get; set; }
         public string Prenom { get; set; }
 
+        public Intervenant() { }
+
         public Intervenant(string nom, string prenom)
         {
             Nom = nom;

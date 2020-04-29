@@ -16,6 +16,7 @@ namespace ProjetCeption
         public List<Livrable> LivrablesAttendus { get; set; }
 
 
+        public Projet() { }
         public Projet(string type, string theme, bool sujetLibre, DateTime debut, DateTime fin, int nbInterv, List<Intervenant> intervenants, List<Matiere> matieres, List<Livrable> livrables)
         {
             TypeProjet = type;
