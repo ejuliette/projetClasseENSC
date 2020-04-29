@@ -76,7 +76,6 @@
       <Prenom>Milo</Prenom>
     </Intervenant>
   </ListeIntervenants>
-
   <ListeLivrables>
     <Livrable>
       <NomLivrable>Site web</NomLivrable>

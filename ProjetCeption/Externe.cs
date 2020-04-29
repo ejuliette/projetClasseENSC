@@ -15,7 +15,8 @@ namespace ProjetCeption
 
         public override string ToString()
         {
-            return base.ToString() + "\nMétier : " + Metier + "\n";
+            string description = base.ToString() + "\nMétier : " + Metier + "\n";
+            return description;
         }
     }
 }

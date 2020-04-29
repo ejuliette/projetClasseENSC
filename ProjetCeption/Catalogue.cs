@@ -4,6 +4,9 @@ using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
 using System.Data;
+using System.Xml.Linq;
+using System.Xml.XPath;
+
 
 namespace ProjetCeption
 {
@@ -19,6 +22,7 @@ namespace ProjetCeption
 
         public Catalogue()
         {
+            /*
             Matiere ProgAv = new Matiere("Programmation avancée", "42");
             Matiere Gesp = new Matiere("GESP", "666");
             Matiere Signal = new Matiere("Signal", "465");
@@ -26,7 +30,7 @@ namespace ProjetCeption
 
             Eleve Juliette = new Eleve("Esquirol", "Juliette", 2022);
             Eleve Léa = new Eleve("Grondin", "Léa", 2022);
-            Eleve Hippo = new Eleve("Caubet", "Hyppolyte", 2021);
+            Eleve Hippo = new Eleve("Caubet", "Hippolyte", 2021);
             ListeEleves = new List<Eleve> { Juliette, Léa, Hippo };
 
             List<Matiere> matieresPesquet = new List<Matiere> { ProgAv, Gesp };
@@ -74,6 +78,7 @@ namespace ProjetCeption
             Projet Projet2 = new Projet("Transpromo", "Projet 2", true, DateTime.Parse("01/09/2019"), DateTime.Parse("30/05/2020"), intervenantsProjet2.Count, intervenantsProjet2, matieresProjet2, livrablesProjet2);
 
             ListeProjets = new List<Projet> { Projet1, Projet2 };
+            */
 
         }
         public List<Projet> RechercherParIntervenant(string nomRecherche, string prenomRecherche)
@@ -329,11 +334,20 @@ namespace ProjetCeption
         {
             XmlSerializer serializer = new XmlSerializer(typeof(Catalogue));
             TextWriter writer = new StreamWriter(fichierXML);
-            
             serializer.Serialize(writer, this);
             writer.Close();
         }
 
+        public void ReinitialiserCatalogue()
+        {
+            //On supprime le catalogue utilisateur
+            File.Delete("C:\\Users\\leagr\\Source\\Repos\\projetClasseENSC\\ProjetCeption\\bin\\Debug\\netcoreapp3.0\\sauvegardeCatalogue.xml");
+            //On copie le catalogue de base, et on on le colle en créant un nouveau catalogue utilisateur
+            string sourceFile = "C:\\Users\\leagr\\Source\\Repos\\projetClasseENSC\\ProjetCeption\\bin\\Debug\\netcoreapp3.0\\catalogueBase.xml";
+            string destinationFile = "C:\\Users\\leagr\\Source\\Repos\\projetClasseENSC\\ProjetCeption\\bin\\Debug\\netcoreapp3.0\\sauvegardeCatalogue.xml";
+            File.Copy(sourceFile, destinationFile);
+
+        }
 
     }
 }

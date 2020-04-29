@@ -11,7 +11,12 @@ namespace ProjetCeption
     {
         static void Main(string[] args)
         {
-            Catalogue catalogueENSC = new Catalogue();
+            //Permet de récupérer le catalogue du fichier Xml
+            XmlSerializer xs = new XmlSerializer(typeof(Catalogue));
+            StreamReader reader = new StreamReader("sauvegardeCatalogue.xml");
+            Catalogue catalogueENSC = xs.Deserialize(reader) as Catalogue;
+            reader.Close();
+
             AfficherMenu(catalogueENSC);
 
 
@@ -28,8 +33,9 @@ namespace ProjetCeption
                 string m5 = "5-Afficher tous les projets";
                 string m6 = "6-Ajouter un projet";
                 string m7 = "7-Supprimer un projet";
-                string m8 = "8-Quitter\n";
-                string m9 = "Donner votre choix : ";
+                string m8 = "8-Réinitialiser le catalogue";
+                string m9 = "9-Quitter\n";
+                string m10 = "Donner votre choix : ";
 
                 Console.WriteLine("");
                 Console.SetCursorPosition((Console.WindowWidth - menu.Length) / 2, Console.CursorTop);
@@ -52,6 +58,8 @@ namespace ProjetCeption
                 Console.WriteLine(m8);
                 Console.SetCursorPosition((Console.WindowWidth - m9.Length) / 2, Console.CursorTop);
                 Console.Write(m9);
+                Console.SetCursorPosition((Console.WindowWidth - m10.Length) / 2, Console.CursorTop);
+                Console.Write(m10);
 
                 choix = int.Parse(Console.In.ReadLine());
                 switch (choix)
@@ -119,25 +127,35 @@ namespace ProjetCeption
                         break;
 
 
-
                     case 5:
-                        foreach (Projet projet in catalogue.ListeProjets)
+                        XmlSerializer xs = new XmlSerializer(typeof(Catalogue));
+                        StreamReader reader = new StreamReader("sauvegardeCatalogue.xml");
+                        Catalogue c = xs.Deserialize(reader) as Catalogue;
+                        foreach (Projet projet in c.ListeProjets)
                             Console.WriteLine(projet.ToString());
+                        reader.Close();
                         break;
 
                     case 6:
                         catalogue.AjouterProjet();
+                        catalogue.Sauvegarder("sauvegardeCatalogue.xml");
                         break;
 
                     case 7:
                         catalogue.SupprimerProjet();
+                        catalogue.Sauvegarder("sauvegardeCatalogue.xml");
                         break;
 
                     case 8:
+                        catalogue.ReinitialiserCatalogue();
+                        Console.WriteLine("Le catalogue a bien été réinitialisé !");
+                        break;
+
+                    case 9:
                         Environment.Exit(0);
                         break;
                 }
-                catalogue.Sauvegarder("sauvegardeCatalogue.xml");
+                
                 AfficherMenu(catalogue);
             }            
 
