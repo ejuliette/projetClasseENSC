@@ -12,18 +12,15 @@ namespace ProjetCeption
     {
         static void Main(string[] args)
         {
-            
+
             //Permet de récupérer le catalogue du fichier Xml
             XmlSerializer xs = new XmlSerializer(typeof(Catalogue));
             StreamReader reader = new StreamReader("sauvegardeCatalogue.xml");
             Catalogue catalogueENSC = xs.Deserialize(reader) as Catalogue;
             reader.Close();
-            
 
-            //Catalogue catalogueENSC = new Catalogue();
-            
+
             AfficherMenu(catalogueENSC);
-
 
 
             static void AfficherMenu(Catalogue catalogue)
@@ -179,7 +176,7 @@ namespace ProjetCeption
 
 
                 }
-                catalogue.Sauvegarder("sauvegardeCatalogue.xml");
+
                 AfficherMenu(catalogue);
             }            
 

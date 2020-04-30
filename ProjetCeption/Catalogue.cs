@@ -11,79 +11,19 @@ namespace ProjetCeption
 {
     public class Catalogue
     {
-        public List<Matiere> ListeMatieres { get; set; }
         public List<Eleve> ListeEleves { get; set; }
         public List<Enseignant> ListeEnseignants { get; set; }
         public List<Externe> ListeExternes { get; set; }
         public List<Intervenant> ListeIntervenants { get; set; }
+        public List<Role> ListeRoles { get; set; }
+        public List<Matiere> ListeMatieres { get; set; }
         public List<Livrable> ListeLivrables { get; set; }
         public List<Projet> ListeProjets { get; set; }
-        public List<Role> ListeRoles { get; set; }
 
         public Catalogue()
         {
-            /*
-            Matiere ProgAv = new Matiere("Programmation avancée", "42");
-            Matiere Gesp = new Matiere("GESP", "666");
-            Matiere Signal = new Matiere("Signal", "465");
-            ListeMatieres = new List<Matiere> { ProgAv, Gesp, Signal };
-
-            Eleve Juliette = new Eleve("Esquirol", "Juliette", 2022);
-            Eleve Léa = new Eleve("Grondin", "Léa", 2022);
-            Eleve Hippo = new Eleve("Caubet", "Hyppolyte", 2021);
-            ListeEleves = new List<Eleve> { Juliette, Léa, Hippo };
-
-            List<Matiere> matieresPesquet = new List<Matiere> { ProgAv, Gesp };
-            Enseignant Pesquet = new Enseignant("Pesquet", "Baptiste", matieresPesquet);
-            List<Matiere> matieresLanusse = new List<Matiere> { Signal };
-            Enseignant Lanusse = new Enseignant("Lanusse", "Patrick", matieresLanusse);
-            ListeEnseignants = new List<Enseignant> { Pesquet, Lanusse };
-
-            Externe Milo = new Externe("Toumine", "Milo", "Cobaye BCI");
-            ListeExternes = new List<Externe> { Milo };
-
-            ListeIntervenants = new List<Intervenant> { };
-            foreach (Intervenant i in ListeEleves)
-                ListeIntervenants.Add(i);
-            foreach (Intervenant i in ListeEnseignants)
-                ListeIntervenants.Add(i);
-            foreach (Intervenant i in ListeExternes)
-                ListeIntervenants.Add(i);
-
-            Livrable siteWeb = new Livrable("Site web");
-            Livrable analyseExistant = new Livrable("Analyse de l'existant");
-            Livrable rapport = new Livrable("Rapport");
-            ListeLivrables = new List<Livrable> { siteWeb, analyseExistant, rapport };
-
-            // Est-ce que on ne peut pas tout simplement créer un role comme ça : Role Tuteur = Role()  ?
-            //Mais dans ce cas qu'est ce qu'il y a dans la classe role ?
-            Role Tuteur = new Role("tuteur");
-            Role Cobaye = new Role("cobaye");
-            Role Acteur = new Role("acteur");
-            ListeRoles = new List<Role> { Tuteur, Cobaye, Acteur };
-
-            List<Livrable> livrablesProjet1 = new List<Livrable> { siteWeb, rapport };
-            List<Matiere> matieresProjet1 = new List<Matiere> { ProgAv, Gesp };
-            List<Intervenant> intervenantsProjet1 = new List<Intervenant> { Juliette, Milo, Pesquet };
-            List<Role> rolesIntervenantsProjet1 = new List<Role> { Acteur, Cobaye, Tuteur };
-            Projet Projet1 = new Projet("Transdi", "Projet 1", true, DateTime.Parse("01/08/2015"), DateTime.Parse("01/09/2015"), intervenantsProjet1.Count, intervenantsProjet1, matieresProjet1, livrablesProjet1, rolesIntervenantsProjet1);
-            //Si on fait comme ça, qu'est ce qu'on met dans AssocierRole ??
-            Projet1.AssocierRoleIntervenant(Acteur, Juliette);
-            Projet1.AssocierRoleIntervenant(Cobaye, Milo);
-            Projet1.AssocierRoleIntervenant(Tuteur, Pesquet);
-
-
-
-            List<Livrable> livrablesProjet2 = new List<Livrable> { analyseExistant, rapport };
-            List<Matiere> matieresProjet2 = new List<Matiere> { Signal };
-            List<Intervenant> intervenantsProjet2 = new List<Intervenant> { Léa, Hippo, Lanusse };
-            List<Role> rolesIntervenantsProjet2 = new List<Role> { Acteur, Acteur, Tuteur };
-            Projet Projet2 = new Projet("Transpromo", "Projet 2", true, DateTime.Parse("01/09/2019"), DateTime.Parse("30/05/2020"), intervenantsProjet2.Count, intervenantsProjet2, matieresProjet2, livrablesProjet2, rolesIntervenantsProjet2);
-
-            ListeProjets = new List<Projet> { Projet1, Projet2 };
-            */
-
         }
+
         public List<Projet> RechercherParIntervenant(string nomRecherche, string prenomRecherche)
         {
             List<Projet> Resultat = new List<Projet>();
@@ -91,7 +31,7 @@ namespace ProjetCeption
             {
                 foreach (Intervenant intervenant in projet.IntervenantsConcernes)
                 {
-                    if (intervenant.Nom == nomRecherche || intervenant.Prenom == prenomRecherche)
+                    if (intervenant.Nom == nomRecherche && intervenant.Prenom == prenomRecherche)
                     {
                         Resultat.Add(projet);
                     }
@@ -241,7 +181,6 @@ namespace ProjetCeption
             List<Role> nvListeRole = ChoixRole(nvListeIntervenant);
             List<Matiere> nvListeMatiere = ChoixMatiere();
             List<Livrable> nvListeLivrable = ChoixLivrable();
-            List<Role> nvListeRole = ChoixRole();
 
             Projet nouveauProjet = new Projet(nvType, nvTheme, nvSujetLibre, dateDebutValide, dateFinValide, nvListeIntervenant.Count, nvListeIntervenant, nvListeMatiere, nvListeLivrable, nvListeRole);
             ListeProjets.Add(nouveauProjet);

@@ -1,69 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalogue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <ListeMatieres>
-    <Matiere>
-      <NomMatiere>Programmation avancée</NomMatiere>
-      <CodeSyllabus>42</CodeSyllabus>
-    </Matiere>
-    <Matiere>
-      <NomMatiere>GESP</NomMatiere>
-      <CodeSyllabus>666</CodeSyllabus>
-    </Matiere>
-    <Matiere>
-      <NomMatiere>Signal</NomMatiere>
-      <CodeSyllabus>465</CodeSyllabus>
-    </Matiere>
-  </ListeMatieres>
-  <ListeEleves>
-    <Eleve>
-      <Nom>Esquirol</Nom>
-      <Prenom>Juliette</Prenom>
-      <Promo>2022</Promo>
-    </Eleve>
-    <Eleve>
-      <Nom>Grondin</Nom>
-      <Prenom>Léa</Prenom>
-      <Promo>2022</Promo>
-    </Eleve>
-    <Eleve>
-      <Nom>Caubet</Nom>
-      <Prenom>Hyppolyte</Prenom>
-      <Promo>2021</Promo>
-    </Eleve>
-  </ListeEleves>
-  <ListeEnseignants>
-    <Enseignant>
-      <Nom>Pesquet</Nom>
-      <Prenom>Baptiste</Prenom>
-      <Matieres>
-        <Matiere>
-          <NomMatiere>Programmation avancée</NomMatiere>
-          <CodeSyllabus>42</CodeSyllabus>
-        </Matiere>
-        <Matiere>
-          <NomMatiere>GESP</NomMatiere>
-          <CodeSyllabus>666</CodeSyllabus>
-        </Matiere>
-      </Matieres>
-    </Enseignant>
-    <Enseignant>
-      <Nom>Lanusse</Nom>
-      <Prenom>Patrick</Prenom>
-      <Matieres>
-        <Matiere>
-          <NomMatiere>Signal</NomMatiere>
-          <CodeSyllabus>465</CodeSyllabus>
-        </Matiere>
-      </Matieres>
-    </Enseignant>
-  </ListeEnseignants>
-  <ListeExternes>
-    <Externe>
-      <Nom>Toumine</Nom>
-      <Prenom>Milo</Prenom>
-      <Metier>Cobaye BCI</Metier>
-    </Externe>
-  </ListeExternes>
+  
   <ListeIntervenants>
     <Intervenant xsi:type="Eleve">
       <Nom>Esquirol</Nom>
@@ -110,6 +47,31 @@
       <Metier>Cobaye BCI</Metier>
     </Intervenant>
   </ListeIntervenants>
+  <ListeRoles>
+    <Role>
+      <NomRole>tuteur</NomRole>
+    </Role>
+    <Role>
+      <NomRole>cobaye</NomRole>
+    </Role>
+    <Role>
+      <NomRole>acteur</NomRole>
+    </Role>
+  </ListeRoles>
+  <ListeMatieres>
+    <Matiere>
+      <NomMatiere>Programmation avancée</NomMatiere>
+      <CodeSyllabus>42</CodeSyllabus>
+    </Matiere>
+    <Matiere>
+      <NomMatiere>GESP</NomMatiere>
+      <CodeSyllabus>666</CodeSyllabus>
+    </Matiere>
+    <Matiere>
+      <NomMatiere>Signal</NomMatiere>
+      <CodeSyllabus>465</CodeSyllabus>
+    </Matiere>
+  </ListeMatieres>
   <ListeLivrables>
     <Livrable>
       <NomLivrable>Site web</NomLivrable>
@@ -242,15 +204,4 @@
       </IntervenantsRoles>
     </Projet>
   </ListeProjets>
-  <ListeRoles>
-    <Role>
-      <NomRole>tuteur</NomRole>
-    </Role>
-    <Role>
-      <NomRole>cobaye</NomRole>
-    </Role>
-    <Role>
-      <NomRole>acteur</NomRole>
-    </Role>
-  </ListeRoles>
 </Catalogue>

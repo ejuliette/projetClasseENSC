@@ -8,7 +8,7 @@ namespace ProjetCeption
         public Role(){ }
         public Role(string nomRole)
         {
-           
+            NomRole = nomRole;
         }
 
         public override string ToString()

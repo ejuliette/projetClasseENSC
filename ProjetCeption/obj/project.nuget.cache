@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yQEg8cFhk3Ol7jgZBZm5T2pJCCCdQJLhSfkToOBSWo51vTHLPcI90HxXCrPNX8k15XOTiLJRVUz8kxsBtc7psA==",
+  "dgSpecHash": "Zex/L8AIgK1xCWI2B5kda+hDo+mquOQGZ6uv2+mPGi8qnCU39RoKRXmjkeS6zldfZteEdgaFdHupeynW6mq78A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\leagr\\Source\\Repos\\projetClasseENSC\\ProjetCeption\\ProjetCeption.csproj",
+  "projectFilePath": "C:\\Users\\leagr\\source\\repos\\projetClasseENSC\\ProjetCeption\\ProjetCeption.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\leagr\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.0.1\\microsoft.aspnetcore.app.ref.3.0.1.nupkg.sha512",
     "C:\\Users\\leagr\\.nuget\\packages\\microsoft.netcore.app.ref\\3.0.0\\microsoft.netcore.app.ref.3.0.0.nupkg.sha512",
