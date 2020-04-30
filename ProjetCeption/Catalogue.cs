@@ -241,6 +241,7 @@ namespace ProjetCeption
             List<Role> nvListeRole = ChoixRole(nvListeIntervenant);
             List<Matiere> nvListeMatiere = ChoixMatiere();
             List<Livrable> nvListeLivrable = ChoixLivrable();
+            List<Role> nvListeRole = ChoixRole();
 
             Projet nouveauProjet = new Projet(nvType, nvTheme, nvSujetLibre, dateDebutValide, dateFinValide, nvListeIntervenant.Count, nvListeIntervenant, nvListeMatiere, nvListeLivrable, nvListeRole);
             ListeProjets.Add(nouveauProjet);

@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalogue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<ListeRoles>
+    <NomRole>Chef de Projet</NomRole>
+    <NomRole>Tuteur</NomRole>
+    <NomRole>Client</NomRole>
+    <NomRole>Responsable Facteur Humain</NomRole>
+</ListeRoles>
   <ListeMatieres>
     <Matiere>
       <NomMatiere>Programmation avancée</NomMatiere>
