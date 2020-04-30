@@ -6,7 +6,7 @@ namespace ProjetCeption
     public class Enseignant : Intervenant
     {
 
-        private List<Matiere> Matieres { get; set; }
+        public List<Matiere> Matieres { get; set; }
         public Enseignant() : base() { }
 
         public Enseignant(string n, string p, List<Matiere> matieres) : base(n, p)

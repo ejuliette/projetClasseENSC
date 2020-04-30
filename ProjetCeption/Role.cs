@@ -5,14 +5,15 @@ namespace ProjetCeption
     {
         public string NomRole { get; set; }
 
-        public Role()
+        public Role(){ }
+        public Role(string nomRole)
         {
-           
+            NomRole = nomRole;
         }
 
         public override string ToString()
         {
-            return "\nLe rôle cet intervenant est " + NomRole;
+            return NomRole;
         }
     }
 }

@@ -27,7 +27,7 @@
     </Eleve>
     <Eleve>
       <Nom>Caubet</Nom>
-      <Prenom>Hippolyte</Prenom>
+      <Prenom>Hyppolyte</Prenom>
       <Promo>2021</Promo>
     </Eleve>
   </ListeEleves>
@@ -35,16 +35,33 @@
     <Enseignant>
       <Nom>Pesquet</Nom>
       <Prenom>Baptiste</Prenom>
+      <Matieres>
+        <Matiere>
+          <NomMatiere>Programmation avancée</NomMatiere>
+          <CodeSyllabus>42</CodeSyllabus>
+        </Matiere>
+        <Matiere>
+          <NomMatiere>GESP</NomMatiere>
+          <CodeSyllabus>666</CodeSyllabus>
+        </Matiere>
+      </Matieres>
     </Enseignant>
     <Enseignant>
       <Nom>Lanusse</Nom>
       <Prenom>Patrick</Prenom>
+      <Matieres>
+        <Matiere>
+          <NomMatiere>Signal</NomMatiere>
+          <CodeSyllabus>465</CodeSyllabus>
+        </Matiere>
+      </Matieres>
     </Enseignant>
   </ListeEnseignants>
   <ListeExternes>
     <Externe>
       <Nom>Toumine</Nom>
       <Prenom>Milo</Prenom>
+      <Metier>Cobaye BCI</Metier>
     </Externe>
   </ListeExternes>
   <ListeIntervenants>
@@ -60,23 +77,39 @@
     </Intervenant>
     <Intervenant xsi:type="Eleve">
       <Nom>Caubet</Nom>
-      <Prenom>Hippolyte</Prenom>
+      <Prenom>Hyppolyte</Prenom>
       <Promo>2021</Promo>
     </Intervenant>
     <Intervenant xsi:type="Enseignant">
       <Nom>Pesquet</Nom>
       <Prenom>Baptiste</Prenom>
+      <Matieres>
+        <Matiere>
+          <NomMatiere>Programmation avancée</NomMatiere>
+          <CodeSyllabus>42</CodeSyllabus>
+        </Matiere>
+        <Matiere>
+          <NomMatiere>GESP</NomMatiere>
+          <CodeSyllabus>666</CodeSyllabus>
+        </Matiere>
+      </Matieres>
     </Intervenant>
     <Intervenant xsi:type="Enseignant">
       <Nom>Lanusse</Nom>
       <Prenom>Patrick</Prenom>
+      <Matieres>
+        <Matiere>
+          <NomMatiere>Signal</NomMatiere>
+          <CodeSyllabus>465</CodeSyllabus>
+        </Matiere>
+      </Matieres>
     </Intervenant>
     <Intervenant xsi:type="Externe">
       <Nom>Toumine</Nom>
       <Prenom>Milo</Prenom>
+      <Metier>Cobaye BCI</Metier>
     </Intervenant>
   </ListeIntervenants>
-
   <ListeLivrables>
     <Livrable>
       <NomLivrable>Site web</NomLivrable>
@@ -86,6 +119,9 @@
     </Livrable>
     <Livrable>
       <NomLivrable>Rapport</NomLivrable>
+    </Livrable>
+    <Livrable>
+      <NomLivrable>CdC</NomLivrable>
     </Livrable>
   </ListeLivrables>
   <ListeProjets>
@@ -104,10 +140,21 @@
         <Intervenant xsi:type="Externe">
           <Nom>Toumine</Nom>
           <Prenom>Milo</Prenom>
+          <Metier>Cobaye BCI</Metier>
         </Intervenant>
         <Intervenant xsi:type="Enseignant">
           <Nom>Pesquet</Nom>
           <Prenom>Baptiste</Prenom>
+          <Matieres>
+            <Matiere>
+              <NomMatiere>Programmation avancée</NomMatiere>
+              <CodeSyllabus>42</CodeSyllabus>
+            </Matiere>
+            <Matiere>
+              <NomMatiere>GESP</NomMatiere>
+              <CodeSyllabus>666</CodeSyllabus>
+            </Matiere>
+          </Matieres>
         </Intervenant>
       </IntervenantsConcernes>
       <MatieresConcernees>
@@ -128,6 +175,17 @@
           <NomLivrable>Rapport</NomLivrable>
         </Livrable>
       </LivrablesAttendus>
+      <IntervenantsRoles>
+        <Role>
+          <NomRole>acteur</NomRole>
+        </Role>
+        <Role>
+          <NomRole>cobaye</NomRole>
+        </Role>
+        <Role>
+          <NomRole>tuteur</NomRole>
+        </Role>
+      </IntervenantsRoles>
     </Projet>
     <Projet>
       <Theme>Projet 2</Theme>
@@ -143,12 +201,18 @@
         </Intervenant>
         <Intervenant xsi:type="Eleve">
           <Nom>Caubet</Nom>
-          <Prenom>Hippolyte</Prenom>
+          <Prenom>Hyppolyte</Prenom>
           <Promo>2021</Promo>
         </Intervenant>
         <Intervenant xsi:type="Enseignant">
           <Nom>Lanusse</Nom>
           <Prenom>Patrick</Prenom>
+          <Matieres>
+            <Matiere>
+              <NomMatiere>Signal</NomMatiere>
+              <CodeSyllabus>465</CodeSyllabus>
+            </Matiere>
+          </Matieres>
         </Intervenant>
       </IntervenantsConcernes>
       <MatieresConcernees>
@@ -165,6 +229,28 @@
           <NomLivrable>Rapport</NomLivrable>
         </Livrable>
       </LivrablesAttendus>
+      <IntervenantsRoles>
+        <Role>
+          <NomRole>acteur</NomRole>
+        </Role>
+        <Role>
+          <NomRole>acteur</NomRole>
+        </Role>
+        <Role>
+          <NomRole>tuteur</NomRole>
+        </Role>
+      </IntervenantsRoles>
     </Projet>
   </ListeProjets>
+  <ListeRoles>
+    <Role>
+      <NomRole>tuteur</NomRole>
+    </Role>
+    <Role>
+      <NomRole>cobaye</NomRole>
+    </Role>
+    <Role>
+      <NomRole>acteur</NomRole>
+    </Role>
+  </ListeRoles>
 </Catalogue>

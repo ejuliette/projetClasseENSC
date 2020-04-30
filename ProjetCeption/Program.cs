@@ -12,22 +12,22 @@ namespace ProjetCeption
     {
         static void Main(string[] args)
         {
+            
             //Permet de récupérer le catalogue du fichier Xml
             XmlSerializer xs = new XmlSerializer(typeof(Catalogue));
             StreamReader reader = new StreamReader("sauvegardeCatalogue.xml");
             Catalogue catalogueENSC = xs.Deserialize(reader) as Catalogue;
             reader.Close();
+            
 
+            //Catalogue catalogueENSC = new Catalogue();
+            
             AfficherMenu(catalogueENSC);
 
 
 
             static void AfficherMenu(Catalogue catalogue)
             {
-                string string1 = "Hello World";
-                Console.WriteLine(string1.IndexOf("Deux"));
-               
-
 
                 //Affichage du menu centré
                 int choix;
@@ -176,8 +176,10 @@ namespace ProjetCeption
                     case 9:
                         Environment.Exit(0);
                         break;
+
+
                 }
-                
+                catalogue.Sauvegarder("sauvegardeCatalogue.xml");
                 AfficherMenu(catalogue);
             }            
 

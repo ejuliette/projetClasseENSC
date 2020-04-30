@@ -3,7 +3,7 @@ namespace ProjetCeption
 {
     public class Externe : Intervenant
     {
-        private string Metier { get; set; }
+        public string Metier { get; set; }
 
         public Externe() : base() { }
 
