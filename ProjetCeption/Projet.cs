@@ -14,10 +14,11 @@ namespace ProjetCeption
         public List<Intervenant> IntervenantsConcernes { get; set; }
         public List<Matiere> MatieresConcernees { get; set; }
         public List<Livrable> LivrablesAttendus { get; set; }
+        public List<Role> IntervenantsRoles { get; set; }
 
 
         public Projet() { }
-        public Projet(string type, string theme, bool sujetLibre, DateTime debut, DateTime fin, int nbInterv, List<Intervenant> intervenants, List<Matiere> matieres, List<Livrable> livrables)
+        public Projet(string type, string theme, bool sujetLibre, DateTime debut, DateTime fin, int nbInterv, List<Intervenant> intervenants, List<Matiere> matieres, List<Livrable> livrables, List<Role> roles)
         {
             TypeProjet = type;
             Theme = theme;
@@ -28,11 +29,13 @@ namespace ProjetCeption
             IntervenantsConcernes = intervenants;
             MatieresConcernees = matieres;
             LivrablesAttendus = livrables;
+            IntervenantsRoles = roles;
         }
 
         public void AssocierRoleIntervenant(Role role, Intervenant intervenant)
         {
             //On met quoi dedans ?
+
         }
 
         public override string ToString()
@@ -45,6 +48,12 @@ namespace ProjetCeption
             foreach (Intervenant item in IntervenantsConcernes)
             {
                 description = description + item.Prenom + " " + item.Nom + ", ";
+            }
+
+            description = description + "\n Rôles des intervenants : ";
+            foreach (Role item in IntervenantsRoles)
+            {
+                description = description + item.NomRole + ", ";
             }
 
             description = description + "\n Matières concernées : ";

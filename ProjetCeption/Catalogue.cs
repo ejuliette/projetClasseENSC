@@ -19,67 +19,10 @@ namespace ProjetCeption
         public List<Intervenant> ListeIntervenants { get; set; }
         public List<Livrable> ListeLivrables { get; set; }
         public List<Projet> ListeProjets { get; set; }
+        public List<Role> ListeRoles { get; set; }
 
         public Catalogue()
         {
-            /*
-            Matiere ProgAv = new Matiere("Programmation avancée", "42");
-            Matiere Gesp = new Matiere("GESP", "666");
-            Matiere Signal = new Matiere("Signal", "465");
-            ListeMatieres = new List<Matiere> { ProgAv, Gesp, Signal };
-
-            Eleve Juliette = new Eleve("Esquirol", "Juliette", 2022);
-            Eleve Léa = new Eleve("Grondin", "Léa", 2022);
-            Eleve Hippo = new Eleve("Caubet", "Hippolyte", 2021);
-            ListeEleves = new List<Eleve> { Juliette, Léa, Hippo };
-
-            List<Matiere> matieresPesquet = new List<Matiere> { ProgAv, Gesp };
-            Enseignant Pesquet = new Enseignant("Pesquet", "Baptiste", matieresPesquet);
-            List<Matiere> matieresLanusse = new List<Matiere> { Signal };
-            Enseignant Lanusse = new Enseignant("Lanusse", "Patrick", matieresLanusse);
-            ListeEnseignants = new List<Enseignant> { Pesquet, Lanusse };
-
-            Externe Milo = new Externe("Toumine", "Milo", "Cobaye BCI");
-            ListeExternes = new List<Externe> { Milo };
-
-            ListeIntervenants = new List<Intervenant> { };
-            foreach (Intervenant i in ListeEleves)
-                ListeIntervenants.Add(i);
-            foreach (Intervenant i in ListeEnseignants)
-                ListeIntervenants.Add(i);
-            foreach (Intervenant i in ListeExternes)
-                ListeIntervenants.Add(i);
-
-            Livrable siteWeb = new Livrable("Site web");
-            Livrable analyseExistant = new Livrable("Analyse de l'existant");
-            Livrable rapport = new Livrable("Rapport");
-            ListeLivrables = new List<Livrable> { siteWeb, analyseExistant, rapport };
-
-            // Est-ce que on ne peut pas tout simplement créer un role comme ça : Role Tuteur = Role()  ?
-            //Mais dans ce cas qu'est ce qu'il y a dans la classe role ?
-            Role Tuteur = new Role("tuteur");
-            Role Cobaye = new Role("cobaye");
-            Role Acteur = new Role("acteur");
-
-            List<Livrable> livrablesProjet1 = new List<Livrable> { siteWeb, rapport };
-            List<Matiere> matieresProjet1 = new List<Matiere> { ProgAv, Gesp };
-            List<Intervenant> intervenantsProjet1 = new List<Intervenant> { Juliette, Milo, Pesquet };
-            Projet Projet1 = new Projet("Transdi", "Projet 1", true, DateTime.Parse("01/08/2015"), DateTime.Parse("01/09/2015"), intervenantsProjet1.Count, intervenantsProjet1, matieresProjet1, livrablesProjet1);
-            //Si on fait comme ça, qu'est ce qu'on met dans AssocierRole ??
-            Projet1.AssocierRoleIntervenant(Acteur, Juliette);
-            Projet1.AssocierRoleIntervenant(Cobaye, Milo);
-            Projet1.AssocierRoleIntervenant(Tuteur, Pesquet);
-
-
-
-            List<Livrable> livrablesProjet2 = new List<Livrable> { analyseExistant, rapport };
-            List<Matiere> matieresProjet2 = new List<Matiere> { Signal };
-            List<Intervenant> intervenantsProjet2 = new List<Intervenant> { Léa, Hippo, Lanusse };
-            Projet Projet2 = new Projet("Transpromo", "Projet 2", true, DateTime.Parse("01/09/2019"), DateTime.Parse("30/05/2020"), intervenantsProjet2.Count, intervenantsProjet2, matieresProjet2, livrablesProjet2);
-
-            ListeProjets = new List<Projet> { Projet1, Projet2 };
-            */
-
         }
         public List<Projet> RechercherParIntervenant(string nomRecherche, string prenomRecherche)
         {
@@ -126,7 +69,51 @@ namespace ProjetCeption
             return Resultat;
         }
 
+        public List<Projet> RechercherParMotCle(string motcle)
+        {
+            //Ne fais pas la recherche sur les années
+            List<Projet> Resultat = new List<Projet>();
+            foreach (Projet projet in ListeProjets)
+            {
+                if (projet.TypeProjet.IndexOf(motcle) != -1)
+                {
+                    Resultat.Add(projet);
+                }
 
+                if (projet.Theme.IndexOf(motcle) != -1)
+                {
+                    Resultat.Add(projet);
+                }
+
+                foreach (Matiere matiere in projet.MatieresConcernees)
+                {
+                    if (matiere.NomMatiere.IndexOf(motcle) != -1 || matiere.CodeSyllabus.IndexOf(motcle) !=-1)
+                    {
+                        Resultat.Add(projet);
+                    }
+                }
+                foreach (Intervenant intervenant in projet.IntervenantsConcernes)
+                {
+                    if (intervenant.Nom.IndexOf(motcle) != -1 || intervenant.Prenom.IndexOf(motcle) != -1)
+                    {
+                        Resultat.Add(projet);
+                    }
+                }
+                foreach (Livrable livrable in projet.LivrablesAttendus)
+                {
+                    if (livrable.NomLivrable.IndexOf(motcle) != -1)
+                    {
+                        Resultat.Add(projet);
+                    }
+                }
+            }
+
+            return Resultat;
+        }
+
+
+        
+          
 
 
         public void AjouterProjet()
@@ -179,8 +166,9 @@ namespace ProjetCeption
             List<Intervenant> nvListeIntervenant = ChoixIntervenant();
             List<Matiere> nvListeMatiere = ChoixMatiere();
             List<Livrable> nvListeLivrable = ChoixLivrable();
+            List<Role> nvListeRole = ChoixRole();
 
-            Projet nouveauProjet = new Projet(nvType, nvTheme, nvSujetLibre, dateDebutValide, dateFinValide, nvListeIntervenant.Count, nvListeIntervenant, nvListeMatiere, nvListeLivrable);
+            Projet nouveauProjet = new Projet(nvType, nvTheme, nvSujetLibre, dateDebutValide, dateFinValide, nvListeIntervenant.Count, nvListeIntervenant, nvListeMatiere, nvListeLivrable, nvListeRole);
             ListeProjets.Add(nouveauProjet);
             Console.WriteLine("\nLe projet a bien été ajouté !");
         }
@@ -189,7 +177,7 @@ namespace ProjetCeption
         {
             //Création de la liste d'intervenants associée au projet
             //On affiche la liste des intervenants existants
-            //L'utilisateur slectione les intervenants qu'il souhaite, quand il a fini il tape 0 pour sortir de la boucle
+            //L'utilisateur selectione les intervenants qu'il souhaite, quand il a fini il tape 0 pour sortir de la boucle
             Console.WriteLine("\n\n----- Intervenants-----");
             List<Intervenant> nvListeIntervenant = new List<Intervenant> { };
             Console.WriteLine("Voici la liste des intervenants possible : ");
@@ -222,6 +210,46 @@ namespace ProjetCeption
                 }
             }
             return nvListeIntervenant;
+        }
+
+
+        public List<Role> ChoixRole()
+        {
+            //Création de la liste d'intervenants associée au projet
+            //On affiche la liste des intervenants existants
+            //L'utilisateur slectione les intervenants qu'il souhaite, quand il a fini il tape 0 pour sortir de la boucle
+            Console.WriteLine("\n\n----- Rôles des Intervenants -----");
+            List<Role> nvListeRole = new List<Role> { };
+            Console.WriteLine("Voici la liste des rôles possibles : ");
+            int j = 1;
+            foreach (Role i in ListeRoles)
+            {
+                Console.WriteLine("{0} - {1}", j, i.ToString());
+                j++;
+            }
+
+            int choixRole = 1;
+
+            while (choixRole != 0)
+            {
+                Console.Write("Ajouter un rôle (entrez 0 pour finir) : ");
+                choixRole = Convert.ToInt32(Console.ReadLine());
+
+                //On vérifie que le numéro demandé existe bien
+                while (choixRole < 0 || choixRole > j - 1)
+                {
+                    Console.WriteLine("Je n'ai pas compris votre choix");
+                    Console.Write("Ajouter un intervenant (entrez 0 pour finir) : ");
+                    choixRole = Convert.ToInt32(Console.ReadLine());
+                }
+
+                if (choixRole != 0)
+                {
+                    nvListeRole.Add(ListeRoles[choixRole - 1]);
+                    Console.WriteLine("\tLe rôle a bien été ajouté");
+                }
+            }
+            return nvListeRole;
         }
 
 
@@ -341,10 +369,10 @@ namespace ProjetCeption
         public void ReinitialiserCatalogue()
         {
             //On supprime le catalogue utilisateur
-            File.Delete("C:\\Users\\leagr\\Source\\Repos\\projetClasseENSC\\ProjetCeption\\bin\\Debug\\netcoreapp3.0\\sauvegardeCatalogue.xml");
+            File.Delete("Users\\juliettesquirol\\Documents\\GitHub\\projetClasseENSC\\ProjetCeption\\bin\\Debug\\netcoreapp3.0\\sauvegardeCatalogue.xml");
             //On copie le catalogue de base, et on on le colle en créant un nouveau catalogue utilisateur
-            string sourceFile = "C:\\Users\\leagr\\Source\\Repos\\projetClasseENSC\\ProjetCeption\\bin\\Debug\\netcoreapp3.0\\catalogueBase.xml";
-            string destinationFile = "C:\\Users\\leagr\\Source\\Repos\\projetClasseENSC\\ProjetCeption\\bin\\Debug\\netcoreapp3.0\\sauvegardeCatalogue.xml";
+            string sourceFile = "Users\\juliettesquirol\\Documents\\GitHub\\projetClasseENSC\\ProjetCeption\\bin\\Debug\\netcoreapp3.0\\catalogueBase.xml";
+            string destinationFile = "Users\\juliettesquirol\\Documents\\GitHub\\projetClasseENSC\\ProjetCeption\\bin\\Debug\\netcoreapp3.0\\sauvegardeCatalogue.xml";
             File.Copy(sourceFile, destinationFile);
 
         }

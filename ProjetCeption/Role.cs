@@ -5,9 +5,9 @@ namespace ProjetCeption
     {
         public string NomRole { get; set; }
 
-        public Role(string nomRole)
+        public Role()
         {
-            NomRole = nomRole;
+           
         }
 
         public override string ToString()

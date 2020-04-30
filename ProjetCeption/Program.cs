@@ -4,6 +4,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
 using System.Data;
+using System.Xml.Linq;
 
 namespace ProjetCeption
 {
@@ -23,6 +24,11 @@ namespace ProjetCeption
 
             static void AfficherMenu(Catalogue catalogue)
             {
+                string string1 = "Hello World";
+                Console.WriteLine(string1.IndexOf("Deux"));
+               
+
+
                 //Affichage du menu centré
                 int choix;
                 string menu = "******************************* Menu *****************************";
@@ -125,6 +131,22 @@ namespace ProjetCeption
                             Console.WriteLine("Aucun résultat ne correspond à votre recherche");
                         
                         break;
+
+
+                    case 4:
+                        Console.Write("\nMot clé : ");
+
+                       string motcle = Console.ReadLine();
+                        if (catalogue.RechercherParMotCle(motcle).Count != 0)
+                        {
+                            foreach (Projet projet in catalogue.RechercherParMotCle(motcle))
+                                Console.WriteLine(projet.ToString());
+                        }
+                        else
+                            Console.WriteLine("Aucun résultat ne correspond à votre recherche");
+                  
+                        break;
+
 
 
                     case 5:
