@@ -19,9 +19,19 @@ namespace ProjetCeption
         public List<Matiere> ListeMatieres { get; set; }
         public List<Livrable> ListeLivrables { get; set; }
         public List<Projet> ListeProjets { get; set; }
+        public List<String> ListeTypeProjet { get; set; }
 
         public Catalogue()
         {
+            /*
+            string transdi = "transdisciplinaire";
+            string transpromo = "transpromo";
+            string PFE = "PFE";
+            string progAvancee = "programmation avancée";
+            string RAO = "RAO";
+
+            ListeTypeProjet = new List<string> { transdi, transpromo, PFE, progAvancee, RAO };
+            */
         }
 
         public List<Projet> RechercherParIntervenant(string nomRecherche, string prenomRecherche)
@@ -112,19 +122,56 @@ namespace ProjetCeption
         }
 
 
+
         
         public void AjouterProjet()
         {
             Console.WriteLine("\nVeuillez rentrer toutes les informations nécessaires :");
-            Console.Write("\nType de projet : ");
-            string nvType = Console.ReadLine();
-            while(nvType=="")
+
+            Console.WriteLine("\n\n----- Type de projet-----");
+            Console.WriteLine("Voici la liste des types de projets possible : ");
+            int j = 1;
+            foreach (string t in ListeTypeProjet)
             {
-                Console.WriteLine("Vous devez remplir le champ");
-                Console.Write("Type de projet : ");
-                nvType = Console.ReadLine();
+                Console.WriteLine("{0} - {1}", j, t.ToString());
+                j++;
+            }
+            Console.WriteLine("{0} - Ajouter un nouveau type de projet", j);
+
+            Console.WriteLine("\nChoisissez votre type de projet : ");
+            int choixTypeProjet = Convert.ToInt32(Console.ReadLine());
+
+            while (choixTypeProjet < 0 || choixTypeProjet > j)
+            {
+                Console.WriteLine("Je n'ai pas compris votre choix");
+                Console.WriteLine("Choisissez votre type de projet : ");
+                choixTypeProjet = Convert.ToInt32(Console.ReadLine());
             }
 
+
+            string nvType;
+            if (choixTypeProjet == j)
+            {
+                Console.Write("\nType de projet : ");
+                nvType = Console.ReadLine();
+                while (nvType == "")
+                {
+                    Console.WriteLine("Vous devez remplir le champ");
+                    Console.Write("Type de projet : ");
+                    nvType = Console.ReadLine();
+                }
+                ListeTypeProjet.Add(nvType);
+            }
+            else
+            {
+                nvType = ListeTypeProjet[choixTypeProjet - 1];
+            }
+            NouveauProjet(nvType);            
+        }
+
+
+        public void NouveauProjet(string nvType)
+        {
             Console.Write("Thème : ");
             string nvTheme = Console.ReadLine();
             while (nvTheme == "")
@@ -138,8 +185,7 @@ namespace ProjetCeption
             bool nvSujetLibre;
             Console.Write("Sujet libre (O/N) : ");
             string rep = Console.ReadLine();
-
-            while (rep !="O" && rep != "N")
+            while (rep != "O" && rep != "N")
             {
                 Console.WriteLine("Je n'ai pas compris votre réponse.");
                 Console.Write("Sujet libre (O/N) : ");
@@ -147,15 +193,15 @@ namespace ProjetCeption
             }
             if (rep == "O")
                 nvSujetLibre = true;
-            else 
+            else
                 nvSujetLibre = false;
 
 
             //DateTime.Parse permet de vérifier si le string entré par l'utilisateur est bien une date. Si ça l'est, il le met dans dateDebutValide
-            Console.Write("Date de début (jj/mm/aaaa) : "); 
+            Console.Write("Date de début (jj/mm/aaaa) : ");
             DateTime dateDebutValide;
             bool resultDateDebut = DateTime.TryParse(Console.ReadLine(), out dateDebutValide);
-            while(resultDateDebut==false)
+            while (resultDateDebut == false)
             {
                 Console.WriteLine("Le format est incorrect. Veuillez réessayer");
                 Console.Write("Date de début (jj/mm/aaaa) : ");
@@ -182,10 +228,12 @@ namespace ProjetCeption
             List<Matiere> nvListeMatiere = ChoixMatiere();
             List<Livrable> nvListeLivrable = ChoixLivrable();
 
-            Projet nouveauProjet = new Projet(nvType, nvTheme, nvSujetLibre, dateDebutValide, dateFinValide, nvListeIntervenant.Count, nvListeIntervenant, nvListeMatiere, nvListeLivrable, nvListeRole);
+            Projet nouveauProjet = new Projet(nvType, nvTheme, nvSujetLibre, dateDebutValide, dateFinValide, nvListeIntervenant, nvListeMatiere, nvListeLivrable, nvListeRole);
             ListeProjets.Add(nouveauProjet);
             Console.WriteLine("\nLe projet a bien été ajouté !");
         }
+
+
 
         public List<Intervenant> ChoixIntervenant()
         {

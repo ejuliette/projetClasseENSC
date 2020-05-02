@@ -10,7 +10,7 @@ namespace ProjetCeption
         public bool SujetLibre { get; set; }
         public DateTime DateDebut { get; set; }
         public DateTime DateFin { get; set; }
-        private int NbIntervenants { get; set; }
+        public int NbIntervenants { get; set; }
         public List<Intervenant> IntervenantsConcernes { get; set; }
         public List<Matiere> MatieresConcernees { get; set; }
         public List<Livrable> LivrablesAttendus { get; set; }
@@ -18,14 +18,14 @@ namespace ProjetCeption
 
 
         public Projet() { }
-        public Projet(string type, string theme, bool sujetLibre, DateTime debut, DateTime fin, int nbInterv, List<Intervenant> intervenants, List<Matiere> matieres, List<Livrable> livrables, List<Role> roles)
+        public Projet(string type, string theme, bool sujetLibre, DateTime debut, DateTime fin, List<Intervenant> intervenants, List<Matiere> matieres, List<Livrable> livrables, List<Role> roles)
         {
             TypeProjet = type;
             Theme = theme;
             SujetLibre = sujetLibre;
             DateDebut = debut;
             DateFin = fin;
-            NbIntervenants = nbInterv;
+            NbIntervenants = intervenants.Count;
             IntervenantsConcernes = intervenants;
             MatieresConcernees = matieres;
             LivrablesAttendus = livrables;

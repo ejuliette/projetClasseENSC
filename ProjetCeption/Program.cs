@@ -176,6 +176,7 @@ namespace ProjetCeption
 
 
                 }
+                catalogue.Sauvegarder("sauvegardeCatalogue.xml");
 
                 AfficherMenu(catalogue);
             }            

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalogue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ListeEleves />
+  <ListeEnseignants />
+  <ListeExternes />
   <ListeIntervenants>
     <Intervenant xsi:type="Eleve">
       <Nom>Esquirol</Nom>
@@ -7,30 +10,30 @@
       <Promo>2022</Promo>
     </Intervenant>
     <Intervenant xsi:type="Eleve">
-          <Nom>Pinzi</Nom>
-          <Prenom>Alexandre</Prenom>
-          <Promo>2022</Promo>
-        </Intervenant>
-           <Intervenant xsi:type="Eleve">
-          <Nom>Valentin</Nom>
-          <Prenom>Clara</Prenom>
-          <Promo>2022</Promo>
-        </Intervenant>
-     <Intervenant xsi:type="Eleve">
-          <Nom>Louit</Nom>
-          <Prenom>Pauline</Prenom>
-          <Promo>2021</Promo>
-        </Intervenant>
-             <Intervenant xsi:type="Eleve">
-          <Nom>Lemoigne</Nom>
-          <Prenom>Céline</Prenom>
-          <Promo>2021</Promo>
-        </Intervenant>
-          <Intervenant xsi:type="Eleve">
-          <Nom>Noyerie</Nom>
-          <Prenom>Constance</Prenom>
-          <Promo>2021</Promo>
-        </Intervenant>
+      <Nom>Pinzi</Nom>
+      <Prenom>Alexandre</Prenom>
+      <Promo>2022</Promo>
+    </Intervenant>
+    <Intervenant xsi:type="Eleve">
+      <Nom>Valentin</Nom>
+      <Prenom>Clara</Prenom>
+      <Promo>2022</Promo>
+    </Intervenant>
+    <Intervenant xsi:type="Eleve">
+      <Nom>Louit</Nom>
+      <Prenom>Pauline</Prenom>
+      <Promo>2021</Promo>
+    </Intervenant>
+    <Intervenant xsi:type="Eleve">
+      <Nom>Lemoigne</Nom>
+      <Prenom>Céline</Prenom>
+      <Promo>2021</Promo>
+    </Intervenant>
+    <Intervenant xsi:type="Eleve">
+      <Nom>Noyerie</Nom>
+      <Prenom>Constance</Prenom>
+      <Promo>2021</Promo>
+    </Intervenant>
     <Intervenant xsi:type="Eleve">
       <Nom>Grondin</Nom>
       <Prenom>Léa</Prenom>
@@ -95,7 +98,7 @@
       <Matieres>
         <Matiere>
           <NomMatiere>Gestion des Connaissances et des Compétences</NomMatiere>
-      <CodeSyllabus>CO6SFSS0</CodeSyllabus>
+          <CodeSyllabus>CO6SFSS0</CodeSyllabus>
         </Matiere>
       </Matieres>
     </Intervenant>
@@ -105,8 +108,8 @@
       <Matieres>
         <Matiere>
           <NomMatiere>Connaissance et représenation</NomMatiere>
-      <CodeSyllabus>CO6SSCC50</CodeSyllabus>
-         </Matiere>
+          <CodeSyllabus>CO6SSCC50</CodeSyllabus>
+        </Matiere>
       </Matieres>
     </Intervenant>
     <Intervenant xsi:type="Enseignant">
@@ -133,24 +136,24 @@
       <Nom>Clermont</Nom>
       <Prenom>Edwige</Prenom>
       <Matieres>
-      <Matiere>
+        <Matiere>
           <NomMatiere>Programmation Avancée</NomMatiere>
           <CodeSyllabus>CO6SFRPA0</CodeSyllabus>
         </Matiere>
         <Matiere>
-        <NomMatiere>Communication Web</NomMatiere>
-      <CodeSyllabus>CO6SFCW0</CodeSyllabus>
-       </Matiere>
+          <NomMatiere>Communication Web</NomMatiere>
+          <CodeSyllabus>CO6SFCW0</CodeSyllabus>
+        </Matiere>
       </Matieres>
     </Intervenant>
     <Intervenant xsi:type="Enseignant">
       <Nom>Favier</Nom>
       <Prenom>Pierre-alexandre</Prenom>
       <Matieres>
-       <Matiere>
-        <NomMatiere>Programmation Avancée</NomMatiere>
+        <Matiere>
+          <NomMatiere>Programmation Avancée</NomMatiere>
           <CodeSyllabus>CO6SFRPA0</CodeSyllabus>
-       </Matiere>
+        </Matiere>
       </Matieres>
     </Intervenant>
     <Intervenant xsi:type="Enseignant">
@@ -189,7 +192,7 @@
       <Matieres>
         <Matiere>
           <NomMatiere>Connaissance et représenation</NomMatiere>
-      <CodeSyllabus>CO6SSCC50</CodeSyllabus>
+          <CodeSyllabus>CO6SSCC50</CodeSyllabus>
         </Matiere>
       </Matieres>
     </Intervenant>
@@ -206,10 +209,7 @@
     <Intervenant xsi:type="Enseignant">
       <Nom>Saracco</Nom>
       <Prenom>Jerome</Prenom>
-      <Matieres>
-        <NomMatiere>Statistique inférentielle et analyse de données</NomMatiere>
-      <CodeSyllabus>CO6SFMA0</CodeSyllabus>
-      </Matieres>
+      <Matieres />
     </Intervenant>
     <Intervenant xsi:type="Enseignant">
       <Nom>Audin-Garcia</Nom>
@@ -247,8 +247,8 @@
       <NomRole>Tuteur</NomRole>
     </Role>
     <Role>
-          <NomRole>Jury</NomRole>
-        </Role>
+      <NomRole>Jury</NomRole>
+    </Role>
     <Role>
       <NomRole>Responsable Facteur Humain</NomRole>
     </Role>
@@ -303,10 +303,11 @@
   <ListeProjets>
     <Projet>
       <Theme>BCI AIDP300 : interface cerveau machine auditive</Theme>
-      <TypeProjet>Projet Transdisciplinaire</TypeProjet>
+      <TypeProjet>Projet transdisciplinaire</TypeProjet>
       <SujetLibre>false</SujetLibre>
       <DateDebut>2019-09-30T00:00:00</DateDebut>
       <DateFin>2020-06-05T00:00:00</DateFin>
+      <NbIntervenants>6</NbIntervenants>
       <IntervenantsConcernes>
         <Intervenant xsi:type="Eleve">
           <Nom>Esquirol</Nom>
@@ -382,14 +383,13 @@
         </Role>
       </IntervenantsRoles>
     </Projet>
-    
-    
     <Projet>
       <Theme>CACTUS : l'application de développement personnel</Theme>
-      <TypeProjet>Projet Transpromo</TypeProjet>
+      <TypeProjet>Projet transpromo</TypeProjet>
       <SujetLibre>true</SujetLibre>
       <DateDebut>2019-09-20T00:00:00</DateDebut>
       <DateFin>2020-01-15T00:00:00</DateFin>
+      <NbIntervenants>7</NbIntervenants>
       <IntervenantsConcernes>
         <Intervenant xsi:type="Eleve">
           <Nom>Esquirol</Nom>
@@ -401,22 +401,22 @@
           <Prenom>Alexandre</Prenom>
           <Promo>2022</Promo>
         </Intervenant>
-           <Intervenant xsi:type="Eleve">
+        <Intervenant xsi:type="Eleve">
           <Nom>Valentin</Nom>
           <Prenom>Clara</Prenom>
           <Promo>2022</Promo>
         </Intervenant>
-     <Intervenant xsi:type="Eleve">
+        <Intervenant xsi:type="Eleve">
           <Nom>Louit</Nom>
           <Prenom>Pauline</Prenom>
           <Promo>2021</Promo>
         </Intervenant>
-             <Intervenant xsi:type="Eleve">
+        <Intervenant xsi:type="Eleve">
           <Nom>Lemoigne</Nom>
           <Prenom>Céline</Prenom>
           <Promo>2021</Promo>
         </Intervenant>
-          <Intervenant xsi:type="Eleve">
+        <Intervenant xsi:type="Eleve">
           <Nom>Noyerie</Nom>
           <Prenom>Constance</Prenom>
           <Promo>2021</Promo>
@@ -427,7 +427,7 @@
           <Matieres>
             <Matiere>
               <NomMatiere>Programmation Avancée</NomMatiere>
-          <CodeSyllabus>CO6SFRPA0</CodeSyllabus>
+              <CodeSyllabus>CO6SFRPA0</CodeSyllabus>
             </Matiere>
           </Matieres>
         </Intervenant>
@@ -453,19 +453,19 @@
         <Role>
           <NomRole>Elève 1A</NomRole>
         </Role>
-         <Role>
+        <Role>
           <NomRole>Elève 1A</NomRole>
         </Role>
-         <Role>
+        <Role>
           <NomRole>Elève 1A</NomRole>
         </Role>
-         <Role>
+        <Role>
           <NomRole>Elève 2A</NomRole>
         </Role>
-         <Role>
+        <Role>
           <NomRole>Elève 2A</NomRole>
         </Role>
-         <Role>
+        <Role>
           <NomRole>Elève 2A</NomRole>
         </Role>
         <Role>
@@ -473,5 +473,75 @@
         </Role>
       </IntervenantsRoles>
     </Projet>
+    <Projet>
+      <Theme>Quizz</Theme>
+      <TypeProjet>projet web</TypeProjet>
+      <SujetLibre>false</SujetLibre>
+      <DateDebut>2020-01-01T00:00:00</DateDebut>
+      <DateFin>2020-05-11T00:00:00</DateFin>
+      <NbIntervenants>2</NbIntervenants>
+      <IntervenantsConcernes>
+        <Intervenant xsi:type="Enseignant">
+          <Nom>Clermont</Nom>
+          <Prenom>Edwige</Prenom>
+          <Matieres>
+            <Matiere>
+              <NomMatiere>Programmation Avancée</NomMatiere>
+              <CodeSyllabus>CO6SFRPA0</CodeSyllabus>
+            </Matiere>
+            <Matiere>
+              <NomMatiere>Communication Web</NomMatiere>
+              <CodeSyllabus>CO6SFCW0</CodeSyllabus>
+            </Matiere>
+          </Matieres>
+        </Intervenant>
+        <Intervenant xsi:type="Eleve">
+          <Nom>Esquirol</Nom>
+          <Prenom>Juliette</Prenom>
+          <Promo>2022</Promo>
+        </Intervenant>
+        <Intervenant xsi:type="Eleve">
+          <Nom>Grondin</Nom>
+          <Prenom>Léa</Prenom>
+          <Promo>2022</Promo>
+        </Intervenant>
+      </IntervenantsConcernes>
+      <MatieresConcernees>
+        <Matiere>
+          <NomMatiere>Communication Web</NomMatiere>
+          <CodeSyllabus>CO6SFCW0</CodeSyllabus>
+        </Matiere>
+        <Matiere>
+          <NomMatiere>Gestion de projet et conception</NomMatiere>
+          <CodeSyllabus>CO6INGP0</CodeSyllabus>
+        </Matiere>
+      </MatieresConcernees>
+      <LivrablesAttendus>
+        <Livrable>
+          <NomLivrable>Site web</NomLivrable>
+        </Livrable>
+        <Livrable>
+          <NomLivrable>Rapport</NomLivrable>
+        </Livrable>
+      </LivrablesAttendus>
+      <IntervenantsRoles>
+        <Role>
+          <NomRole>Tuteur</NomRole>
+        </Role>
+        <Role>
+          <NomRole>Elève 1A</NomRole>
+        </Role>
+        <Role>
+          <NomRole>Elève 1A</NomRole>
+        </Role>
+      </IntervenantsRoles>
+    </Projet>
   </ListeProjets>
+  <ListeTypeProjet>
+    <string>Projet transdisciplinaire</string>
+    <string>Projet transpromo</string>
+    <string>PFE</string>
+    <string>Projet de programmation avancée</string>
+    <string>RAO</string>
+  </ListeTypeProjet>
 </Catalogue>
