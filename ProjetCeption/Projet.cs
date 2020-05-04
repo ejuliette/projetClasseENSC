@@ -23,8 +23,8 @@ namespace ProjetCeption
             TypeProjet = type;
             Theme = theme;
             SujetLibre = sujetLibre;
-            DateDebut = debut;
-            DateFin = fin;
+            DateDebut = debut.Date;
+            DateFin = fin.Date;
             NbIntervenants = intervenants.Count;
             IntervenantsConcernes = intervenants;
             MatieresConcernees = matieres;
@@ -33,18 +33,16 @@ namespace ProjetCeption
         }
 
 
-
-        public void AssocierRoleIntervenant(Role role, Intervenant intervenant)
-        {
-            //On met quoi dedans ?
-
-        }
-
         public override string ToString()
         {
+            string SujetLib = "Imposé";
+            if (SujetLibre == true)
+            {
+                SujetLib = "Libre";
+            }
             string description = "\n Thème : " + Theme + "\n Type de projet : " + TypeProjet +
-                "\n Le sujet est libre : " + SujetLibre + "\n Date de début : " + DateDebut +
-                "\n Date de fin : " + DateFin + "\n Nombre d'intervenants : " + NbIntervenants ;
+                "\n Sujet : " + SujetLib + "\n Date de début : " + DateDebut.ToString("d") +
+                "\n Date de fin : " + DateFin.ToString("d") + "\n Nombre d'intervenants : " + NbIntervenants ;
 
             description = description + "\n Intervenants concernés : ";
             foreach (Intervenant item in IntervenantsConcernes)

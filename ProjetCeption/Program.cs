@@ -41,28 +41,15 @@ namespace ProjetCeption
                 string m10 = "Donner votre choix : ";
 
                 Console.WriteLine("");
-                Console.SetCursorPosition((Console.WindowWidth - menu.Length) / 2, Console.CursorTop);
-                Console.WriteLine(menu);
-                Console.SetCursorPosition((Console.WindowWidth - m1.Length) / 2, Console.CursorTop);
-                Console.WriteLine(m1);
-                Console.SetCursorPosition((Console.WindowWidth - m2.Length) / 2, Console.CursorTop);
-                Console.WriteLine(m2);
-                Console.SetCursorPosition((Console.WindowWidth - m3.Length) / 2, Console.CursorTop);
-                Console.WriteLine(m3);
-                Console.SetCursorPosition((Console.WindowWidth - m4.Length) / 2, Console.CursorTop);
-                Console.WriteLine(m4);
-                Console.SetCursorPosition((Console.WindowWidth - m5.Length) / 2, Console.CursorTop);
-                Console.WriteLine(m5);
-                Console.SetCursorPosition((Console.WindowWidth - m6.Length) / 2, Console.CursorTop);
-                Console.WriteLine(m6);
-                Console.SetCursorPosition((Console.WindowWidth - m7.Length) / 2, Console.CursorTop);
-                Console.WriteLine(m7);
-                Console.SetCursorPosition((Console.WindowWidth - m8.Length) / 2, Console.CursorTop);
-                Console.WriteLine(m8);
-                Console.SetCursorPosition((Console.WindowWidth - m9.Length) / 2, Console.CursorTop);
-                Console.Write(m9);
-                Console.SetCursorPosition((Console.WindowWidth - m10.Length) / 2, Console.CursorTop);
-                Console.Write(m10);
+                string[] libelle = new string [] { menu, m1, m2, m3, m4, m5, m6, m7, m8, m9, m10 };
+
+         
+                for(int i=0;i<=10;i++)
+                {
+                    Console.SetCursorPosition((Console.WindowWidth - libelle[i].Length) / 2, Console.CursorTop);
+                    Console.WriteLine(libelle[i]);
+                }
+               
 
                 choix = int.Parse(Console.In.ReadLine());
                 switch (choix)
