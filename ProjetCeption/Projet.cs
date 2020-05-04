@@ -18,7 +18,7 @@ namespace ProjetCeption
 
 
         public Projet() { }
-        public Projet(string type, string theme, bool sujetLibre, DateTime debut, DateTime fin, List<Intervenant> intervenants, List<Matiere> matieres, List<Livrable> livrables, List<Role> roles)
+        public Projet(string type, string theme, bool sujetLibre, DateTime debut, DateTime fin, List<Intervenant> intervenants, List<Role> roles, List<Matiere> matieres, List<Livrable> livrables)
         {
             TypeProjet = type;
             Theme = theme;
@@ -31,6 +31,8 @@ namespace ProjetCeption
             LivrablesAttendus = livrables;
             IntervenantsRoles = roles;
         }
+
+
 
         public void AssocierRoleIntervenant(Role role, Intervenant intervenant)
         {

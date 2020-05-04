@@ -172,6 +172,7 @@ namespace ProjetCeption
 
         public void NouveauProjet(string nvType)
         {
+            //THEME
             Console.Write("Thème : ");
             string nvTheme = Console.ReadLine();
             while (nvTheme == "")
@@ -181,22 +182,37 @@ namespace ProjetCeption
                 nvTheme = Console.ReadLine();
             }
 
-
+            //SUJET LIBRE
+            //On impose le sujet libre ou non selon le type de projet
+            //Si la personne crée un nouveau projet, elle choisit si le sujet est libre ou non
             bool nvSujetLibre;
-            Console.Write("Sujet libre (O/N) : ");
-            string rep = Console.ReadLine();
-            while (rep != "O" && rep != "N")
+            if (nvType == "Projet transpromo" || nvType == "PFE")
             {
-                Console.WriteLine("Je n'ai pas compris votre réponse.");
-                Console.Write("Sujet libre (O/N) : ");
-                rep = Console.ReadLine();
-            }
-            if (rep == "O")
+                Console.WriteLine("Sujet libre : Oui");
                 nvSujetLibre = true;
-            else
+            }
+            else if (nvType =="Projet transdisciplinaire" || nvType == "RAO" || nvType == "Projet web")
+            {
+                Console.WriteLine("Sujet libre : Non");
                 nvSujetLibre = false;
+            }
+            else
+            {
+                Console.Write("Sujet libre (O/N) : ");
+                string rep = Console.ReadLine();
+                while (rep != "O" && rep != "N")
+                {
+                    Console.WriteLine("Je n'ai pas compris votre réponse.");
+                    Console.Write("Sujet libre (O/N) : ");
+                    rep = Console.ReadLine();
+                }
+                if (rep == "O")
+                    nvSujetLibre = true;
+                else
+                    nvSujetLibre = false;
+            }
 
-
+            //DATES
             //DateTime.Parse permet de vérifier si le string entré par l'utilisateur est bien une date. Si ça l'est, il le met dans dateDebutValide
             Console.Write("Date de début (jj/mm/aaaa) : ");
             DateTime dateDebutValide;
@@ -223,19 +239,50 @@ namespace ProjetCeption
                 resultDateFin = DateTime.TryParse(Console.ReadLine(), out dateFinValide);
             }
 
-            List<Intervenant> nvListeIntervenant = ChoixIntervenant();
+            //INETREVENANTS ET ROLES
+            List<Intervenant> nvListeIntervenant = ChoixIntervenant(nvType);
             List<Role> nvListeRole = ChoixRole(nvListeIntervenant);
-            List<Matiere> nvListeMatiere = ChoixMatiere();
-            List<Livrable> nvListeLivrable = ChoixLivrable();
 
-            Projet nouveauProjet = new Projet(nvType, nvTheme, nvSujetLibre, dateDebutValide, dateFinValide, nvListeIntervenant, nvListeMatiere, nvListeLivrable, nvListeRole);
+            //MATIERES ET LIVRABLES
+            //On impose les matières pour rao et projet web.
+            //On demande à l'utilisateur de choisir ses matières pour les autres projets
+            List<Matiere> nvListeMatiere;
+            List<Livrable> nvListeLivrable;
+            if (nvType != "RAO" && nvType != "Projet web")
+            {
+                nvListeMatiere = ChoixMatiere();
+                nvListeLivrable = ChoixLivrable();
+            }
+            else
+            {
+                if (nvType == "RAO")
+                {
+                    nvListeMatiere = new List<Matiere> { ListeMatieres[2] }; //correspond à GESP
+                    nvListeLivrable = new List<Livrable> { ListeLivrables[2], ListeLivrables[4] }; //correspond à GESP
+                    Console.Write("Matières : {0}", nvListeMatiere[0]);
+                    Console.Write("Livrables : {0}, {1}", nvListeLivrable[0], nvListeLivrable[1]);
+
+                }
+                else
+                {
+                    nvListeMatiere = new List<Matiere> { ListeMatieres[6], ListeMatieres[2] }; //correspond à info et GESP
+                    nvListeLivrable = new List<Livrable> { ListeLivrables[0], ListeLivrables[2] }; //correspond à GESP
+                    Console.WriteLine("Matières : {0}", nvListeMatiere[0], nvListeMatiere[1]);
+                    Console.WriteLine("Livrables : {0}, {1}", nvListeLivrable[0], nvListeLivrable[1]);
+                }
+
+            }
+
+            //CREATION PROJET
+            Projet nouveauProjet = new Projet(nvType, nvTheme, nvSujetLibre, dateDebutValide, dateFinValide, nvListeIntervenant, nvListeRole, nvListeMatiere, nvListeLivrable);
             ListeProjets.Add(nouveauProjet);
             Console.WriteLine("\nLe projet a bien été ajouté !");
         }
 
 
 
-        public List<Intervenant> ChoixIntervenant()
+
+        public List<Intervenant> ChoixIntervenant(string typeProjet)
         {
             //Création de la liste d'intervenants associée au projet
             //On affiche la liste des intervenants existants
@@ -266,6 +313,7 @@ namespace ProjetCeption
                     choixIntervenant = Convert.ToInt32(Console.ReadLine());
                 }
 
+                //On vérifie que l'intervenant n'a pas déjà été ajouté
                 if (choixIntervenant != 0)
                 {
                     bool existeDeja = false;

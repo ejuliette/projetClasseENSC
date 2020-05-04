@@ -473,75 +473,12 @@
         </Role>
       </IntervenantsRoles>
     </Projet>
-    <Projet>
-      <Theme>Quizz</Theme>
-      <TypeProjet>projet web</TypeProjet>
-      <SujetLibre>false</SujetLibre>
-      <DateDebut>2020-01-01T00:00:00</DateDebut>
-      <DateFin>2020-05-11T00:00:00</DateFin>
-      <NbIntervenants>2</NbIntervenants>
-      <IntervenantsConcernes>
-        <Intervenant xsi:type="Enseignant">
-          <Nom>Clermont</Nom>
-          <Prenom>Edwige</Prenom>
-          <Matieres>
-            <Matiere>
-              <NomMatiere>Programmation Avancée</NomMatiere>
-              <CodeSyllabus>CO6SFRPA0</CodeSyllabus>
-            </Matiere>
-            <Matiere>
-              <NomMatiere>Communication Web</NomMatiere>
-              <CodeSyllabus>CO6SFCW0</CodeSyllabus>
-            </Matiere>
-          </Matieres>
-        </Intervenant>
-        <Intervenant xsi:type="Eleve">
-          <Nom>Esquirol</Nom>
-          <Prenom>Juliette</Prenom>
-          <Promo>2022</Promo>
-        </Intervenant>
-        <Intervenant xsi:type="Eleve">
-          <Nom>Grondin</Nom>
-          <Prenom>Léa</Prenom>
-          <Promo>2022</Promo>
-        </Intervenant>
-      </IntervenantsConcernes>
-      <MatieresConcernees>
-        <Matiere>
-          <NomMatiere>Communication Web</NomMatiere>
-          <CodeSyllabus>CO6SFCW0</CodeSyllabus>
-        </Matiere>
-        <Matiere>
-          <NomMatiere>Gestion de projet et conception</NomMatiere>
-          <CodeSyllabus>CO6INGP0</CodeSyllabus>
-        </Matiere>
-      </MatieresConcernees>
-      <LivrablesAttendus>
-        <Livrable>
-          <NomLivrable>Site web</NomLivrable>
-        </Livrable>
-        <Livrable>
-          <NomLivrable>Rapport</NomLivrable>
-        </Livrable>
-      </LivrablesAttendus>
-      <IntervenantsRoles>
-        <Role>
-          <NomRole>Tuteur</NomRole>
-        </Role>
-        <Role>
-          <NomRole>Elève 1A</NomRole>
-        </Role>
-        <Role>
-          <NomRole>Elève 1A</NomRole>
-        </Role>
-      </IntervenantsRoles>
-    </Projet>
   </ListeProjets>
   <ListeTypeProjet>
     <string>Projet transdisciplinaire</string>
     <string>Projet transpromo</string>
     <string>PFE</string>
-    <string>Projet de programmation avancée</string>
+    <string>Projet web</string>
     <string>RAO</string>
   </ListeTypeProjet>
 </Catalogue>
