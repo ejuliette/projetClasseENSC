@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalogue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ListeTypeProjet>
+    <string>Projet transdisciplinaire</string>
+    <string>Projet transpromo</string>
+    <string>PFE</string>
+    <string>Projet web</string>
+    <string>RAO</string>
+  </ListeTypeProjet>
   <ListeEleves />
   <ListeEnseignants />
   <ListeExternes />
@@ -474,11 +481,4 @@
       </IntervenantsRoles>
     </Projet>
   </ListeProjets>
-  <ListeTypeProjet>
-    <string>Projet transdisciplinaire</string>
-    <string>Projet transpromo</string>
-    <string>PFE</string>
-    <string>Projet web</string>
-    <string>RAO</string>
-  </ListeTypeProjet>
 </Catalogue>

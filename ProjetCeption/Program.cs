@@ -55,101 +55,32 @@ namespace ProjetCeption
                 switch (choix)
                 {
                     case 1:
-                        Console.Write("\nNom : ");
-                        string nom = Console.ReadLine();
-                        Console.Write("Prénom : ");
-                        string prenom = Console.ReadLine();
-                        if (catalogue.RechercherParIntervenant(nom, prenom).Count != 0)
-                        {
-                            foreach (Projet projet in catalogue.RechercherParIntervenant(nom, prenom))
-                                Console.WriteLine(projet.ToString());
-                        }
-                        else
-                            Console.WriteLine("Aucun résultat ne correspond à votre recherche");
-
+                        catalogue.RechercherParIntervenant(); 
                         break;
-
 
                     case 2:
-                        Console.Write("\nAnnée : ");
-
-                        int annee = Convert.ToInt32(Console.ReadLine());
-                        if (catalogue.RechercherParAnnee(annee).Count != 0)
-                        {
-                            foreach (Projet projet in catalogue.RechercherParAnnee(annee))
-                                Console.WriteLine(projet.ToString());
-                        }
-                        else
-                            Console.WriteLine("Aucun résultat ne correspond à votre recherche");
+                        catalogue.RechercherParAnnee();
                         break;
-                        
 
                     case 3:
-                        //On présente la liste des matières possible
-                        Console.WriteLine("Voici la liste des matières possible : ");
-                        int j = 1;
-                        foreach (Matiere m in catalogue.ListeMatieres)
-                        {
-                            Console.WriteLine("{0} - {1}", j, m.ToString());
-                            j++;
-                        }
-                        //l'utilisateur en choisi une parmi celles proposées (on vérifie qu'il a entré un numéro valide)
-                        Console.Write("Rechercher la matière : ");
-                        int numMatiere = Convert.ToInt32(Console.ReadLine());
-                        while(numMatiere <1 || numMatiere > j-1)
-                        {
-                            Console.WriteLine("Je n'ai pas compris votre choix");
-                            Console.Write("Rechercher la matière : ");
-                            numMatiere = Convert.ToInt32(Console.ReadLine());
-                        }
-                        //On attribue le numéro entré par l'utilisateur à une matière
-                        Matiere matiere = catalogue.ListeMatieres[numMatiere - 1];
-
-                        //On vérifie que le résultat de la recherche n'est pas vide
-                        if (catalogue.RechercherParMatiere(matiere).Count != 0)
-                        {
-                            foreach (Projet projet in catalogue.RechercherParMatiere(matiere))
-                                Console.WriteLine(projet.ToString());
-                        }
-                        else
-                            Console.WriteLine("Aucun résultat ne correspond à votre recherche");
-                        
+                        catalogue.RechercherParMatiere();
                         break;
-
 
                     case 4:
-                        Console.Write("\nMot clé : ");
-
-                       string motcle = Console.ReadLine();
-                        if (catalogue.RechercherParMotCle(motcle).Count != 0)
-                        {
-                            foreach (Projet projet in catalogue.RechercherParMotCle(motcle))
-                                Console.WriteLine(projet.ToString());
-                        }
-                        else
-                            Console.WriteLine("Aucun résultat ne correspond à votre recherche");
-                  
+                        catalogue.RechercherParMotCle();
                         break;
 
-
-
                     case 5:
-                        XmlSerializer xs = new XmlSerializer(typeof(Catalogue));
-                        StreamReader reader = new StreamReader("sauvegardeCatalogue.xml");
-                        Catalogue c = xs.Deserialize(reader) as Catalogue;
-                        foreach (Projet projet in c.ListeProjets)
+                        foreach (Projet projet in catalogue.ListeProjets)
                             Console.WriteLine(projet.ToString());
-                        reader.Close();
                         break;
 
                     case 6:
                         catalogue.AjouterProjet();
-                        catalogue.Sauvegarder("sauvegardeCatalogue.xml");
                         break;
 
                     case 7:
                         catalogue.SupprimerProjet();
-                        catalogue.Sauvegarder("sauvegardeCatalogue.xml");
                         break;
 
                     case 8:
@@ -164,7 +95,6 @@ namespace ProjetCeption
 
                 }
                 catalogue.Sauvegarder("sauvegardeCatalogue.xml");
-
                 AfficherMenu(catalogue);
             }            
 

@@ -11,6 +11,7 @@ namespace ProjetCeption
 {
     public class Catalogue
     {
+        public List<String> ListeTypeProjet { get; set; }
         public List<Eleve> ListeEleves { get; set; }
         public List<Enseignant> ListeEnseignants { get; set; }
         public List<Externe> ListeExternes { get; set; }
@@ -19,87 +20,127 @@ namespace ProjetCeption
         public List<Matiere> ListeMatieres { get; set; }
         public List<Livrable> ListeLivrables { get; set; }
         public List<Projet> ListeProjets { get; set; }
-        public List<String> ListeTypeProjet { get; set; }
 
         public Catalogue()
         {
-            /*
-            string transdi = "transdisciplinaire";
-            string transpromo = "transpromo";
-            string PFE = "PFE";
-            string progAvancee = "programmation avancée";
-            string RAO = "RAO";
-
-            ListeTypeProjet = new List<string> { transdi, transpromo, PFE, progAvancee, RAO };
-            */
         }
 
-        public List<Projet> RechercherParIntervenant(string nomRecherche, string prenomRecherche)
+        public List<Projet> RechercherParIntervenant()
         {
+            //On demande le nom et prénom à rechercher
+            Console.Write("\nNom : ");
+            string nom = Console.ReadLine();
+            Console.Write("Prénom : ");
+            string prenom = Console.ReadLine();
+
+            //On effectue la recherche en stockant les projets dans la liste Resultat
             List<Projet> Resultat = new List<Projet>();
             foreach (Projet projet in ListeProjets)
             {
                 foreach (Intervenant intervenant in projet.IntervenantsConcernes)
                 {
-                    if (intervenant.Nom == nomRecherche && intervenant.Prenom == prenomRecherche)
+                    if (intervenant.Nom == nom && intervenant.Prenom == prenom)
                     {
                         Resultat.Add(projet);
                     }
                 }
             }
-            return Resultat;
-        }
 
-
-        public List<Intervenant> RechercherIntervenant(string Nom, string Prenom)
-        {
-            List<Intervenant> Resultat = new List<Intervenant>();
-            foreach (Intervenant intervenant in ListeIntervenants)
+            //On affiche le résultat
+            if (Resultat.Count != 0)
             {
-                 if (intervenant.Nom.IndexOf(Nom) != -1 || intervenant.Prenom.IndexOf(Prenom) != -1)
-                    {
-                        Resultat.Add(intervenant);
-                    }
+                foreach (Projet projet in Resultat)
+                    Console.WriteLine(projet.ToString());
             }
-
+            else
+                Console.WriteLine("Aucun résultat ne correspond à votre recherche");
             return Resultat;
         }
 
 
+       
 
 
-
-        public List<Projet> RechercherParAnnee(int anneeRecherchee)
+        public List<Projet> RechercherParAnnee()
         {
+            //On demande l'année à rechercher
+            Console.Write("\nAnnée : ");
+            int annee = Convert.ToInt32(Console.ReadLine());
+
+            //On effectue la recherche en stockant les projets dans la liste Resultat
             List<Projet> Resultat = new List<Projet>();
             foreach (Projet projet in ListeProjets)
             {
-                if (projet.DateDebut.Year == anneeRecherchee || projet.DateFin.Year == anneeRecherchee)
+                if (projet.DateDebut.Year == annee || projet.DateFin.Year == annee)
                 {
                     Resultat.Add(projet);
                 }
             }
+
+            //On affiche le résultat
+            if (Resultat.Count != 0)
+            {
+                foreach (Projet projet in Resultat)
+                    Console.WriteLine(projet.ToString());
+            }
+            else
+                Console.WriteLine("Aucun résultat ne correspond à votre recherche");
             return Resultat;
         }
 
-        public List<Projet> RechercherParMatiere(Matiere matiereRecherchee)
+        public List<Projet> RechercherParMatiere()
         {
+            //On présente la liste des matières possible
+            Console.WriteLine("Voici la liste des matières possible : ");
+            int j = 1;
+            foreach (Matiere m in ListeMatieres)
+            {
+                Console.WriteLine("{0} - {1}", j, m.ToString());
+                j++;
+            }
+            //L'utilisateur en choisi une parmi celles proposées (on vérifie qu'il a entré un numéro valide)
+            Console.Write("Rechercher la matière : ");
+            int numMatiere = Convert.ToInt32(Console.ReadLine());
+            while (numMatiere < 1 || numMatiere > j - 1)
+            {
+                Console.WriteLine("Je n'ai pas compris votre choix");
+                Console.Write("Rechercher la matière : ");
+                numMatiere = Convert.ToInt32(Console.ReadLine());
+            }
+            //On attribue le numéro entré par l'utilisateur à une matière
+            Matiere matiereRecherchee = ListeMatieres[numMatiere - 1];
+
+            //On effectue la recherche en stockant les projets dans la liste Resultat
             List<Projet> Resultat = new List<Projet>();
             foreach (Projet projet in ListeProjets)
             {
                 foreach (Matiere matiere in projet.MatieresConcernees)
                 {
-                    if (matiere.NomMatiere == matiereRecherchee.NomMatiere )
+                    if (matiere.NomMatiere == matiereRecherchee.NomMatiere)
                     {
                         Resultat.Add(projet);
                     }
                 }
             }
+
+            //On affiche le résultat
+            if (Resultat.Count != 0)
+            {
+                foreach (Projet projet in Resultat)
+                    Console.WriteLine(projet.ToString());
+            }
+            else
+                Console.WriteLine("Aucun résultat ne correspond à votre recherche");
+
+            
             return Resultat;
         }
 
-        public List<Projet> RechercherParMotCle(string motcle)
+        public List<Projet> RechercherParMotCle()
         {
+            Console.Write("\nMot clé : ");
+            string motcle = Console.ReadLine();
+
             //Ne fais pas la recherche sur les années
             List<Projet> Resultat = new List<Projet>();
             foreach (Projet projet in ListeProjets)
@@ -137,6 +178,14 @@ namespace ProjetCeption
                 }
             }
 
+            if (Resultat.Count != 0)
+            {
+                foreach (Projet projet in Resultat)
+                    Console.WriteLine(projet.ToString());
+            }
+            else
+                Console.WriteLine("Aucun résultat ne correspond à votre recherche");
+
             return Resultat;
         }
 
@@ -157,16 +206,15 @@ namespace ProjetCeption
             }
             Console.WriteLine("{0} - Ajouter un nouveau type de projet", j);
 
-            Console.WriteLine("\nChoisissez votre type de projet : ");
+            Console.Write("\nChoisissez votre type de projet : ");
             int choixTypeProjet = Convert.ToInt32(Console.ReadLine());
 
             while (choixTypeProjet < 0 || choixTypeProjet > j)
             {
                 Console.WriteLine("Je n'ai pas compris votre choix");
-                Console.WriteLine("Choisissez votre type de projet : ");
+                Console.Write("Choisissez votre type de projet : ");
                 choixTypeProjet = Convert.ToInt32(Console.ReadLine());
             }
-
 
             string nvType;
             if (choixTypeProjet == j)
@@ -259,8 +307,8 @@ namespace ProjetCeption
             }
 
             //INETERVENANTS ET ROLES
-            List<Intervenant> nvListeIntervenant = ChoixIntervenant(nvType);
-            List<Role> nvListeRole = ChoixRole(nvListeIntervenant, nvType);
+            List<Intervenant> nvListeIntervenant = ChoixIntervenant();
+            List<Role> nvListeRole = ChoixRole(nvListeIntervenant);
 
             //MATIERES ET LIVRABLES
             //On impose les matières pour rao et projet web.
@@ -299,9 +347,188 @@ namespace ProjetCeption
         }
 
 
+        public void AjouterIntervenant(List<Intervenant> nvListeIntervenant)
+        {
+            Console.WriteLine("Ajout d'un nouvel intervenant");
+
+            Console.Write("Nom : ");
+            string Nom = Console.ReadLine();
+            Console.Write("Prénom : ");
+            string Prenom = Console.ReadLine();
+
+            Console.WriteLine("L'intervenant est un : \n 1 - Elève de l'ENSC \n 2 - Enseignant de l'ENSC \n 3 - Extérieur à l'ENSC");
+            int TypeIntervenant = Convert.ToInt32(Console.ReadLine());
+            if (TypeIntervenant == 1)
+            {
+                Console.WriteLine("Promotion de l'élève (4 chiffres) : ");
+                int Promo = Convert.ToInt32(Console.ReadLine());
+                Eleve nouvelIntervenant = new Eleve(Nom, Prenom, Promo);
+                ListeIntervenants.Add(nouvelIntervenant);
+                nvListeIntervenant.Add(ListeIntervenants[ListeIntervenants.IndexOf(nouvelIntervenant)]);
+                Console.WriteLine("\tL'intervenant a bien été ajouté au projet !");
+            }
+            if (TypeIntervenant == 2)
+            {
+
+                List<Matiere> listmat = new List<Matiere> { };
+                Console.WriteLine("Voici la liste des matières possibles : ");
+                int k = 1;
+                foreach (Matiere m in ListeMatieres)
+                {
+                    Console.WriteLine("{0} - {1}", k, m.ToString());
+                    k++;
+                }
+                int choixMatiere = 1;
+
+                while (choixMatiere != 0)
+                {
+                    Console.Write("Sélectionnez les matières de cet enseignant (entrez 0 pour finir) : ");
+                    choixMatiere = Convert.ToInt32(Console.ReadLine());
+
+                    //On vérifie que le numéro demandé existe bien
+                    while (choixMatiere < 0 || choixMatiere > k - 1)
+                    {
+                        Console.WriteLine("Je n'ai pas compris votre choix");
+                        Console.Write("Ajouter une matière (entrez 0 pour finir) : ");
+                        choixMatiere = Convert.ToInt32(Console.ReadLine());
+                    }
+
+                    if (choixMatiere != 0)
+                    {
+                        bool existeDeja = false;
+                        foreach (Matiere m in listmat)
+                        {
+                            if (ListeMatieres[choixMatiere - 1] == m)
+                                existeDeja = true;
+                        }
+
+                        if (existeDeja == true)
+                            Console.WriteLine("La matière a déjà été ajouté");
+                        else
+                        {
+                            listmat.Add(ListeMatieres[choixMatiere - 1]);
+                            Console.WriteLine("\tLa matière a bien été ajoutée");
+                        }
+                    }
+                }
+                Enseignant nouvelIntervenant = new Enseignant(Nom, Prenom, listmat);
+                ListeIntervenants.Add(nouvelIntervenant);
+                nvListeIntervenant.Add(ListeIntervenants[ListeIntervenants.IndexOf(nouvelIntervenant)]);
+                Console.WriteLine("\tL'intervenant a bien été ajouté au projet !");
+
+            }
+            if (TypeIntervenant == 3)
+            {
+                Console.WriteLine("Métier : ");
+                string Metier = Console.ReadLine();
+                Externe nouvelIntervenant = new Externe(Nom, Prenom, Metier);
+                ListeIntervenants.Add(nouvelIntervenant);
+                nvListeIntervenant.Add(ListeIntervenants[ListeIntervenants.IndexOf(nouvelIntervenant)]);
+                Console.WriteLine("\tL'intervenant a bien été ajouté au projet !");
+            }
+        }
 
 
-        public List<Intervenant> ChoixIntervenant(string nvType)
+        public void RechercherIntervenant(List<Intervenant> nvListeIntervenant)
+        {
+            Console.WriteLine("Rechercher d'intervenants");
+            Console.Write("Nom : ");
+            string NomRecherche = Console.ReadLine();
+            Console.Write("Prénom : ");
+            string PrenomRecherche = Console.ReadLine();
+
+
+            List<Intervenant> Resultat = new List<Intervenant>();
+            foreach (Intervenant intervenant in ListeIntervenants)
+            {
+                if (intervenant.Nom.IndexOf(NomRecherche) != -1 || intervenant.Prenom.IndexOf(PrenomRecherche) != -1)
+                {
+                    Resultat.Add(intervenant);
+                }
+            }
+
+
+            int j = 0;
+            foreach (Intervenant i in Resultat)
+            {
+                j++;
+                Console.WriteLine("{0} - {1}", j, i.ToString());
+            }
+            if (j == 0)
+            {
+                Console.WriteLine("Aucun résultat pour cette recherche.");
+            }
+            else
+            {
+                Console.Write("Ajouter l'intervenant (entrez 0 pour annuler) : ");
+                int choixIntervenant = Convert.ToInt32(Console.ReadLine());
+
+                if (choixIntervenant != 0)
+                {
+                    //On vérifie que le numéro demandé existe bien
+                    while (choixIntervenant < 0 || choixIntervenant > j)
+                    {
+                        Console.WriteLine("Je n'ai pas compris votre choix");
+                        Console.Write("\nAjouter l'intervenant (entrez 0 pour annuler) : ");
+                        choixIntervenant = Convert.ToInt32(Console.ReadLine());
+                    }
+
+                    nvListeIntervenant.Add(Resultat[choixIntervenant - 1]);
+                    Console.WriteLine("\tL'intervenant a bien été ajouté au projet !");
+                }
+            }
+        }
+
+        public void AfficherIntervenants(List<Intervenant> nvListeIntervenant)
+        {
+            Console.WriteLine("Voici la liste d'intervenants du catalogue : ");
+
+            int j = 0;
+            foreach(Intervenant i in ListeIntervenants)
+            {
+                j++;
+                Console.WriteLine("{0} - {1}", j, i.ToString());
+            }
+
+            Console.Write("\nVous pouvez ajouter plusieurs intervenants. Tapez 0 pour finir");
+            int choixIntervenant = 1;
+            while (choixIntervenant != 0)
+            {
+                Console.Write("\nAjouter un intervenant : ");
+                choixIntervenant = Convert.ToInt32(Console.ReadLine());
+
+                //On vérifie que le numéro demandé existe bien
+                while (choixIntervenant < 0 || choixIntervenant > j)
+                {
+                    Console.WriteLine("Je n'ai pas compris votre choix");
+                    Console.Write("Ajouter un intervenant : ");
+                    choixIntervenant = Convert.ToInt32(Console.ReadLine());
+                }
+
+                //On vérifie que l'intervenant n'a pas déjà été ajouté
+                if (choixIntervenant != 0)
+                {
+                    bool existeDeja = false;
+                    foreach (Intervenant i in nvListeIntervenant)
+                    {
+                        if (ListeIntervenants[choixIntervenant - 1] == i)
+                            existeDeja = true;
+                    }
+
+                    if (existeDeja == true)
+                        Console.WriteLine("L'intervenant a déjà été ajouté");
+                    else
+                    {
+                        nvListeIntervenant.Add(ListeIntervenants[choixIntervenant - 1]);
+                        Console.WriteLine("\tL'intervenant a bien été ajouté !");
+                    }
+                }
+            }
+        }
+
+
+
+        public List<Intervenant> ChoixIntervenant()
         {
             //Création de la liste d'intervenants associée au projet
             //On affiche la liste des intervenants existants
@@ -309,147 +536,39 @@ namespace ProjetCeption
             Console.WriteLine("\n\n----- Intervenants-----");
             List<Intervenant> nvListeIntervenant = new List<Intervenant> { };
 
-            Console.WriteLine("Rechercher un intervenant dont le nom est : ");
-            string NomRecherche = Console.ReadLine();
-            Console.WriteLine("Rechercher un intervenant dont le prénom est : ");
-            string PrenomRecherche = Console.ReadLine();
-            int j = 1;
-            foreach (Intervenant i in RechercherIntervenant(NomRecherche,PrenomRecherche))
-            {
-                Console.WriteLine("{0} - {1}", j, i.ToString());
-                j++;
-            }
-            if(j==1)
-            {
-                Console.WriteLine("Aucun résultat pour cette recherche, \n"+ "vous pouvez créer cet intervenant en tapant 1.");
-            }
-            else
-            {
-                Console.WriteLine("{0} - Ajouter un nouvel intervenant", j);
-            }
-            
-            int choixIntervenant = 1;
+            int choix = 0;
 
-            while (choixIntervenant != 0)
+
+            while (choix !=4)
             {
-                Console.Write("Ajouter un intervenant (entrez 0 pour finir) : ");
-                choixIntervenant = Convert.ToInt32(Console.ReadLine());
-                
-                //On vérifie que le numéro demandé existe bien
-                while (choixIntervenant < 0 || choixIntervenant > j)
+                Console.WriteLine("\n1 - Rechercher un intervenant dans le catalogue");
+                Console.WriteLine("2 - Voir la liste des intervenants existants");
+                Console.WriteLine("3 - Ajouter un nouvel intervenant");
+                Console.WriteLine("4 - J'ai fini d'ajouter des intervenants pour ce projet");
+
+                Console.Write("Votre choix : ");
+                choix = Convert.ToInt32(Console.ReadLine());
+
+                if (choix == 1)
                 {
-                    Console.WriteLine("Je n'ai pas compris votre choix");
-                    Console.Write("Ajouter un intervenant (entrez 0 pour finir) : ");
-                    choixIntervenant = Convert.ToInt32(Console.ReadLine());
+                    RechercherIntervenant(nvListeIntervenant);
                 }
 
-                //On vérifie que l'intervenant n'a pas déjà été ajouté
-                if (choixIntervenant != 0)
+                if(choix ==2)
                 {
-                    if (choixIntervenant == j)
-                    {
-                        Console.WriteLine("Nom de l'intervenant : ");
-                        string Nom = Console.ReadLine();
-                        Console.WriteLine("Prénom de l'intervenant : ");
-                        string Prenom = Console.ReadLine();
-                        
-                        Console.WriteLine("L'intervenant est un : \n 1 - Elève de l'ENSC \n 2 - Enseignant de l'ENSC \n 3 - Extérieur à l'ENSC");
-                        int TypeIntervenant = Convert.ToInt32(Console.ReadLine());
-                        if (TypeIntervenant == 1)
-                        {
-                            Console.WriteLine("Promotion de l'élève (4 chiffres) : ");
-                            int Promo = Convert.ToInt32(Console.ReadLine());
-                            Eleve nouvelIntervenant = new Eleve(Nom, Prenom, Promo);
-                            ListeIntervenants.Add(nouvelIntervenant);
-                            nvListeIntervenant.Add(ListeIntervenants[choixIntervenant - 1]);
+                    AfficherIntervenants(nvListeIntervenant);
+                }
 
-                        }
-                        if (TypeIntervenant == 2)
-                        {
-                            
-                            List<Matiere> listmat = new List<Matiere> { };
-                            Console.WriteLine("Voici la liste des matières possibles : ");
-                            int k = 1;
-                            foreach (Matiere m in ListeMatieres)
-                            {
-                                Console.WriteLine("{0} - {1}", k, m.ToString());
-                                k++;
-                            }
-                            int choixMatiere = 1;
-
-                            while (choixMatiere != 0)
-                            {
-                                Console.Write("Sélectionnez les matières de cet enseignant (entrez 0 pour finir) : ");
-                                choixMatiere = Convert.ToInt32(Console.ReadLine());
-
-                                //On vérifie que le numéro demandé existe bien
-                                while (choixMatiere < 0 || choixMatiere > k - 1)
-                                {
-                                    Console.WriteLine("Je n'ai pas compris votre choix");
-                                    Console.Write("Ajouter une matière (entrez 0 pour finir) : ");
-                                    choixMatiere = Convert.ToInt32(Console.ReadLine());
-                                }
-
-                                if (choixMatiere != 0)
-                                {
-                                    bool existeDeja = false;
-                                    foreach (Matiere m in listmat)
-                                    {
-                                        if (ListeMatieres[choixMatiere - 1] == m)
-                                            existeDeja = true;
-                                    }
-
-                                    if (existeDeja == true)
-                                        Console.WriteLine("La matière a déjà été ajouté");
-                                    else
-                                    {
-                                        listmat.Add(ListeMatieres[choixMatiere - 1]);
-                                        Console.WriteLine("\tLa matière a bien été ajoutée");
-                                    }
-
-                                }
-                            }
-                            Enseignant nouvelIntervenant = new Enseignant(Nom, Prenom, listmat);
-                            ListeIntervenants.Add(nouvelIntervenant);
-                            nvListeIntervenant.Add(ListeIntervenants[choixIntervenant - 1]);
-                        }
-                        if (TypeIntervenant == 3)
-                        {
-                            Console.WriteLine("Métier : ");
-                            string Metier = Console.ReadLine();
-                            Externe nouvelIntervenant = new Externe(Nom, Prenom, Metier);
-                            ListeIntervenants.Add(nouvelIntervenant);
-                            nvListeIntervenant.Add(ListeIntervenants[choixIntervenant - 1]);
-                        }
-
-                        Console.WriteLine("\tL'intervenant a bien été ajouté");
-                    }
-                    else
-                    {
-
-                        bool existeDeja = false;
-                        foreach (Intervenant i in nvListeIntervenant)
-                        {
-                            if (ListeIntervenants[choixIntervenant - 1] == i)
-                                existeDeja = true;
-                        }
-
-                        if (existeDeja == true)
-                            Console.WriteLine("L'intervenant a déjà été ajouté");
-                        else
-                        {
-                            nvListeIntervenant.Add(ListeIntervenants[choixIntervenant - 1]);
-                            Console.WriteLine("\tL'intervenant a bien été ajouté");
-                        }
-                    }
+                if (choix == 3)
+                {
+                    AjouterIntervenant(nvListeIntervenant);
                 }
             }
-            
+
             return nvListeIntervenant;
         }
 
-
-        public List<Role> ChoixRole(List<Intervenant> listeIntervenant, string nvType)
+        public List<Role> ChoixRole(List<Intervenant> listeIntervenant)
         {
             //Création de la liste d'intervenants associée au projet
             //On affiche la liste des intervenants existants
@@ -467,81 +586,28 @@ namespace ProjetCeption
 
             Console.Write("Attribuez un rôle pour chaque intervenant : \n");
 
-
-            int choixRole = 1;
-            int[] compteurEleves = new int[3];
-
             foreach (Intervenant interv in listeIntervenant)
             {
                 Console.Write("{0} {1} a pour rôle : ", interv.Prenom, interv.Nom);
-                choixRole = Convert.ToInt32(Console.ReadLine());
+                int choixRole = Convert.ToInt32(Console.ReadLine());
                 
                 //On vérifie que le numéro demandé existe bien
-
                 while (choixRole <= 0 || choixRole > j)
                 {
                     Console.WriteLine("Je n'ai pas compris votre choix");
                     Console.Write("{0} {1} a pour rôle : ", interv.Prenom, interv.Nom);
                     choixRole = Convert.ToInt32(Console.ReadLine());
                 }
+                //Possibilité de créer un nouveau rôle
                 if (choixRole == j)
                 {
                     Console.Write("Nom du nouveau rôle : ");
                     Role nouveauRole = new Role(Console.ReadLine());
                     ListeRoles.Add(nouveauRole);
-                    nvListeRole.Add(ListeRoles[choixRole - 1]);
-                    Console.WriteLine("\t{0} {1} est bien {2} ", interv.Prenom, interv.Nom, nouveauRole.NomRole);
                 }
-                else if (choixRole != 0)
-                {
-                    nvListeRole.Add(ListeRoles[choixRole - 1]);
-                    Console.WriteLine("\t{0} {1} est bien {2} ", interv.Prenom, interv.Nom, ListeRoles[choixRole - 1].NomRole);
-                    if (nvType == "Projet transpromo")
-                    {
-                        if(ListeRoles[choixRole - 1].NomRole=="Elève 1A")
-                        {
-                            compteurEleves[0]++;
-                        }
-                        else if (ListeRoles[choixRole - 1].NomRole == "Elève 2A")
-                        {
-                            compteurEleves[1]++;
-                        }
-                        else if (ListeRoles[choixRole - 1].NomRole == "Elève 3A")
-                        {
-                            compteurEleves[2]++;
-                        }
-                    }
-                }
-
+                nvListeRole.Add(ListeRoles[choixRole - 1]);
+                Console.WriteLine("\t{0} {1} est bien {2} ", interv.Prenom, interv.Nom, ListeRoles[choixRole - 1].NomRole);
             }
-            string message = "";
-            if (nvType == "Projet transpromo")
-            {
-                if (compteurEleves[0] == 0 || compteurEleves[1] == 0 || compteurEleves[2] > 0)
-                message = "Un projet transpromo doit comprendre des 1A et des 2A. Recommencez.";
-            }
-            if (nvType == "PFE")
-            {
-                if (compteurEleves[0] > 0 || compteurEleves[1] > 0 || compteurEleves[2] == 0)
-                message = "Un PFE doit comprendre un 3A. Recommencez.";
-            }
-            if (nvType == "Projet transdisciplinaire" || nvType == "RAO")
-            {
-                if (compteurEleves[0] == 0 || compteurEleves[1] > 0 || compteurEleves[2] > 0)
-                    message = "Un projet transdisciplinaire doit comprendre des 1A. Recommencez.";
-            }
-
-            ListeIntervenants.Clear();
-                    nvListeRole.Clear();
-                    for (int i = 0; i <= 2; i++)
-                        compteurEleves[i] = 0;
-                    Console.WriteLine("-------------------------------------------------------------------");
-                    Console.WriteLine(message);
-                    Console.WriteLine("-------------------------------------------------------------------");
-                    ChoixRole(listeIntervenant, nvType);
-                
-           
-
             return nvListeRole;
         }
 
