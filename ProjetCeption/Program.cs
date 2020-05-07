@@ -36,12 +36,13 @@ namespace ProjetCeption
                 string m5 = "5-Afficher tous les projets";
                 string m6 = "6-Ajouter un projet";
                 string m7 = "7-Supprimer un projet";
-                string m8 = "8-Réinitialiser le catalogue";
-                string m9 = "9-Quitter\n";
-                string m10 = "Donner votre choix : ";
+                string m8 = "8-Modifier un projet";
+                string m9 = "9-Réinitialiser le catalogue";
+                string m10 = "10-Quitter\n";
+                string m11 = "Donner votre choix : ";
 
                 Console.WriteLine("");
-                string[] libelle = new string [] { menu, m1, m2, m3, m4, m5, m6, m7, m8, m9, m10 };
+                string[] libelle = new string [] { menu, m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11 };
 
          
                 for(int i=0;i<=10;i++)
@@ -84,11 +85,15 @@ namespace ProjetCeption
                         break;
 
                     case 8:
+                        catalogue.ModifierProjet();
+                        break;
+
+                    case 9:
                         catalogue.ReinitialiserCatalogue();
                         Console.WriteLine("Le catalogue a bien été réinitialisé !");
                         break;
 
-                    case 9:
+                    case 10:
                         Environment.Exit(0);
                         break;
 

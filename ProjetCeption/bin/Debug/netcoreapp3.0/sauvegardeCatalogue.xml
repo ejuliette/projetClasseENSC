@@ -306,6 +306,9 @@
     <Livrable>
       <NomLivrable>Prestation orale</NomLivrable>
     </Livrable>
+    <Livrable>
+      <NomLivrable>Article scientifique</NomLivrable>
+    </Livrable>
   </ListeLivrables>
   <ListeProjets>
     <Projet>
@@ -477,6 +480,65 @@
         </Role>
         <Role>
           <NomRole>Jury</NomRole>
+        </Role>
+      </IntervenantsRoles>
+    </Projet>
+    <Projet>
+      <Theme>Plateforme de quiz en ligne</Theme>
+      <TypeProjet>Projet web</TypeProjet>
+      <SujetLibre>false</SujetLibre>
+      <DateDebut>2020-02-21T00:00:00</DateDebut>
+      <DateFin>2020-04-17T00:00:00</DateFin>
+      <NbIntervenants>3</NbIntervenants>
+      <IntervenantsConcernes>
+        <Intervenant xsi:type="Eleve">
+          <Nom>Esquirol</Nom>
+          <Prenom>Juliette</Prenom>
+          <Promo>2022</Promo>
+        </Intervenant>
+        <Intervenant xsi:type="Eleve">
+          <Nom>Grondin</Nom>
+          <Prenom>Léa</Prenom>
+          <Promo>2022</Promo>
+        </Intervenant>
+        <Intervenant xsi:type="Enseignant">
+          <Nom>Clermont</Nom>
+          <Prenom>Edwige</Prenom>
+          <Matieres>
+            <Matiere>
+              <NomMatiere>Programmation Avancée</NomMatiere>
+              <CodeSyllabus>CO6SFRPA0</CodeSyllabus>
+            </Matiere>
+            <Matiere>
+              <NomMatiere>Communication Web</NomMatiere>
+              <CodeSyllabus>CO6SFCW0</CodeSyllabus>
+            </Matiere>
+          </Matieres>
+        </Intervenant>
+      </IntervenantsConcernes>
+      <MatieresConcernees>
+        <Matiere>
+          <NomMatiere>Communication Web</NomMatiere>
+          <CodeSyllabus>CO6SFCW0</CodeSyllabus>
+        </Matiere>
+      </MatieresConcernees>
+      <LivrablesAttendus>
+        <Livrable>
+          <NomLivrable>Site web</NomLivrable>
+        </Livrable>
+        <Livrable>
+          <NomLivrable>Rapport</NomLivrable>
+        </Livrable>
+      </LivrablesAttendus>
+      <IntervenantsRoles>
+        <Role>
+          <NomRole>Elève 1A</NomRole>
+        </Role>
+        <Role>
+          <NomRole>Elève 1A</NomRole>
+        </Role>
+        <Role>
+          <NomRole>Tuteur</NomRole>
         </Role>
       </IntervenantsRoles>
     </Projet>
