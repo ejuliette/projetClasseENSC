@@ -14,6 +14,7 @@ namespace ProjetCeption
             Matieres = matieres;
         }
 
+        //Affichage des caractéristiques de l'objet Enseignant
         public override string ToString()
         {
             string description = base.ToString() + "\nMatières enseignées : ";

@@ -11,12 +11,14 @@ namespace ProjetCeption
 
         public Intervenant() { }
 
+
         public Intervenant(string nom, string prenom)
         {
             Nom = nom;
             Prenom = prenom;
         }
 
+        //Affichage des caractéristiques de l'objet Intervenant
         public override string ToString()
         {
             return "Nom : " + Nom + "\nPrénom : " + Prenom ;

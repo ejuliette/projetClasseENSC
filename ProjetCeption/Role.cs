@@ -11,6 +11,7 @@ namespace ProjetCeption
             NomRole = nomRole;
         }
 
+        //Affichage des caractéristiques de l'objet Role
         public override string ToString()
         {
             return NomRole;

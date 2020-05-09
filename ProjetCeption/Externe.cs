@@ -12,7 +12,7 @@ namespace ProjetCeption
             Metier = metier;
         }
 
-
+        //Affichage des caractéristiques de l'objet Externe
         public override string ToString()
         {
             string description = base.ToString() + "\nMétier : " + Metier + "\n";

@@ -32,7 +32,7 @@ namespace ProjetCeption
             RolesIntervenants = roles;
         }
 
-
+        //Affichage des caractéristiques de l'objet Projet
         public override string ToString()
         {
             string SujetLib = "Imposé";

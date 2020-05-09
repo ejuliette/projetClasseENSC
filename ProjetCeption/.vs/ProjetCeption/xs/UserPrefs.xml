@@ -1,16 +1,16 @@
-﻿<Properties StartupConfiguration="{0657A3DF-4FD9-4B6A-AB9E-E3CCF81225EE}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ProjetCeption/Catalogue.cs">
+﻿<Properties StartupConfiguration="{F2DA7A06-961A-43AC-8E73-1BF8A81BD4E4}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Role.cs">
     <Files>
-      <File FileName="ProjetCeption/Catalogue.cs" Line="343" Column="14" IsPinned="True" />
-      <File FileName="ProjetCeption/Role.cs" />
-      <File FileName="ProjetCeption/Projet.cs" />
-      <File FileName="ProjetCeption/Intervenant.cs" />
-      <File FileName="ProjetCeption/Program.cs" />
-      <File FileName="ProjetCeption/Matiere.cs" />
-      <File FileName="ProjetCeption/Livrable.cs" />
-      <File FileName="ProjetCeption/Externe.cs" />
-      <File FileName="ProjetCeption/Enseignant.cs" />
-      <File FileName="ProjetCeption/Eleve.cs" />
+      <File FileName="Catalogue.cs" Line="955" Column="88" />
+      <File FileName="Eleve.cs" Line="15" Column="9" />
+      <File FileName="Enseignant.cs" Line="17" Column="63" />
+      <File FileName="Externe.cs" Line="15" Column="60" />
+      <File FileName="Intervenant.cs" Line="21" Column="64" />
+      <File FileName="Livrable.cs" Line="17" Column="47" />
+      <File FileName="Matiere.cs" Line="22" Column="1" />
+      <File FileName="Program.cs" Line="104" Column="36" />
+      <File FileName="Projet.cs" Line="35" Column="59" />
+      <File FileName="Role.cs" Line="7" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

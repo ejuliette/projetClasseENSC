@@ -12,7 +12,7 @@ namespace ProjetCeption
             Promo = promo;
         }
 
-
+        //Affichage des caractéristiques de l'objet Eleve
         public override string ToString()
         {
             string description = base.ToString() + "\nPromo : " + Promo +"\n";

@@ -51,7 +51,7 @@ namespace ProjetCeption
                     Console.WriteLine(libelle[i]);
                 }
                
-
+                //Sélection de l'utilisateur
                 choix = int.Parse(Console.In.ReadLine());
                 switch (choix)
                 {
@@ -99,7 +99,9 @@ namespace ProjetCeption
 
 
                 }
+                //Sauvegarde du catalogue
                 catalogue.Sauvegarder("sauvegardeCatalogue.xml");
+                //Affichage du menu
                 AfficherMenu(catalogue);
             }            
 

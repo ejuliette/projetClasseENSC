@@ -10,7 +10,17 @@ namespace ProjetCeption
         public string CodeSyllabus { get; set; }
         public Matiere() { }
 
+
+
         public Matiere(string matiere, string codeSyll)
+        {
+            NomMatiere = matiere;
+            CodeSyllabus = codeSyll;
+           
+        }
+
+
+        /*public Matiere(string matiere, string codeSyll)
         {
             if (VerifMatiere(matiere) == true)
             {
@@ -43,7 +53,9 @@ namespace ProjetCeption
 
             return matiereExistente;
         }
+        */
 
+        //Affichage des caractéristiques de l'objet Matiere
         public override string ToString()
         {
             string description = NomMatiere + ", " + CodeSyllabus ;

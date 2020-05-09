@@ -83,8 +83,8 @@ namespace ProjetCeption
 
         public List<Projet> RechercherParMatiere()
         {
-            //On présente la liste des matières possible
-            Console.WriteLine("Voici la liste des matières possible : ");
+            //On présente la liste des matières possibles
+            Console.WriteLine("Voici la liste des matières possibles : ");
             int j = 1;
             foreach (Matiere m in ListeMatieres)
             {
@@ -134,10 +134,12 @@ namespace ProjetCeption
             string motcle = Console.ReadLine();
 
             //Ne fais pas la recherche sur les années
+            //La fonction B.IndexOf(A) renvoie la position de la chaîne de caractères A
+            //au sein de la chaîne de caractères B et -1 si A n'apparaît pas dans B
             List<Projet> Resultat = new List<Projet>();
             foreach (Projet projet in ListeProjets)
             {
-                if (projet.TypeProjet.IndexOf(motcle) != -1)
+                if (projet.TypeProjet.IndexOf(motcle) != -1) 
                     Resultat.Add(projet);
 
                 if (projet.Theme.IndexOf(motcle) != -1)
@@ -178,11 +180,11 @@ namespace ProjetCeption
         {
             Console.WriteLine("\nVeuillez rentrer toutes les informations nécessaires :");
 
-            //TYPE DE PROJET
+            //Choix du Type de Projet
             Console.WriteLine("\n\n----- Type de projet-----");
             string typeProjet = choixTypeProjet();
 
-            //THEME
+            //Choix du thème 
             Console.Write("Thème : ");
             string nvTheme = Console.ReadLine();
             while (nvTheme == "")
@@ -192,10 +194,9 @@ namespace ProjetCeption
                 nvTheme = Console.ReadLine();
             }
 
-            //SUJET LIBRE
-            //On impose le sujet libre ou non selon le type de projet
-            //Si la personne crée un nouveau projet, elle choisit si le sujet est libre ou non
+            //Choix du sujet
             bool nvSujetLibre;
+            //On impose le sujet libre ou non selon certains types de projet
             if (typeProjet == "Projet transpromo" || typeProjet == "PFE")
             {
                 Console.WriteLine("Pour ce type de projet, le sujet est libre.");
@@ -206,23 +207,23 @@ namespace ProjetCeption
                 Console.WriteLine("Pour ce type de projet, le sujet est imposé.");
                 nvSujetLibre = false;
             }
-            else
+            else //Si la personne crée un nouveau projet, elle choisit si le sujet est libre ou non
             {
                 nvSujetLibre = choixSujetLibre();
             }
 
-            //DATES
+            //Choix des dates
             DateTime[] tabDates = choixDates();
             DateTime dateDebut = tabDates[0];
             DateTime dateFin = tabDates[1];
 
 
-            //INETERVENANTS ET ROLES
+            //Choix des intervenants et de leur rôle
             List<Intervenant> nvListeIntervenant = ChoixIntervenant();
             List<Role> nvListeRole = ChoixRole(nvListeIntervenant);
 
 
-            //MATIERES ET LIVRABLES
+            //Choix des matières et livrables
             //On impose les matières pour rao et projet web.
             //On demande à l'utilisateur de choisir ses matières pour les autres projets
             List<Matiere> nvListeMatiere;
@@ -237,15 +238,15 @@ namespace ProjetCeption
                 if (typeProjet == "RAO")
                 {
                     nvListeMatiere = new List<Matiere> { ListeMatieres[2] }; //correspond à GESP
-                    nvListeLivrable = new List<Livrable> { ListeLivrables[2], ListeLivrables[4] }; //correspond à 
+                    nvListeLivrable = new List<Livrable> { ListeLivrables[2], ListeLivrables[4] }; //correspond à Rapport et Prestation orale
                     Console.WriteLine("Matières : {0}", nvListeMatiere[0]);
                     Console.WriteLine("Livrables : {0}, {1}", nvListeLivrable[0], nvListeLivrable[1]);
 
                 }
                 else
                 {
-                    nvListeMatiere = new List<Matiere> { ListeMatieres[6], ListeMatieres[2] }; //correspond à info et GESP
-                    nvListeLivrable = new List<Livrable> { ListeLivrables[0], ListeLivrables[2] }; //correspond à GESP
+                    nvListeMatiere = new List<Matiere> { ListeMatieres[6], ListeMatieres[2] }; //correspond à Communication Web et GESP
+                    nvListeLivrable = new List<Livrable> { ListeLivrables[0], ListeLivrables[2] }; //correspond à Site web et Rapport
                     Console.WriteLine("Matières : {0}", nvListeMatiere[0], nvListeMatiere[1]);
                     Console.WriteLine("Livrables : {0}, {1}", nvListeLivrable[0], nvListeLivrable[1]);
                 }
@@ -262,6 +263,8 @@ namespace ProjetCeption
 
         public string choixTypeProjet()
         {
+            //Affichage des choix possibles (sélection parmi les types de projet 
+            //existants ou ajout d'un nouveau type de projet)
             Console.WriteLine("Voici la liste des types de projets possible : ");
             int j = 1;
             foreach (string t in ListeTypeProjet)
@@ -274,6 +277,7 @@ namespace ProjetCeption
             Console.Write("\nChoisissez votre type de projet : ");
             int choixTypeProjet = Convert.ToInt32(Console.ReadLine());
 
+            //Vérification que le choix entré par l'utilisateur est correct
             while (choixTypeProjet < 0 || choixTypeProjet > j)
             {
                 Console.WriteLine("Je n'ai pas compris votre choix");
@@ -281,6 +285,7 @@ namespace ProjetCeption
                 choixTypeProjet = Convert.ToInt32(Console.ReadLine());
             }
 
+            //Création d'un nouveau type de projet 
             string typeProjet;
             if (choixTypeProjet == j)
             {
@@ -292,20 +297,26 @@ namespace ProjetCeption
                     Console.Write("Type de projet : ");
                     typeProjet = Console.ReadLine();
                 }
+                //Insertion du nouveau type de projet à la liste
                 ListeTypeProjet.Add(typeProjet);
             }
             else
             {
+                //Sélection d'un type de projet existant
                 typeProjet = ListeTypeProjet[choixTypeProjet - 1];
             }
+            //Renvoie le type de projet choisi
             return typeProjet;
         }
 
         public bool choixSujetLibre()
         {
             bool sujetLibre;
+            //Choix du sujet libre (O = Oui) ou imposé (N = Non)
             Console.Write("Sujet libre (O/N) : ");
             string rep = Console.ReadLine();
+
+            //Vérification de la rpéonse entrée par l'utilisateur
             while (rep != "O" && rep != "N")
             {
                 Console.WriteLine("Je n'ai pas compris votre réponse.");
@@ -317,14 +328,17 @@ namespace ProjetCeption
             else
                 sujetLibre = false;
 
+            //Renvoie le booléen indiquant si le sujet est libre ou non
             return sujetLibre;
         }
 
 
         public DateTime[] choixDates()
         {
+            //Initialisation du tableau contenant les dates de début et de fin de projet
             DateTime[] tabDates = new DateTime[2];
             Console.Write("Date de début (jj/mm/aaaa) : ");
+            //Vérification si l'entrée de l'utilisateur correspond au format souahité
             DateTime dateDebutValide;
             bool resultDateDebut = DateTime.TryParse(Console.ReadLine(), out dateDebutValide);
             while (resultDateDebut == false)
@@ -350,15 +364,15 @@ namespace ProjetCeption
                 resultDateFin = DateTime.TryParse(Console.ReadLine(), out dateFinValide);
             }
             tabDates[1] = dateFinValide;
-
+            //Renvoie le tableau contenant les dates de début et de fin du projet
             return tabDates;
         }
 
 
         public List<Intervenant> ChoixIntervenant()
         {
-            //Création de la liste d'intervenants associée au projet
-            //On affiche la liste des intervenants existants
+            //Création de la liste d'intervenants associée au projet : nvListeIntervenant
+            //On affiche la liste des intervenants existants : ListeIntervenants
             //L'utilisateur selectione les intervenants qu'il souhaite, quand il a fini il tape 0 pour sortir de la boucle
             Console.WriteLine("\n\n----- Intervenants-----");
             List<Intervenant> nvListeIntervenant = new List<Intervenant> { };
@@ -400,12 +414,13 @@ namespace ProjetCeption
         public void AjouterIntervenant(List<Intervenant> nvListeIntervenant)
         {
             Console.WriteLine("Ajout d'un nouvel intervenant");
-
+            //L'utilisateur entre le nom et le prénom de l'intervenant qu'il souhaite créer
             Console.Write("Nom : ");
             string Nom = Console.ReadLine();
             Console.Write("Prénom : ");
             string Prenom = Console.ReadLine();
 
+            //Avant d'ajouter cet intervenant, on vérifie s'il n'existe pas déjà dans la liste
             bool existeDeja = false;
             foreach (Intervenant i in ListeIntervenants)
             {
@@ -419,9 +434,12 @@ namespace ProjetCeption
                 Console.WriteLine("Cet intervenant existe déjà !");
             else
             {
+                //Si l'intervenant n'existe pas déjà dans la liste,
+                //On demande à l'utilisateur d'indiquer qui est cet intervenant (3 choix possibles)
+                //L'utilisteur devra ensuite entrer des caractéristiques propres au type d'intervenant sélectionné
                 Console.WriteLine("L'intervenant est un : \n 1 - Elève de l'ENSC \n 2 - Enseignant de l'ENSC \n 3 - Extérieur à l'ENSC");
                 int TypeIntervenant = Convert.ToInt32(Console.ReadLine());
-                if (TypeIntervenant == 1)
+                if (TypeIntervenant == 1) //Choix de la promotion pour un élève
                 {
                     Console.Write("Promotion de l'élève (4 chiffres) : ");
                     int Promo = Convert.ToInt32(Console.ReadLine());
@@ -430,9 +448,9 @@ namespace ProjetCeption
                     nvListeIntervenant.Add(ListeIntervenants[ListeIntervenants.IndexOf(nouvelIntervenant)]);
                     Console.WriteLine("\tL'intervenant a bien été ajouté au projet !");
                 }
-                if (TypeIntervenant == 2)
+                if (TypeIntervenant == 2) //Choix des matières enseignées pour un professeur
                 {
-
+                    //Affichage de la liste des matières existantes
                     List<Matiere> listmat = new List<Matiere> { };
                     Console.WriteLine("Voici la liste des matières possibles : ");
                     int k = 1;
@@ -443,6 +461,7 @@ namespace ProjetCeption
                     }
                     int choixMatiere = 1;
 
+                    //Sélection des matières
                     while (choixMatiere != 0)
                     {
                         Console.Write("Sélectionnez les matières de cet enseignant (entrez 0 pour finir) : ");
@@ -455,7 +474,7 @@ namespace ProjetCeption
                             Console.Write("Ajouter une matière (entrez 0 pour finir) : ");
                             choixMatiere = Convert.ToInt32(Console.ReadLine());
                         }
-
+                        //Vérification si la matière a déjà été sélectionnée pour ce projet
                         if (choixMatiere != 0)
                         {
                             bool matExisteDeja = false;
@@ -480,7 +499,7 @@ namespace ProjetCeption
                     Console.WriteLine("\tL'intervenant a bien été ajouté au projet !");
 
                 }
-                if (TypeIntervenant == 3)
+                if (TypeIntervenant == 3) //Choix du métier pour une personne extérieure à l'ENSC 
                 {
                     Console.Write("Métier : ");
                     string Metier = Console.ReadLine();
@@ -495,14 +514,19 @@ namespace ProjetCeption
 
         public void RechercherIntervenant(List<Intervenant> nvListeIntervenant)
         {
+            //L'utilisateur entre le Nom et le Prénom de l'intervenant à rechercher
             Console.WriteLine("Rechercher d'intervenants");
             Console.Write("Nom : ");
             string NomRecherche = Console.ReadLine();
             Console.Write("Prénom : ");
             string PrenomRecherche = Console.ReadLine();
 
-
+            //Initialisation de la liste Resultat qui contiendra tous les intervenants
+            //correspondants à la recherche de l'utilisateur
             List<Intervenant> Resultat = new List<Intervenant>();
+
+            //Parcours de la liste des intervenants existants dans le catalogue
+            //et évaluation de leur correspondance avec la recherche de l'utilisateur
             foreach (Intervenant intervenant in ListeIntervenants)
             {
                 if (intervenant.Nom.IndexOf(NomRecherche) != -1 || intervenant.Prenom.IndexOf(PrenomRecherche) != -1)
@@ -510,6 +534,7 @@ namespace ProjetCeption
             }
 
             int j = 0;
+            //Affichage des résultats de recherche
             foreach (Intervenant i in Resultat)
             {
                 j++;
@@ -519,9 +544,10 @@ namespace ProjetCeption
                 Console.WriteLine("Aucun résultat pour cette recherche.");
             else
             {
+                //Sélection de l'intervenant à ajouter parmi les résultats de la recherche
                 Console.Write("Ajouter l'intervenant (entrez 0 pour annuler) : ");
                 int choixIntervenant = Convert.ToInt32(Console.ReadLine());
-                //On vérifie que le numéro demandé existe bien
+                //Vérification : le numéro entré par l'utilisateur doit correspondre à un choix possible
                 while (choixIntervenant < 0 || choixIntervenant > j)
                 {
                     Console.WriteLine("Je n'ai pas compris votre choix");
@@ -529,6 +555,7 @@ namespace ProjetCeption
                     choixIntervenant = Convert.ToInt32(Console.ReadLine());
                 }
 
+                //Vérification : l'intervenant ne doit pas être ajouté plusieurs fois
                 if (choixIntervenant != 0)
                 {
                     bool existeDeja = false;
@@ -542,6 +569,7 @@ namespace ProjetCeption
                         Console.WriteLine("L'intervenant a déjà été ajouté");
                     else
                     {
+                        //Ajout de l'intervenant à la liste des intervenants du projet
                         nvListeIntervenant.Add(Resultat[choixIntervenant - 1]);
                         Console.WriteLine("\tL'intervenant a bien été ajouté au projet !");
                     }
@@ -554,6 +582,7 @@ namespace ProjetCeption
             Console.WriteLine("Voici la liste d'intervenants du catalogue : ");
 
             int j = 0;
+            //Affichage de tous les intervenants du catalogue
             foreach(Intervenant i in ListeIntervenants)
             {
                 j++;
@@ -564,6 +593,7 @@ namespace ProjetCeption
             int choixIntervenant = 1;
             while (choixIntervenant != 0)
             {
+                //Sélection de l'intervenant à ajouter
                 Console.Write("\nAjouter un intervenant : ");
                 choixIntervenant = Convert.ToInt32(Console.ReadLine());
 
@@ -589,6 +619,7 @@ namespace ProjetCeption
                         Console.WriteLine("L'intervenant a déjà été ajouté");
                     else
                     {
+                        //Ajout de l'intervenant à la liste des intervenants du projet
                         nvListeIntervenant.Add(ListeIntervenants[choixIntervenant - 1]);
                         Console.WriteLine("\tL'intervenant a bien été ajouté !");
                     }
@@ -600,9 +631,10 @@ namespace ProjetCeption
 
         public List<Role> ChoixRole(List<Intervenant> listeIntervenant)
         {
-            //Création de la liste d'intervenants associée au projet
-            //On affiche la liste des intervenants existants
-            //L'utilisateur slectione les intervenants qu'il souhaite, quand il a fini il tape 0 pour sortir de la boucle
+            //Création de la liste des rôles associée aux intervenants du projet : nvListeRoles
+            //On affiche la liste des rôles possibles : ListeRoles
+            //L'utilisateur sélectionne les rôles qu'il souhaite attribuer à chaque intervenant
+       
             Console.WriteLine("\n\n----- Rôles des Intervenants -----");
             List<Role> nvListeRole = new List<Role> { };
             Console.WriteLine("Voici la liste des rôles possibles : ");
@@ -638,12 +670,18 @@ namespace ProjetCeption
                 nvListeRole.Add(ListeRoles[choixRole - 1]);
                 Console.WriteLine("\t{0} {1} est bien {2} ", interv.Prenom, interv.Nom, ListeRoles[choixRole - 1].NomRole);
             }
+            //Renvoi de la liste des rôles des intervenants du projet
             return nvListeRole;
         }
 
 
         public List<Matiere> ChoixMatiere()
         {
+            //Création de la liste des matières associée au projet : nvListeMatieres
+            //On affiche la liste des matières possibles : ListeMatieres
+            //L'utilisateur sélectionne les matières qu'il souhaite attribuer au projet
+            //Lorsqu'il a terminé, il tape 0 pour sortir de la boucle
+
             Console.WriteLine("\n\n----- Matières concernées-----");
             List<Matiere> nvListeMatieres = new List<Matiere> { };
             Console.WriteLine("Voici la liste des matières possible : ");
@@ -660,7 +698,7 @@ namespace ProjetCeption
                 Console.Write("Ajouter une matière (entrez 0 pour finir) : ");
                 choixMatiere = Convert.ToInt32(Console.ReadLine());
 
-                //On vérifie que le numéro demandé existe bien
+                //Vérification : l'utilisateur doit entrer un numéro qui correspond à un choix possible
                 while (choixMatiere < 0 || choixMatiere > j - 1)
                 {
                     Console.WriteLine("Je n'ai pas compris votre choix");
@@ -668,6 +706,7 @@ namespace ProjetCeption
                     choixMatiere = Convert.ToInt32(Console.ReadLine());
                 }
 
+                //Vérification : l'utilisateur ne doit pas entrer plusieurs fois la même matière
                 if (choixMatiere != 0)
                 {
                     bool existeDeja = false;
@@ -681,18 +720,24 @@ namespace ProjetCeption
                         Console.WriteLine("La matière a déjà été ajouté");
                     else
                     {
+                        //Ajout de la matière à la liste des matières du projet
                         nvListeMatieres.Add(ListeMatieres[choixMatiere - 1]);
                         Console.WriteLine("\tLa matière a bien été ajoutée");
                     }
                 }
             }
+            //Renvoie la liste des matières associées au projet
             return nvListeMatieres;
         }
 
 
         public List<Livrable> ChoixLivrable()
         {
-            //Exactement la même chose pour les livrables
+            //Création de la liste des livrables associée au projet : nvListeLivrable
+            //On affiche la liste des livrables possibles : ListeLivrables
+            //L'utilisateur sélectionne les livrables qu'il souhaite attribuer au projet
+            //Lorsqu'il a terminé, il tape 0 pour sortir de la boucle
+
             Console.WriteLine("\n\n----- Livrables-----");
             List<Livrable> nvListeLivrable = new List<Livrable> { };
             Console.WriteLine("Voici la liste des livrables possible : ");
@@ -710,8 +755,8 @@ namespace ProjetCeption
                 Console.Write("Ajouter un livrable (entrez 0 pour finir) : ");
                 choixLivrable = Convert.ToInt32(Console.ReadLine());
 
-                //On vérifie que le numéro demandé existe bien
-                //Cette fois c'est >j car il y a une option en plus(ajouter un livrable)
+                //Vérification : l'utilisateur doit entrer un numéro qui correspond à un choix possible
+                // >j car il y a une option en plus (ajouter un livrable)
                 while (choixLivrable < 0 || choixLivrable > j)
                 {
                     Console.WriteLine("Je n'ai pas compris votre choix");
@@ -725,13 +770,15 @@ namespace ProjetCeption
                     {
                         Console.Write("Nom du nouveau livrable : ");
                         Livrable nouveauLivrable = new Livrable(Console.ReadLine());
+                        //Ajout du livrable à la liste des livrables existants
                         ListeLivrables.Add(nouveauLivrable);
+                        //Ajout du livrable à la liste des livrables associés au projet
                         nvListeLivrable.Add(ListeLivrables[choixLivrable - 1]);
                         Console.WriteLine("\tLe livrable a bien été ajouté");
                     }
                     else
                     {
-                        //Sinon on vérifie que le livrable n'a pas déjà été ajouté
+                        // Vérification : l'utilisateur ne doit pas entrer plusieurs fois le même livrable
                         bool existeDeja = false;
                         foreach (Livrable l in nvListeLivrable)
                         {
@@ -742,12 +789,14 @@ namespace ProjetCeption
                             Console.WriteLine("Le livrable a déjà été ajouté");
                         else if (choixLivrable != j)
                         {
+                            //Ajout du livrable à la liste des livrables associés au projet
                             nvListeLivrable.Add(ListeLivrables[choixLivrable - 1]);
                             Console.WriteLine("\tLe livrable a bien été ajouté");
                         }
                     }
                 }
             }
+            //Renvoie la liste des livrables associés au projet
             return nvListeLivrable;
         }
 
@@ -757,6 +806,7 @@ namespace ProjetCeption
 
         public void SupprimerProjet()
         {
+            //Affichage de tous les projets du catalogue
             Console.WriteLine("Voici la liste des projets : ");
             int j = 1;
             foreach (Projet projet in ListeProjets)
@@ -765,14 +815,17 @@ namespace ProjetCeption
                 j++;
             }
 
+            //Sélection du projet à supprimer
             Console.Write("\nLequel voulez-vous supprimer ?  ");
             int choixSupression = Convert.ToInt32(Console.ReadLine());
             while (choixSupression < 0 || choixSupression > j-1)
             {
+                //Vérification : le numéro entré par l'utilisateur doit correspondre à un des projets
                 Console.Write("Je n'ai pas compris votre choix");
                 Console.Write("\nLequel voulez-vous supprimer ?  ");
                 choixSupression = Convert.ToInt32(Console.ReadLine());
             }
+            //Suppression du projet
             ListeProjets.RemoveAt(choixSupression - 1);
 
             Console.WriteLine("Le projet a bien été supprimé !");
@@ -781,6 +834,7 @@ namespace ProjetCeption
 
         public void ModifierProjet()
         {
+            //Affichage de tous les projets existants dans le catalogue
             Console.WriteLine("Voici la liste des projets : ");
             int j = 1;
             foreach (Projet projet in ListeProjets)
@@ -788,10 +842,13 @@ namespace ProjetCeption
                 Console.WriteLine("{0} - {1}\n", j, projet.ToString());
                 j++;
             }
+
+            //Sélection du projet à modifier
             Console.Write("\nLequel voulez-vous modifier ?  ");
             int choixProjet = Convert.ToInt32(Console.ReadLine());
             while (choixProjet < 0 || choixProjet > j - 1)
             {
+                //Vérification du choix utilisateur
                 Console.Write("Je n'ai pas compris votre choix");
                 Console.Write("\nLequel voulez-vous modifier ?  ");
                 choixProjet = Convert.ToInt32(Console.ReadLine());
@@ -800,6 +857,7 @@ namespace ProjetCeption
             int choixModif = 1;
             while(choixModif !=0)
             {
+                //Choix du paramètre à modifier
                 foreach (string e in listeElements)
                 {
                     Console.WriteLine("{0} - {1}", listeElements.IndexOf(e) + 1, e.ToString());
@@ -808,17 +866,19 @@ namespace ProjetCeption
                 choixModif = Convert.ToInt32(Console.ReadLine());
                 while (choixModif < 0 || choixModif > listeElements.Count)
                 {
+                    //Vérification du choix utilisateur
                     Console.Write("Je n'ai pas compris votre choix");
                     Console.Write("\nLequel voulez-vous modifier ?  ");
                     choixModif = Convert.ToInt32(Console.ReadLine());
                 }
 
-
+                //Modification du type de projet
                 if (choixModif == 1)
                 {
                     ListeProjets[choixProjet - 1].TypeProjet = choixTypeProjet();
                     Console.WriteLine("Les modifications ont bien été prises en compte !\n");
                 }
+                //Modification du thème
                 if (choixModif == 2)
                 {
                     Console.Write("Thème : ");
@@ -832,11 +892,13 @@ namespace ProjetCeption
                     ListeProjets[choixProjet - 1].Theme = theme;
                     Console.WriteLine("Les modifications ont bien été prises en compte !\n");
                 }
+                //Modification du sujet libre ou imposé
                 if (choixModif == 3)
                 {
                     ListeProjets[choixProjet - 1].SujetLibre = choixSujetLibre();
                     Console.WriteLine("Les modifications ont bien été prises en compte !\n");
                 }
+                //Modification des dates de début et de fin de projet
                 if (choixModif == 4)
                 {
                     DateTime[] tabDates = choixDates();
@@ -844,6 +906,7 @@ namespace ProjetCeption
                     ListeProjets[choixProjet - 1].DateFin = tabDates[1];
                     Console.WriteLine("Les modifications ont bien été prises en compte !\n");
                 }
+                //Modification des intervenants et de leurs rôles
                 if (choixModif == 5)
                 {
                     List<Intervenant> listeInterv = ChoixIntervenant();
@@ -852,11 +915,13 @@ namespace ProjetCeption
                     ListeProjets[choixProjet - 1].NbIntervenants = listeInterv.Count;
                     Console.WriteLine("Les modifications ont bien été prises en compte !\n");
                 }
+                //Modification des matières 
                 if (choixModif == 6)
                 {
                     ListeProjets[choixProjet - 1].MatieresConcernees = ChoixMatiere();
                     Console.WriteLine("Les modifications ont bien été prises en compte !\n");
                 }
+                //Modification des livrables
                 if (choixModif == 7)
                 {
                     ListeProjets[choixProjet - 1].LivrablesAttendus = ChoixLivrable();
@@ -868,7 +933,9 @@ namespace ProjetCeption
 
         public void Sauvegarder(string fichierXML)
         {
+            //conversion des objets c# en données compréhensibles par un fichier xml
             XmlSerializer serializer = new XmlSerializer(typeof(Catalogue));
+            //écriture des données dans le fichier xml
             TextWriter writer = new StreamWriter(fichierXML);
             serializer.Serialize(writer, this);
             writer.Close();
@@ -877,15 +944,16 @@ namespace ProjetCeption
         public void ReinitialiserCatalogue()
         {
             //On supprime le catalogue utilisateur
-            //File.Delete("Users\\juliettesquirol\\Documents\\GitHub\\projetClasseENSC\\ProjetCeption\\bin\\Debug\\netcoreapp3.0\\sauvegardeCatalogue.xml");
-            File.Delete("C:\\Users\\leagr\\Source\\Repos\\projetClasseENSC\\ProjetCeption\\bin\\Debug\\netcoreapp3.0\\sauvegardeCatalogue.xml");
+            File.Delete("Users\\juliettesquirol\\Documents\\GitHub\\projetClasseENSC\\ProjetCeption\\bin\\Debug\\netcoreapp3.0\\sauvegardeCatalogue.xml");
+            //File.Delete("Users\\leagr\\Source\\Repos\\projetClasseENSC\\ProjetCeption\\bin\\Debug\\netcoreapp3.0\\sauvegardeCatalogue.xml");
 
-            //On copie le catalogue de base, et on on le colle en créant un nouveau catalogue utilisateur
-            //string sourceFile = "Users\\juliettesquirol\\Documents\\GitHub\\projetClasseENSC\\ProjetCeption\\bin\\Debug\\netcoreapp3.0\\catalogueBase.xml";
-            string sourceFile = "C:\\Users\\leagr\\Source\\Repos\\projetClasseENSC\\ProjetCeption\\bin\\Debug\\netcoreapp3.0\\catalogueBase.xml";
-            
-            //string destinationFile = "Users\\juliettesquirol\\Documents\\GitHub\\projetClasseENSC\\ProjetCeption\\bin\\Debug\\netcoreapp3.0\\sauvegardeCatalogue.xml";
-            string destinationFile = "C:\\Users\\leagr\\Source\\Repos\\projetClasseENSC\\ProjetCeption\\bin\\Debug\\netcoreapp3.0\\sauvegardeCatalogue.xml";
+            //On copie le catalogue de base, et on le colle en créant un nouveau catalogue utilisateur
+            string sourceFile = "Users\\juliettesquirol\\Documents\\GitHub\\projetClasseENSC\\ProjetCeption\\bin\\Debug\\netcoreapp3.0\\catalogueBase.xml";
+            //string sourceFile = "Users\\leagr\\Source\\Repos\\projetClasseENSC\\ProjetCeption\\bin\\Debug\\netcoreapp3.0\\catalogueBase.xml";
+
+            string destinationFile = "Users\\juliettesquirol\\Documents\\GitHub\\projetClasseENSC\\ProjetCeption\\bin\\Debug\\netcoreapp3.0\\sauvegardeCatalogue.xml";
+            //string destinationFile = "Users\\leagr\\Source\\Repos\\projetClasseENSC\\ProjetCeption\\bin\\Debug\\netcoreapp3.0\\sauvegardeCatalogue.xml";
+
             File.Copy(sourceFile, destinationFile);
 
         }

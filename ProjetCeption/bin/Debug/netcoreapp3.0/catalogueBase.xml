@@ -313,6 +313,56 @@
       <Prenom>Patrick</Prenom>
       <Metier>Chercheur</Metier>
     </Intervenant>
+    <Intervenant xsi:type="Eleve">
+      <Nom>Beaurepaire</Nom>
+      <Prenom>Margot</Prenom>
+      <Promo>2022</Promo>
+    </Intervenant>
+    <Intervenant xsi:type="Eleve">
+      <Nom>Thomas</Nom>
+      <Prenom>Enora</Prenom>
+      <Promo>2022</Promo>
+    </Intervenant>
+    <Intervenant xsi:type="Eleve">
+      <Nom>Pierre</Nom>
+      <Prenom>Fanny</Prenom>
+      <Promo>2022</Promo>
+    </Intervenant>
+    <Intervenant xsi:type="Eleve">
+      <Nom>Tomas</Nom>
+      <Prenom>Lucas</Prenom>
+      <Promo>2022</Promo>
+    </Intervenant>
+    <Intervenant xsi:type="Eleve">
+      <Nom>Zuliani</Nom>
+      <Prenom>Matthéo</Prenom>
+      <Promo>2022</Promo>
+    </Intervenant>
+    <Intervenant xsi:type="Eleve">
+      <Nom>Pelletreau-Duris</Nom>
+      <Prenom>Tom</Prenom>
+      <Promo>2022</Promo>
+    </Intervenant>
+    <Intervenant xsi:type="Eleve">
+      <Nom>Largeault</Nom>
+      <Prenom>Nicolas</Prenom>
+      <Promo>2022</Promo>
+    </Intervenant>
+    <Intervenant xsi:type="Eleve">
+      <Nom>Duboz</Nom>
+      <Prenom>Emma</Prenom>
+      <Promo>2022</Promo>
+    </Intervenant>
+    <Intervenant xsi:type="Eleve">
+      <Nom>Juaneda</Nom>
+      <Prenom>Julie</Prenom>
+      <Promo>2022</Promo>
+    </Intervenant>
+    <Intervenant xsi:type="Eleve">
+      <Nom>Musacchio</Nom>
+      <Prenom>Pierre</Prenom>
+      <Promo>2022</Promo>
+    </Intervenant>
   </ListeIntervenants>
   <ListeRoles>
     <Role>
@@ -396,7 +446,7 @@
       <TypeProjet>Projet transdisciplinaire</TypeProjet>
       <SujetLibre>false</SujetLibre>
       <DateDebut>2019-09-30T00:00:00</DateDebut>
-      <DateFin>2020-06-05T00:00:00</DateFin>
+      <DateFin>2020-05-29T00:00:00</DateFin>
       <NbIntervenants>6</NbIntervenants>
       <IntervenantsConcernes>
         <Intervenant xsi:type="Eleve">
@@ -627,7 +677,7 @@
       <TypeProjet>Projet transdisciplinaire</TypeProjet>
       <SujetLibre>false</SujetLibre>
       <DateDebut>2019-09-30T00:00:00</DateDebut>
-      <DateFin>2020-06-05T00:00:00</DateFin>
+      <DateFin>2020-05-29T00:00:00</DateFin>
       <NbIntervenants>7</NbIntervenants>
       <IntervenantsConcernes>
         <Intervenant xsi:type="Eleve">
@@ -889,6 +939,166 @@
         </Role>
         <Role>
           <NomRole>Client</NomRole>
+        </Role>
+      </RolesIntervenants>
+    </Projet>
+    <Projet>
+      <Theme>Athena cognition collective</Theme>
+      <TypeProjet>Projet transdisciplinaire</TypeProjet>
+      <SujetLibre>false</SujetLibre>
+      <DateDebut>2019-09-30T00:00:00</DateDebut>
+      <DateFin>2020-05-29T00:00:00</DateFin>
+      <NbIntervenants>6</NbIntervenants>
+      <IntervenantsConcernes>
+        <Intervenant xsi:type="Eleve">
+          <Nom>Beaurepaire</Nom>
+          <Prenom>Margot</Prenom>
+          <Promo>2022</Promo>
+        </Intervenant>
+        <Intervenant xsi:type="Eleve">
+          <Nom>Thomas</Nom>
+          <Prenom>Enora</Prenom>
+          <Promo>2022</Promo>
+        </Intervenant>
+        <Intervenant xsi:type="Eleve">
+          <Nom>Pierre</Nom>
+          <Prenom>Fanny</Prenom>
+          <Promo>2022</Promo>
+        </Intervenant>
+        <Intervenant xsi:type="Eleve">
+          <Nom>Tomas</Nom>
+          <Prenom>Lucas</Prenom>
+          <Promo>2022</Promo>
+        </Intervenant>
+        <Intervenant xsi:type="Eleve">
+          <Nom>Zuliani</Nom>
+          <Prenom>Matthéo</Prenom>
+          <Promo>2022</Promo>
+        </Intervenant>
+        <Intervenant xsi:type="Eleve">
+          <Nom>Pelletreau-Duris</Nom>
+          <Prenom>Tom</Prenom>
+          <Promo>2022</Promo>
+        </Intervenant>
+      </IntervenantsConcernes>
+      <MatieresConcernees>
+        <Matiere>
+          <NomMatiere>Gestion de projet et conception</NomMatiere>
+          <CodeSyllabus>CO6INGP0</CodeSyllabus>
+        </Matiere>
+        <Matiere>
+          <NomMatiere>Communication Web</NomMatiere>
+          <CodeSyllabus>CO6SFCW0</CodeSyllabus>
+        </Matiere>
+      </MatieresConcernees>
+      <LivrablesAttendus>
+        <Livrable>
+          <NomLivrable>Site web</NomLivrable>
+        </Livrable>
+        <Livrable>
+          <NomLivrable>Analyse de l'existant</NomLivrable>
+        </Livrable>
+        <Livrable>
+          <NomLivrable>Cahier des charges</NomLivrable>
+        </Livrable>
+        <Livrable>
+          <NomLivrable>Prestation orale</NomLivrable>
+        </Livrable>
+      </LivrablesAttendus>
+      <RolesIntervenants>
+        <Role>
+          <NomRole>Elève 1A</NomRole>
+        </Role>
+        <Role>
+          <NomRole>Elève 1A</NomRole>
+        </Role>
+        <Role>
+          <NomRole>Elève 1A</NomRole>
+        </Role>
+        <Role>
+          <NomRole>Elève 1A</NomRole>
+        </Role>
+        <Role>
+          <NomRole>Elève 1A</NomRole>
+        </Role>
+        <Role>
+          <NomRole>Elève 1A</NomRole>
+        </Role>
+      </RolesIntervenants>
+    </Projet>
+    <Projet>
+      <Theme>Bumper</Theme>
+      <TypeProjet>Projet transdisciplinaire</TypeProjet>
+      <SujetLibre>false</SujetLibre>
+      <DateDebut>2019-09-30T00:00:00</DateDebut>
+      <DateFin>2020-05-29T00:00:00</DateFin>
+      <NbIntervenants>5</NbIntervenants>
+      <IntervenantsConcernes>
+        <Intervenant xsi:type="Eleve">
+          <Nom>Largeault</Nom>
+          <Prenom>Nicolas</Prenom>
+          <Promo>2022</Promo>
+        </Intervenant>
+        <Intervenant xsi:type="Eleve">
+          <Nom>Duboz</Nom>
+          <Prenom>Emma</Prenom>
+          <Promo>2022</Promo>
+        </Intervenant>
+        <Intervenant xsi:type="Eleve">
+          <Nom>Saunders</Nom>
+          <Prenom>William</Prenom>
+          <Promo>2022</Promo>
+        </Intervenant>
+        <Intervenant xsi:type="Eleve">
+          <Nom>Juaneda</Nom>
+          <Prenom>Julie</Prenom>
+          <Promo>2022</Promo>
+        </Intervenant>
+        <Intervenant xsi:type="Eleve">
+          <Nom>Musacchio</Nom>
+          <Prenom>Pierre</Prenom>
+          <Promo>2022</Promo>
+        </Intervenant>
+      </IntervenantsConcernes>
+      <MatieresConcernees>
+        <Matiere>
+          <NomMatiere>Gestion de projet et conception</NomMatiere>
+          <CodeSyllabus>CO6INGP0</CodeSyllabus>
+        </Matiere>
+        <Matiere>
+          <NomMatiere>Communication Web</NomMatiere>
+          <CodeSyllabus>CO6SFCW0</CodeSyllabus>
+        </Matiere>
+      </MatieresConcernees>
+      <LivrablesAttendus>
+        <Livrable>
+          <NomLivrable>Site web</NomLivrable>
+        </Livrable>
+        <Livrable>
+          <NomLivrable>Analyse de l'existant</NomLivrable>
+        </Livrable>
+        <Livrable>
+          <NomLivrable>Cahier des charges</NomLivrable>
+        </Livrable>
+        <Livrable>
+          <NomLivrable>Prestation orale</NomLivrable>
+        </Livrable>
+      </LivrablesAttendus>
+      <RolesIntervenants>
+        <Role>
+          <NomRole>Elève 1A</NomRole>
+        </Role>
+        <Role>
+          <NomRole>Elève 1A</NomRole>
+        </Role>
+        <Role>
+          <NomRole>Elève 1A</NomRole>
+        </Role>
+        <Role>
+          <NomRole>Elève 1A</NomRole>
+        </Role>
+        <Role>
+          <NomRole>Elève 1A</NomRole>
         </Role>
       </RolesIntervenants>
     </Projet>

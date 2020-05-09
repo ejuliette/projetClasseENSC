@@ -11,6 +11,7 @@ namespace ProjetCeption
             NomLivrable = livrable;
         }
 
+        //Affichage des caractéristiques de l'objet Livrable
         public override string ToString()
         {
             string description = NomLivrable ;
