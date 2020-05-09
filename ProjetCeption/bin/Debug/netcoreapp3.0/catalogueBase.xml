@@ -233,6 +233,86 @@
       <Prenom>Alvaro</Prenom>
       <Metier>Chercheur</Metier>
     </Intervenant>
+    <Intervenant xsi:type="Eleve">
+      <Nom>Desclaux</Nom>
+      <Prenom>Nicolas</Prenom>
+      <Promo>2022</Promo>
+    </Intervenant>
+    <Intervenant xsi:type="Eleve">
+      <Nom>Navarro</Nom>
+      <Prenom>Emma</Prenom>
+      <Promo>2022</Promo>
+    </Intervenant>
+    <Intervenant xsi:type="Eleve">
+      <Nom>Cado</Nom>
+      <Prenom>Erwan</Prenom>
+      <Promo>2022</Promo>
+    </Intervenant>
+    <Intervenant xsi:type="Eleve">
+      <Nom>Migeon</Nom>
+      <Prenom>Agathe</Prenom>
+      <Promo>2022</Promo>
+    </Intervenant>
+    <Intervenant xsi:type="Externe">
+      <Nom>Gay</Nom>
+      <Prenom>Roland</Prenom>
+      <Metier>Ingénieur</Metier>
+    </Intervenant>
+    <Intervenant xsi:type="Enseignant">
+      <Nom>Semal</Nom>
+      <Prenom>Catherine</Prenom>
+      <Matieres>
+        <Matiere>
+          <NomMatiere>Gestion de projet et conception</NomMatiere>
+          <CodeSyllabus>CO6INGP0</CodeSyllabus>
+        </Matiere>
+      </Matieres>
+    </Intervenant>
+    <Intervenant xsi:type="Eleve">
+      <Nom>Laur</Nom>
+      <Prenom>Simon</Prenom>
+      <Promo>2022</Promo>
+    </Intervenant>
+    <Intervenant xsi:type="Eleve">
+      <Nom>Saunders</Nom>
+      <Prenom>William</Prenom>
+      <Promo>2022</Promo>
+    </Intervenant>
+    <Intervenant xsi:type="Eleve">
+      <Nom>Binet</Nom>
+      <Prenom>Coline</Prenom>
+      <Promo>2022</Promo>
+    </Intervenant>
+    <Intervenant xsi:type="Eleve">
+      <Nom>Ndiaye</Nom>
+      <Prenom>Mariam</Prenom>
+      <Promo>2022</Promo>
+    </Intervenant>
+    <Intervenant xsi:type="Eleve">
+      <Nom>Lucas</Nom>
+      <Prenom>Mael</Prenom>
+      <Promo>2022</Promo>
+    </Intervenant>
+    <Intervenant xsi:type="Eleve">
+      <Nom>Scolan</Nom>
+      <Prenom>Laura</Prenom>
+      <Promo>2022</Promo>
+    </Intervenant>
+    <Intervenant xsi:type="Eleve">
+      <Nom>Gass</Nom>
+      <Prenom>Aurélie</Prenom>
+      <Promo>2022</Promo>
+    </Intervenant>
+    <Intervenant xsi:type="Eleve">
+      <Nom>Brès</Nom>
+      <Prenom>Raphaël</Prenom>
+      <Promo>2020</Promo>
+    </Intervenant>
+    <Intervenant xsi:type="Externe">
+      <Nom>Dupont</Nom>
+      <Prenom>Patrick</Prenom>
+      <Metier>Chercheur</Metier>
+    </Intervenant>
   </ListeIntervenants>
   <ListeRoles>
     <Role>
@@ -372,7 +452,7 @@
           <NomLivrable>Article scientifique</NomLivrable>
         </Livrable>
       </LivrablesAttendus>
-      <IntervenantsRoles>
+      <RolesIntervenants>
         <Role>
           <NomRole>Elève 1A</NomRole>
         </Role>
@@ -383,15 +463,15 @@
           <NomRole>Elève 1A</NomRole>
         </Role>
         <Role>
-          <NomRole>Elève 1A</NomRole>
+          <NomRole>Chef de projet</NomRole>
+        </Role>
+        <Role>
+          <NomRole>Client</NomRole>
         </Role>
         <Role>
           <NomRole>Tuteur</NomRole>
         </Role>
-        <Role>
-          <NomRole>Tuteur</NomRole>
-        </Role>
-      </IntervenantsRoles>
+      </RolesIntervenants>
     </Projet>
     <Projet>
       <Theme>CACTUS : l'application de développement personnel</Theme>
@@ -459,7 +539,7 @@
           <NomLivrable>Prestation orale</NomLivrable>
         </Livrable>
       </LivrablesAttendus>
-      <IntervenantsRoles>
+      <RolesIntervenants>
         <Role>
           <NomRole>Elève 1A</NomRole>
         </Role>
@@ -467,10 +547,10 @@
           <NomRole>Elève 1A</NomRole>
         </Role>
         <Role>
-          <NomRole>Elève 1A</NomRole>
+          <NomRole>Responsable Facteur Humain</NomRole>
         </Role>
         <Role>
-          <NomRole>Elève 2A</NomRole>
+          <NomRole>Chef de projet</NomRole>
         </Role>
         <Role>
           <NomRole>Elève 2A</NomRole>
@@ -481,7 +561,7 @@
         <Role>
           <NomRole>Jury</NomRole>
         </Role>
-      </IntervenantsRoles>
+      </RolesIntervenants>
     </Projet>
     <Projet>
       <Theme>Plateforme de quiz en ligne</Theme>
@@ -530,7 +610,7 @@
           <NomLivrable>Rapport</NomLivrable>
         </Livrable>
       </LivrablesAttendus>
-      <IntervenantsRoles>
+      <RolesIntervenants>
         <Role>
           <NomRole>Elève 1A</NomRole>
         </Role>
@@ -540,7 +620,277 @@
         <Role>
           <NomRole>Tuteur</NomRole>
         </Role>
-      </IntervenantsRoles>
+      </RolesIntervenants>
+    </Projet>
+    <Projet>
+      <Theme>Melod'Yeux - Lecture de partitions pour malvoyants</Theme>
+      <TypeProjet>Projet transdisciplinaire</TypeProjet>
+      <SujetLibre>false</SujetLibre>
+      <DateDebut>2019-09-30T00:00:00</DateDebut>
+      <DateFin>2020-06-05T00:00:00</DateFin>
+      <NbIntervenants>7</NbIntervenants>
+      <IntervenantsConcernes>
+        <Intervenant xsi:type="Eleve">
+          <Nom>Desclaux</Nom>
+          <Prenom>Nicolas</Prenom>
+          <Promo>2022</Promo>
+        </Intervenant>
+        <Intervenant xsi:type="Eleve">
+          <Nom>Grondin</Nom>
+          <Prenom>Léa</Prenom>
+          <Promo>2022</Promo>
+        </Intervenant>
+        <Intervenant xsi:type="Eleve">
+          <Nom>Navarro</Nom>
+          <Prenom>Emma</Prenom>
+          <Promo>2022</Promo>
+        </Intervenant>
+        <Intervenant xsi:type="Eleve">
+          <Nom>Cado</Nom>
+          <Prenom>Erwan</Prenom>
+          <Promo>2022</Promo>
+        </Intervenant>
+        <Intervenant xsi:type="Eleve">
+          <Nom>Migeon</Nom>
+          <Prenom>Agathe</Prenom>
+          <Promo>2022</Promo>
+        </Intervenant>
+        <Intervenant xsi:type="Externe">
+          <Nom>Gay</Nom>
+          <Prenom>Roland</Prenom>
+          <Metier>Ingénieur</Metier>
+        </Intervenant>
+        <Intervenant xsi:type="Enseignant">
+          <Nom>Semal</Nom>
+          <Prenom>Catherine</Prenom>
+          <Matieres>
+            <Matiere>
+              <NomMatiere>Gestion de projet et conception</NomMatiere>
+              <CodeSyllabus>CO6INGP0</CodeSyllabus>
+            </Matiere>
+          </Matieres>
+        </Intervenant>
+      </IntervenantsConcernes>
+      <MatieresConcernees>
+        <Matiere>
+          <NomMatiere>Programmation Avancée</NomMatiere>
+          <CodeSyllabus>CO6SFRPA0</CodeSyllabus>
+        </Matiere>
+        <Matiere>
+          <NomMatiere>Gestion de projet et conception</NomMatiere>
+          <CodeSyllabus>CO6INGP0</CodeSyllabus>
+        </Matiere>
+        <Matiere>
+          <NomMatiere>Connaissance et représenation</NomMatiere>
+          <CodeSyllabus>CO6SSCC50</CodeSyllabus>
+        </Matiere>
+      </MatieresConcernees>
+      <LivrablesAttendus>
+        <Livrable>
+          <NomLivrable>Site web</NomLivrable>
+        </Livrable>
+        <Livrable>
+          <NomLivrable>Cahier des charges</NomLivrable>
+        </Livrable>
+        <Livrable>
+          <NomLivrable>Prestation orale</NomLivrable>
+        </Livrable>
+      </LivrablesAttendus>
+      <RolesIntervenants>
+        <Role>
+          <NomRole>Chef de projet</NomRole>
+        </Role>
+        <Role>
+          <NomRole>Elève 1A</NomRole>
+        </Role>
+        <Role>
+          <NomRole>Elève 1A</NomRole>
+        </Role>
+        <Role>
+          <NomRole>Elève 1A</NomRole>
+        </Role>
+        <Role>
+          <NomRole>Elève 1A</NomRole>
+        </Role>
+        <Role>
+          <NomRole>Client</NomRole>
+        </Role>
+        <Role>
+          <NomRole>Tuteur</NomRole>
+        </Role>
+      </RolesIntervenants>
+    </Projet>
+    <Projet>
+      <Theme>Réserve 2.0</Theme>
+      <TypeProjet>RAO</TypeProjet>
+      <SujetLibre>false</SujetLibre>
+      <DateDebut>2020-03-02T00:00:00</DateDebut>
+      <DateFin>2020-05-18T00:00:00</DateFin>
+      <NbIntervenants>9</NbIntervenants>
+      <IntervenantsConcernes>
+        <Intervenant xsi:type="Eleve">
+          <Nom>Grondin</Nom>
+          <Prenom>Léa</Prenom>
+          <Promo>2022</Promo>
+        </Intervenant>
+        <Intervenant xsi:type="Eleve">
+          <Nom>Laur</Nom>
+          <Prenom>Simon</Prenom>
+          <Promo>2022</Promo>
+        </Intervenant>
+        <Intervenant xsi:type="Eleve">
+          <Nom>Saunders</Nom>
+          <Prenom>William</Prenom>
+          <Promo>2022</Promo>
+        </Intervenant>
+        <Intervenant xsi:type="Eleve">
+          <Nom>Binet</Nom>
+          <Prenom>Coline</Prenom>
+          <Promo>2022</Promo>
+        </Intervenant>
+        <Intervenant xsi:type="Eleve">
+          <Nom>Ndiaye</Nom>
+          <Prenom>Mariam</Prenom>
+          <Promo>2022</Promo>
+        </Intervenant>
+        <Intervenant xsi:type="Eleve">
+          <Nom>Lucas</Nom>
+          <Prenom>Mael</Prenom>
+          <Promo>2022</Promo>
+        </Intervenant>
+        <Intervenant xsi:type="Eleve">
+          <Nom>Scolan</Nom>
+          <Prenom>Laura</Prenom>
+          <Promo>2022</Promo>
+        </Intervenant>
+        <Intervenant xsi:type="Eleve">
+          <Nom>Gass</Nom>
+          <Prenom>Aurélie</Prenom>
+          <Promo>2022</Promo>
+        </Intervenant>
+        <Intervenant xsi:type="Enseignant">
+          <Nom>Kijewski</Nom>
+          <Prenom>Elisabeth</Prenom>
+          <Matieres>
+            <Matiere>
+              <NomMatiere>Gestion de projet et conception</NomMatiere>
+              <CodeSyllabus>CO6INGP0</CodeSyllabus>
+            </Matiere>
+          </Matieres>
+        </Intervenant>
+      </IntervenantsConcernes>
+      <MatieresConcernees>
+        <Matiere>
+          <NomMatiere>Gestion de projet et conception</NomMatiere>
+          <CodeSyllabus>CO6INGP0</CodeSyllabus>
+        </Matiere>
+      </MatieresConcernees>
+      <LivrablesAttendus>
+        <Livrable>
+          <NomLivrable>Rapport</NomLivrable>
+        </Livrable>
+        <Livrable>
+          <NomLivrable>Prestation orale</NomLivrable>
+        </Livrable>
+      </LivrablesAttendus>
+      <RolesIntervenants>
+        <Role>
+          <NomRole>Chef de Projet</NomRole>
+        </Role>
+        <Role>
+          <NomRole>Elève 1A</NomRole>
+        </Role>
+        <Role>
+          <NomRole>Elève 1A</NomRole>
+        </Role>
+        <Role>
+          <NomRole>Elève 1A</NomRole>
+        </Role>
+        <Role>
+          <NomRole>Elève 1A</NomRole>
+        </Role>
+        <Role>
+          <NomRole>Elève 1A</NomRole>
+        </Role>
+        <Role>
+          <NomRole>Elève 1A</NomRole>
+        </Role>
+        <Role>
+          <NomRole>Elève 1A</NomRole>
+        </Role>
+        <Role>
+          <NomRole>Client</NomRole>
+        </Role>
+      </RolesIntervenants>
+    </Projet>
+    <Projet>
+      <Theme>Intelligence artificielle</Theme>
+      <TypeProjet>PFE</TypeProjet>
+      <SujetLibre>true</SujetLibre>
+      <DateDebut>2019-09-15T00:00:00</DateDebut>
+      <DateFin>2020-01-20T00:00:00</DateFin>
+      <NbIntervenants>3</NbIntervenants>
+      <IntervenantsConcernes>
+        <Intervenant xsi:type="Eleve">
+          <Nom>Brès</Nom>
+          <Prenom>Raphaël</Prenom>
+          <Promo>2020</Promo>
+        </Intervenant>
+        <Intervenant xsi:type="Enseignant">
+          <Nom>Semal</Nom>
+          <Prenom>Catherine</Prenom>
+          <Matieres>
+            <Matiere>
+              <NomMatiere>Gestion de projet et conception</NomMatiere>
+              <CodeSyllabus>CO6INGP0</CodeSyllabus>
+            </Matiere>
+          </Matieres>
+        </Intervenant>
+        <Intervenant xsi:type="Externe">
+          <Nom>Dupont</Nom>
+          <Prenom>Patrick</Prenom>
+          <Metier>Chercheur</Metier>
+        </Intervenant>
+      </IntervenantsConcernes>
+      <MatieresConcernees>
+        <Matiere>
+          <NomMatiere>Programmation Avancée</NomMatiere>
+          <CodeSyllabus>CO6SFRPA0</CodeSyllabus>
+        </Matiere>
+        <Matiere>
+          <NomMatiere>Statistique inférentielle et analyse de données</NomMatiere>
+          <CodeSyllabus>CO6SFMA0</CodeSyllabus>
+        </Matiere>
+        <Matiere>
+          <NomMatiere>Gestion de projet et conception</NomMatiere>
+          <CodeSyllabus>CO6INGP0</CodeSyllabus>
+        </Matiere>
+      </MatieresConcernees>
+      <LivrablesAttendus>
+        <Livrable>
+          <NomLivrable>Analyse de l'existant</NomLivrable>
+        </Livrable>
+        <Livrable>
+          <NomLivrable>Rapport</NomLivrable>
+        </Livrable>
+        <Livrable>
+          <NomLivrable>Cahier des charges</NomLivrable>
+        </Livrable>
+        <Livrable>
+          <NomLivrable>Prestation orale</NomLivrable>
+        </Livrable>
+      </LivrablesAttendus>
+      <RolesIntervenants>
+        <Role>
+          <NomRole>Elève 3A</NomRole>
+        </Role>
+        <Role>
+          <NomRole>Tuteur</NomRole>
+        </Role>
+        <Role>
+          <NomRole>Client</NomRole>
+        </Role>
+      </RolesIntervenants>
     </Projet>
   </ListeProjets>
 </Catalogue>

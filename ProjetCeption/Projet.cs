@@ -14,7 +14,7 @@ namespace ProjetCeption
         public List<Intervenant> IntervenantsConcernes { get; set; }
         public List<Matiere> MatieresConcernees { get; set; }
         public List<Livrable> LivrablesAttendus { get; set; }
-        public List<Role> IntervenantsRoles { get; set; }
+        public List<Role> RolesIntervenants { get; set; }
 
 
         public Projet() { }
@@ -29,7 +29,7 @@ namespace ProjetCeption
             IntervenantsConcernes = intervenants;
             MatieresConcernees = matieres;
             LivrablesAttendus = livrables;
-            IntervenantsRoles = roles;
+            RolesIntervenants = roles;
         }
 
 
@@ -47,13 +47,9 @@ namespace ProjetCeption
             description = description + "\n Intervenants concernés : ";
             foreach (Intervenant item in IntervenantsConcernes)
             {
-                description = description + item.Prenom + " " + item.Nom + ", ";
-            }
-
-            description = description + "\n Rôles des intervenants : ";
-            foreach (Role item in IntervenantsRoles)
-            {
-                description = description + item.NomRole + ", ";
+                int i = IntervenantsConcernes.IndexOf(item);
+                description += "\n\t" + item.Prenom + " " + item.Nom + ": ";
+                description += RolesIntervenants[i].ToString();
             }
 
             description = description + "\n Matières concernées : ";

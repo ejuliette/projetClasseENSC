@@ -40,9 +40,7 @@ namespace ProjetCeption
                 foreach (Intervenant intervenant in projet.IntervenantsConcernes)
                 {
                     if (intervenant.Nom == nom && intervenant.Prenom == prenom)
-                    {
                         Resultat.Add(projet);
-                    }
                 }
             }
 
@@ -214,8 +212,9 @@ namespace ProjetCeption
             }
 
             //DATES
-            DateTime dateDebut = choixDates()[0];
-            DateTime dateFin = choixDates()[1];
+            DateTime[] tabDates = choixDates();
+            DateTime dateDebut = tabDates[0];
+            DateTime dateFin = tabDates[1];
 
 
             //INETERVENANTS ET ROLES
@@ -239,8 +238,8 @@ namespace ProjetCeption
                 {
                     nvListeMatiere = new List<Matiere> { ListeMatieres[2] }; //correspond à GESP
                     nvListeLivrable = new List<Livrable> { ListeLivrables[2], ListeLivrables[4] }; //correspond à 
-                    Console.Write("Matières : {0}", nvListeMatiere[0]);
-                    Console.Write("Livrables : {0}, {1}", nvListeLivrable[0], nvListeLivrable[1]);
+                    Console.WriteLine("Matières : {0}", nvListeMatiere[0]);
+                    Console.WriteLine("Livrables : {0}, {1}", nvListeLivrable[0], nvListeLivrable[1]);
 
                 }
                 else
@@ -424,7 +423,7 @@ namespace ProjetCeption
                 int TypeIntervenant = Convert.ToInt32(Console.ReadLine());
                 if (TypeIntervenant == 1)
                 {
-                    Console.WriteLine("Promotion de l'élève (4 chiffres) : ");
+                    Console.Write("Promotion de l'élève (4 chiffres) : ");
                     int Promo = Convert.ToInt32(Console.ReadLine());
                     Eleve nouvelIntervenant = new Eleve(Nom, Prenom, Promo);
                     ListeIntervenants.Add(nouvelIntervenant);
@@ -483,7 +482,7 @@ namespace ProjetCeption
                 }
                 if (TypeIntervenant == 3)
                 {
-                    Console.WriteLine("Métier : ");
+                    Console.Write("Métier : ");
                     string Metier = Console.ReadLine();
                     Externe nouvelIntervenant = new Externe(Nom, Prenom, Metier);
                     ListeIntervenants.Add(nouvelIntervenant);
@@ -522,17 +521,16 @@ namespace ProjetCeption
             {
                 Console.Write("Ajouter l'intervenant (entrez 0 pour annuler) : ");
                 int choixIntervenant = Convert.ToInt32(Console.ReadLine());
+                //On vérifie que le numéro demandé existe bien
+                while (choixIntervenant < 0 || choixIntervenant > j)
+                {
+                    Console.WriteLine("Je n'ai pas compris votre choix");
+                    Console.Write("\nAjouter l'intervenant (entrez 0 pour annuler) : ");
+                    choixIntervenant = Convert.ToInt32(Console.ReadLine());
+                }
 
                 if (choixIntervenant != 0)
                 {
-                    //On vérifie que le numéro demandé existe bien
-                    while (choixIntervenant < 0 || choixIntervenant > j)
-                    {
-                        Console.WriteLine("Je n'ai pas compris votre choix");
-                        Console.Write("\nAjouter l'intervenant (entrez 0 pour annuler) : ");
-                        choixIntervenant = Convert.ToInt32(Console.ReadLine());
-                    }
-
                     bool existeDeja = false;
                     foreach (Intervenant i in nvListeIntervenant)
                     {
@@ -850,7 +848,7 @@ namespace ProjetCeption
                 {
                     List<Intervenant> listeInterv = ChoixIntervenant();
                     ListeProjets[choixProjet - 1].IntervenantsConcernes = listeInterv;
-                    ListeProjets[choixProjet - 1].IntervenantsRoles = ChoixRole(listeInterv);
+                    ListeProjets[choixProjet - 1].RolesIntervenants = ChoixRole(listeInterv);
                     ListeProjets[choixProjet - 1].NbIntervenants = listeInterv.Count;
                     Console.WriteLine("Les modifications ont bien été prises en compte !\n");
                 }
@@ -865,8 +863,6 @@ namespace ProjetCeption
                     Console.WriteLine("Les modifications ont bien été prises en compte !\n");
                 }
             }
-            
-
         }
 
 
