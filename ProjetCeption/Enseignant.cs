@@ -5,7 +5,6 @@ namespace ProjetCeption
 {
     public class Enseignant : Intervenant
     {
-
         public List<Matiere> Matieres { get; set; }
         public Enseignant() : base() { }
 
@@ -18,7 +17,6 @@ namespace ProjetCeption
         public override string ToString()
         {
             string description = base.ToString() + "\nMatières enseignées : ";
-
             foreach (Matiere item in Matieres)
             {
                 description = description + item.NomMatiere + " ";

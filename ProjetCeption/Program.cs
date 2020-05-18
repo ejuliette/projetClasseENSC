@@ -12,8 +12,7 @@ namespace ProjetCeption
     {
         static void Main(string[] args)
         {
-
-            //Permet de récupérer le catalogue du fichier Xml
+            //On crée le catalogue à partir des données du fichier Xml
             XmlSerializer xs = new XmlSerializer(typeof(Catalogue));
             StreamReader reader = new StreamReader("sauvegardeCatalogue.xml");
             Catalogue catalogueENSC = xs.Deserialize(reader) as Catalogue;
@@ -23,11 +22,12 @@ namespace ProjetCeption
             AfficherMenu(catalogueENSC);
 
 
+
             static void AfficherMenu(Catalogue catalogue)
             {
-
                 //Affichage du menu centré
-                int choix;
+                //Les éléments du menu à afficher sont stockés dans une liste. 
+                //La liste est ensuite parcourue afin d'éviter les répétition de code pour centrer le texte
                 string menu = "******************************* Menu *****************************";
                 string m1 = "1-Rechercher un projet par intervenant";
                 string m2 = "2-Rechercher un projet par année";
@@ -40,19 +40,18 @@ namespace ProjetCeption
                 string m9 = "9-Réinitialiser le catalogue";
                 string m10 = "10-Quitter\n";
                 string m11 = "Donner votre choix : ";
-
                 Console.WriteLine("");
+
                 string[] libelle = new string [] { menu, m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11 };
 
-         
-                for(int i=0;i<=10;i++)
+                for(int i=0;i<=11;i++)
                 {
                     Console.SetCursorPosition((Console.WindowWidth - libelle[i].Length) / 2, Console.CursorTop);
                     Console.WriteLine(libelle[i]);
                 }
-               
-                //Sélection de l'utilisateur
-                choix = int.Parse(Console.In.ReadLine());
+
+                //Choix de l'utilisateur et appel à la fonction correspondante
+                int choix = int.Parse(Console.In.ReadLine());
                 switch (choix)
                 {
                     case 1:
@@ -99,8 +98,9 @@ namespace ProjetCeption
 
 
                 }
-                //Sauvegarde du catalogue
+                //Sauvegarde du catalogue après les éventuelles modifications
                 catalogue.Sauvegarder("sauvegardeCatalogue.xml");
+
                 //Affichage du menu
                 AfficherMenu(catalogue);
             }            

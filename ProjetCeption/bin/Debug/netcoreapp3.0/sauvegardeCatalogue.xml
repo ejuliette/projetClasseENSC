@@ -363,6 +363,20 @@
       <Prenom>Pierre</Prenom>
       <Promo>2022</Promo>
     </Intervenant>
+    <Intervenant xsi:type="Enseignant">
+      <Nom>machin</Nom>
+      <Prenom>truc</Prenom>
+      <Matieres>
+        <Matiere>
+          <NomMatiere>Programmation Avancée</NomMatiere>
+          <CodeSyllabus>CO6SFRPA0</CodeSyllabus>
+        </Matiere>
+        <Matiere>
+          <NomMatiere>Gestion de projet et conception</NomMatiere>
+          <CodeSyllabus>CO6INGP0</CodeSyllabus>
+        </Matiere>
+      </Matieres>
+    </Intervenant>
   </ListeIntervenants>
   <ListeRoles>
     <Role>
@@ -388,6 +402,9 @@
     </Role>
     <Role>
       <NomRole>Responsable Facteur Humain</NomRole>
+    </Role>
+    <Role>
+      <NomRole>rien</NomRole>
     </Role>
   </ListeRoles>
   <ListeMatieres>
@@ -438,6 +455,9 @@
     </Livrable>
     <Livrable>
       <NomLivrable>Article scientifique</NomLivrable>
+    </Livrable>
+    <Livrable>
+      <NomLivrable>blablablabalbalbal</NomLivrable>
     </Livrable>
   </ListeLivrables>
   <ListeProjets>
@@ -1099,6 +1119,44 @@
         </Role>
         <Role>
           <NomRole>Elève 1A</NomRole>
+        </Role>
+      </RolesIntervenants>
+    </Projet>
+    <Projet>
+      <Theme>bla</Theme>
+      <TypeProjet>Projet web</TypeProjet>
+      <SujetLibre>false</SujetLibre>
+      <DateDebut>2020-11-11T00:00:00</DateDebut>
+      <DateFin>2020-11-11T00:00:00</DateFin>
+      <NbIntervenants>1</NbIntervenants>
+      <IntervenantsConcernes>
+        <Intervenant xsi:type="Eleve">
+          <Nom>Grondin</Nom>
+          <Prenom>Léa</Prenom>
+          <Promo>2022</Promo>
+        </Intervenant>
+      </IntervenantsConcernes>
+      <MatieresConcernees>
+        <Matiere>
+          <NomMatiere>Communication Web</NomMatiere>
+          <CodeSyllabus>CO6SFCW0</CodeSyllabus>
+        </Matiere>
+        <Matiere>
+          <NomMatiere>Gestion de projet et conception</NomMatiere>
+          <CodeSyllabus>CO6INGP0</CodeSyllabus>
+        </Matiere>
+      </MatieresConcernees>
+      <LivrablesAttendus>
+        <Livrable>
+          <NomLivrable>Site web</NomLivrable>
+        </Livrable>
+        <Livrable>
+          <NomLivrable>Rapport</NomLivrable>
+        </Livrable>
+      </LivrablesAttendus>
+      <RolesIntervenants>
+        <Role>
+          <NomRole>Chef de Projet</NomRole>
         </Role>
       </RolesIntervenants>
     </Projet>
